@@ -1,6 +1,6 @@
 module.exports={
 
-    RegistrarCliente:function(conexion) {
+    RegistrarCliente:function(conexion,{nom,apell,user,correo,pass}) {
         const insertar = `INSERT INTO cliente (nombre, apellido, usuario, correo, contraseña) VALUES ('${nom}, ${apell}, ${user}, ${correo}, ${pass}')`;
         return new Promise((Resolve, reject) => {
             conexion.query(insertar, function (error, results) {
