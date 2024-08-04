@@ -3,11 +3,18 @@ var router = express.Router();
 var controlador = require('../controller/index')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',function(req, res) {
+  res.render('inicio');
+});
+router.post('/', controlador.IniciarSesion)
+
+router.get('/registrar',function(req, res) {
   res.render('registro');
 });
+router.post('/registrar',controlador.RegistrarCliente)
 
-router.post('/',controlador.RegistrarCliente)
-
+router.get('/Bienvenido', function(req, res) {
+  res.render('cliente')
+})
 
 module.exports = router;//no borrar 

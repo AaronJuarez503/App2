@@ -17,7 +17,22 @@ module.exports={
             res.status(500).send('Error al insertar')
         })
       
-    }
+    },
+    IniciarSesion:function(req, res){
+       
+        const {user, pass} = req.body;
+
+        consulta.IniciarSesion(conexion, {user, pass})
+        .then(datos => {
+            console.log('sesion iniciada con exito', datos)
+            res.redirect('/Bienvenido')
+        })
+        .catch(error => {
+            console.error('error al iniciar sesion', error)
+            res.status(500).send('Error al iniciar sesion')
+        })
+
+    },
    
    
 }//fin de modules exports no idont delet

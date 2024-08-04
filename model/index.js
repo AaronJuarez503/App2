@@ -11,6 +11,19 @@ module.exports={
                 }
             });
         });
+    },
+
+    IniciarSesion:function(conexion, { user, pass }) {
+        const consulta = `SELECT * FROM cliente WHERE usuario = '${user}' AND contraseña = '${pass}'`;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, resultado) {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+        });
     }
 
 }
