@@ -19,7 +19,6 @@ module.exports={
       
     },
     IniciarSesion:function(req, res){
-       
         const {user, pass} = req.body;
 
         consulta.IniciarSesion(conexion, {user, pass})
