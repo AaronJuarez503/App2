@@ -13,7 +13,7 @@ router.get('/registrar',function(req, res) {
 });
 router.post('/registrar',controlador.RegistrarCliente)
 
-router.get('/Bienvenido', function(req, res) {
+router.get('/Bienvenido', function(req,res) {
   res.render('cliente')
 });
 
