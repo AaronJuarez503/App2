@@ -9,7 +9,7 @@ router.get('/',function(req, res) {
 router.post('/', controlador.IniciarSesion)
 
 router.get('/registrar',function(req, res) {
-  res.render('registro');
+  res.render('crear');
 });
 router.post('/registrar',controlador.RegistrarCliente)
 
