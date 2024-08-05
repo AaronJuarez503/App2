@@ -32,6 +32,20 @@ module.exports={
         })
 
     },
+    RecuperarCuenta:function(req, res){
+        const {correo} = req.body;
+
+        consulta.RecuperarCuenta(conexion, {correo})
+        .then(datos => {
+            console.log('cuenta encontrada', datos)
+            res.redirect('/verificar_codigo')
+        })
+        .catch(error => {
+            console.error('error al encontrar la cuenta', error)
+            res.status(500).send('error al encontrar la cuenta')
+        })
+
+    }
    
    
 }//fin de modules exports no idont delet

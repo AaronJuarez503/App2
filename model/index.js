@@ -24,6 +24,18 @@ module.exports={
                 }
             });
         });
+    },
+    RecuperarCuenta:function(conexion, { correo }) {
+        const consulta = `SELECT * FROM cliente WHERE correo = '${correo}'`;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, resultado) {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+        });
     }
 
 }
