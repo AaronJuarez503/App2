@@ -7,12 +7,12 @@ var validator=require('../controller/validaciones')
 router.get('/',function(req, res) {
   res.render('inicio');
 });
-router.post('/',validator.Psesion, controlador.IniciarSesion)
+router.post('/',controlador.IniciarSesion)
 
-router.get('/registrar',validacionDexpress,function(req, res) {
+router.get('/registrar',function(req, res) {
   res.render('crear');
 });
-router.post('/registrar',validaciones.Pregistrarse,controlador.RegistrarCliente)
+router.post('/registrar',validator.Pregistrarse,controlador.RegistrarCliente)
 
 router.get('/Bienvenido', function(req,res) {
   res.render('cliente')
