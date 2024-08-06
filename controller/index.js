@@ -40,11 +40,25 @@ module.exports={
         consulta.RecuperarCuenta(conexion, {correo})
         .then(datos => {
             console.log('cuenta encontrada', datos)
-            res.redirect('/verificar_codigo')
+            res.send('verificar_codigo')
         })
         .catch(error => {
             console.error('error al encontrar la cuenta', error)
             res.status(500).send('error al encontrar la cuenta')
+        })
+
+    },
+    Nuevacontra:function(req, res){
+        const {pass} = req.body;
+
+        consulta.Nuevacontra(conexion, {pass})
+        .then(datos => {
+            console.log('contraseña actualizada', datos)
+             res.redirect('/')
+        })
+        .catch(error => {
+            console.error('error al actualizar la contraseña', error)
+            res.status(500).send('error al actualizar la contraseña')
         })
 
     }
