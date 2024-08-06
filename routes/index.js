@@ -26,8 +26,5 @@ router.post('/recuperar_cuenta', controlador.RecuperarCuenta)
 router.get('/verificar_codigo', function(req, res){
   res.render('codigo')
 });
-router.get('/alan', function(req, res){
-  res.send("hola alan")
-});
 
 module.exports = router;//no borrar 
