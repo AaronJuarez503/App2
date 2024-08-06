@@ -1,6 +1,8 @@
 var conexion = require('../config/index')
 var consulta = require('../model/index')
 
+
+
 module.exports={
 
     RegistrarCliente:function(req,res){

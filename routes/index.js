@@ -1,17 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var controlador = require('../controller/index')
+var validator=require('../controller/validaciones')
 
 /* GET home page. */
 router.get('/',function(req, res) {
   res.render('inicio');
 });
-router.post('/', controlador.IniciarSesion)
+router.post('/',validator.Psesion, controlador.IniciarSesion)
 
-router.get('/registrar',function(req, res) {
+router.get('/registrar',validacionDexpress,function(req, res) {
   res.render('crear');
 });
-router.post('/registrar',controlador.RegistrarCliente)
+router.post('/registrar',validaciones.Pregistrarse,controlador.RegistrarCliente)
 
 router.get('/Bienvenido', function(req,res) {
   res.render('cliente')
@@ -25,4 +26,8 @@ router.post('/recuperar_cuenta', controlador.RecuperarCuenta)
 router.get('/verificar_codigo', function(req, res){
   res.render('codigo')
 });
+router.get('/alan', function(req, res){
+  res.send("hola alan")
+});
+
 module.exports = router;//no borrar 
