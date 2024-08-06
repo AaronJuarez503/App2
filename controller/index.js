@@ -26,7 +26,7 @@ module.exports={
         consulta.IniciarSesion(conexion, {user, pass})
         .then(datos => {
             console.log('sesion iniciada con exito', datos)
-            res.redirect('/')
+            res.send('Bienvenido')
         })
         .catch(error => {
             console.error('error al iniciar sesion', error)

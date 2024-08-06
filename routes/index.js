@@ -7,7 +7,7 @@ var validator=require('../controller/validaciones')
 router.get('/',function(req, res) {
   res.render('inicio');
 });
-router.post('/',controlador.IniciarSesion)
+router.post('/',validator.Piniciar,controlador.IniciarSesion)
 
 router.get('/registrar',function(req, res) {
   res.render('crear');
