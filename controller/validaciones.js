@@ -1,4 +1,7 @@
-const {body,validationResult} = require('express-validator')
+const {body,validationResult} = require('express-validator');
+//const { assign } = require('nodemailer/lib/shared');
+const model = require ('../model/index')
+const conexion = require ('../config/index')
 
 const result = (req)=>{
   return new Promise((resolve, reject) => {
@@ -84,6 +87,15 @@ module.exports={
     body('correo')
     .notEmpty().withMessage('El email es requerido')
     .isEmail().withMessage('El email no es valido'),
+    body('correo').custom( async value =>{
+    var result = await model.RecuperarCuenta(conexion,value)
+    if (result) {
+      return true;
+    } else {
+      throw new Error('el correo no se encuentra')
+    }
+    
+    }),
     (req, res, next)=>{
       result(req)
       .then(() => {

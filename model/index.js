@@ -30,9 +30,18 @@ module.exports={
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
-                    reject(error);
+                    console.error('erro perra')
                 } else {
-                    resolve(resultado);
+
+                    if (resultado.length >0) {
+                        resolve(true)
+                        console.log(resultado)
+                        
+                    } else {
+                        reject(false)
+                        
+                    }
+                    
                 }
             });
         });
