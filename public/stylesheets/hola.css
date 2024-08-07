@@ -18,8 +18,8 @@ body {
 }
 .wrapper{
     position: relative;
-    width: 750px;
-    height: 450px;
+    width: 500px;
+    height: 1000px;
     background: transparent;
     border: 2px solid #0ef;
     box-shadow: 0 0 25px #0ef;
@@ -170,7 +170,8 @@ transition: .5s;
     justify-content: center;
 }
 .wrapper .info-text.login{
-    right: 0;
+    top: -270px;
+    right: 150px;
     text-align: right;
     padding: 0 40px 60px 150px;
     
@@ -251,6 +252,8 @@ color: #fff;
         display: flex;
         justify-content: center ;
         box-shadow: 0 0 25px #0ef;
+        top: 110px;
+        right: 30%;
     }
 
 .box4{
