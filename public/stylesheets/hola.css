@@ -126,6 +126,7 @@ transition: .5s;
     font-weight: 600;
     z-index: 1;
     overflow: hidden ;
+    top: 12px;
 }
 
 .btn::before {
