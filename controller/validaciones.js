@@ -88,14 +88,14 @@ module.exports={
     .notEmpty().withMessage('El email es requerido')
     .isEmail().withMessage('El email no es valido'),
     body('correo').custom( async value =>{
-    var result = await model.RecuperarCuenta(conexion,value)
+    var result = await model.findemail(conexion,value);
     if (result) {
       return true;
     } else {
-      throw new Error('el correo no se encuentra')
+
     }
-    
-    }),
+   
+    }).withMessage("el correo no existe"),
     (req, res, next)=>{
       result(req)
       .then(() => {

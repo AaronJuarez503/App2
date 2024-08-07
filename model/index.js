@@ -30,18 +30,9 @@ module.exports={
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
-                    console.error('erro perra')
+                    reject(error);
                 } else {
-
-                    if (resultado.length >0) {
-                        resolve(true)
-                        console.log(resultado)
-                        
-                    } else {
-                        reject(false)
-                        
-                    }
-                    
+                    resolve(resultado);
                 }
             });
         });
@@ -59,6 +50,27 @@ module.exports={
                 }
             });
         });
-    }
+    },
+
+    findemail:function(conexion,correo) {
+        const consulta = `SELECT * FROM cliente WHERE correo = '${correo}'`;
+        return new Promise((resolve,reject) => {
+            conexion.query(consulta, function (error, resultado) {
+                if (error) {
+                    throw error
+                } else {
+                    if (resultado.length>0) {
+                        console.log(resultado) 
+                        return resolve(true); 
+                       
+                    } else {
+                        console.log("No hay usuario con ese correo")
+                        return reject(false); 
+                        
+                    }
+                }
+            });
+        });
+    },
 
 }
