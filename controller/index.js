@@ -41,7 +41,7 @@ module.exports={
         consulta.RecuperarCuenta(conexion, {correo})
         .then(datos => {
             console.log('cuenta encontrada', datos)
-            res.send('verificar_codigo')
+             res.redirect('/verificar_codigo')
         })
         .catch(error => {
             console.error('error al encontrar la cuenta', error)
