@@ -20,12 +20,12 @@
                 <p class="holi">Ingrese su codigo de verificacion</p>
                <div class="input-box">
        
-                <input type="text" required>
+                <input type="text" id="codigo" >
                 <label>Ingrese aqui</label>
                 <i class='bx bxs-envelope'></i>
              </div>
               
-                 <button type="submit" class="btn">Enviar
+                 <button type="submit" class="btn" id="boton">Enviar
                  </button>
                 
             </form>
@@ -34,6 +34,37 @@
 
 
  </div>
+
+
+ <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+ <script>
+     
+     var $codigo = $('#codigo');
+     var $boton = $('#boton');
+
+     $codigo.on('input', function() {
+         var codigoIntroducido = $(this).val();
+             // Verifica si el código tiene exactamente 5 dígitos
+         if ( /^\d{5}$/.test(codigoIntroducido)) {
+             $boton.prop('disabled', false);
+             $boton.css({
+             'background-color':'rgb(52, 21, 179)',
+             'cursor':  'pointer'
+         });
+
+         } else {
+             $boton.prop('disabled', true);
+             $boton.css({
+             'background-color':'rgb(19, 183, 198)',
+             'cursor':  'not-allowed'
+         });
+
+         }
+
+        
+     });
+ 
+ </script>
  
 </body>
 </html>
