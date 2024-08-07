@@ -222,6 +222,8 @@ color: #fff;
 }
 .box{
     position: absolute;
+    top: 100px;
+    right: 24%;
     width: 50%;
     height: 70%;
     display: flex;

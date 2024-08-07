@@ -42,9 +42,11 @@ module.exports={
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
-                    reject(error);
+                    console.log("actualizasion de contraseña fallida ...")
+                    return reject(error);
                 } else {
-                    resolve(resultado);
+                    resolve(true);
+                    console.log("actualizado correctamente.....")
                 }
             });
         });
