@@ -251,6 +251,8 @@ color: #fff;
         display: flex;
         justify-content: center ;
         box-shadow: 0 0 25px #0ef;
+        top: 110px;
+        right: 30%;
     }
 
 .box4{
