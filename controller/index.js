@@ -1,6 +1,8 @@
 var conexion = require('../config/index')
 var consulta = require('../model/index')
 
+
+
 module.exports={
 
     RegistrarCliente:function(req,res){
@@ -24,7 +26,7 @@ module.exports={
         consulta.IniciarSesion(conexion, {user, pass})
         .then(datos => {
             console.log('sesion iniciada con exito', datos)
-            res.redirect('/Bienvenido')
+             res.redirect('/inicioC')
         })
         .catch(error => {
             console.error('error al iniciar sesion', error)
@@ -38,11 +40,25 @@ module.exports={
         consulta.RecuperarCuenta(conexion, {correo})
         .then(datos => {
             console.log('cuenta encontrada', datos)
-            res.redirect('/verificar_codigo')
+            res.send('verificar_codigo')
         })
         .catch(error => {
             console.error('error al encontrar la cuenta', error)
             res.status(500).send('error al encontrar la cuenta')
+        })
+
+    },
+    Nuevacontra:function(req, res){
+        const {pass} = req.body;
+
+        consulta.Nuevacontra(conexion, {pass})
+        .then(datos => {
+            console.log('contraseña actualizada', datos)
+             res.redirect('/')
+        })
+        .catch(error => {
+            console.error('error al actualizar la contraseña', error)
+            res.status(500).send('error al actualizar la contraseña')
         })
 
     }

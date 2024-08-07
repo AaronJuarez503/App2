@@ -36,6 +36,18 @@ module.exports={
                 }
             });
         });
+    },
+    Nuevacontra:function(conexion, { pass, correo }) {
+        const consulta = `UPDATE cliente SET contraseña = '${pass}' WHERE correo = '${correo}'`;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, resultado) {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+        });
     }
 
 }

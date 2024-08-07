@@ -1,28 +1,35 @@
 var express = require('express');
 var router = express.Router();
 var controlador = require('../controller/index')
+var validator=require('../controller/validaciones')
 
 /* GET home page. */
 router.get('/',function(req, res) {
   res.render('inicio');
 });
-router.post('/', controlador.IniciarSesion)
+router.post('/',validator.Piniciar,controlador.IniciarSesion)
 
 router.get('/registrar',function(req, res) {
-  res.render('registro');
+  res.render('crear');
 });
-router.post('/registrar',controlador.RegistrarCliente)
-
-router.get('/Bienvenido', function(req, res) {
-  res.render('cliente')
-});
+router.post('/registrar',validator.Pregistrarse,controlador.RegistrarCliente)
 
 router.get('/recuperar_cuenta', function(req, res){
   res.render('recuperacion')
 });
-router.post('/recuperar_cuenta', controlador.RecuperarCuenta)
+router.post('/recuperar_cuenta',validator.Precuperar,controlador.RecuperarCuenta)
 
 router.get('/verificar_codigo', function(req, res){
   res.render('codigo')
 });
+
+router.get('/nueva_pass', function(req, res){
+  res.render('updata_contra')
+});
+router.post('/nueva_pass',validator.PnuevaPass,controlador.Nuevacontra)
+
+router.get('/inicioC', function(req, res){
+  res.render('cliente')
+});
+
 module.exports = router;//no borrar 
