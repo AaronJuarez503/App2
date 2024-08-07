@@ -22,6 +22,8 @@ module.exports={
       
     },
     IniciarSesion:function(req, res){
+
+        req.session.correo;
         const {user, pass} = req.body;
 
         consulta.IniciarSesion(conexion, {user, pass})
@@ -37,6 +39,9 @@ module.exports={
     },
     RecuperarCuenta:function(req, res){
         const {correo} = req.body;
+
+                req.session.correo=correo;
+
 
         consulta.RecuperarCuenta(conexion, {correo})
         .then(datos => {
@@ -100,12 +105,15 @@ module.exports={
         
     },
     Nuevacontra:function(req, res){
-        const {pass} = req.body;
+        const pass = req.body.pass;
+        console.log("tu correo que pedi es ;" + req.session.correo)
 
-        consulta.Nuevacontra(conexion, {pass})
+        consulta.Nuevacontra(conexion,pass,req.session.correo)
         .then(datos => {
             console.log('contraseña actualizada', datos)
-             res.redirect('/')
+            res.send("contraseña actualiada con exito");
+
+           //  res.redirect('/')
         })
         .catch(error => {
             console.error('error al actualizar la contraseña', error)
