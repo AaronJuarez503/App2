@@ -28,4 +28,8 @@ router.get('/nueva_pass', function(req, res){
 });
 router.post('/nueva_pass',validator.PnuevaPass,controlador.Nuevacontra)
 
+router.get('/inicioC', function(req, res){
+  res.render('cliente')
+});
+
 module.exports = router;//no borrar 
