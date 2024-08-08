@@ -11,6 +11,7 @@
 
 body {
     display: flex;
+    
     justify-content:center;
     align-items: center;
     min-height: 100vh;
@@ -18,8 +19,8 @@ body {
 }
 .wrapper{
     position: relative;
-    width: 500px;
-    height: 1000px;
+    width: 800px;
+    height: 500px;
     background: transparent;
     border: 2px solid #0ef;
     box-shadow: 0 0 25px #0ef;
@@ -170,8 +171,8 @@ transition: .5s;
     justify-content: center;
 }
 .wrapper .info-text.login{
-    top: -270px;
-    right: 150px;
+    top: 0;
+    right: 0;
     text-align: right;
     padding: 0 40px 60px 150px;
     
