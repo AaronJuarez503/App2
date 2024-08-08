@@ -17,6 +17,32 @@ const result = (req)=>{
 }
 
 module.exports={
+  user:[
+    body('usuario')
+    .notEmpty().withMessage('El nombre es requerido')
+    .isLength({min:5}).withMessage('el nombre debe contener almenos 5 caracteres'),
+    (req,res,next)=>{
+      result(req)
+      .then(() => {
+          next();
+      })
+      .catch((errors) => {
+        console.log(errors); 
+        var datos = req.body;
+        console.log(datos);
+        const errorMessages = {};
+        errors.array().forEach(error => {
+          if (!errorMessages[error.path]) {
+            errorMessages[error.path] = error.msg;
+            console.log(errorMessages);
+          }
+        });
+     
+        res.render('usuario',{errors:errorMessages}); 
+    });
+  }
+
+  ],
 
     Pregistrarse:[
       body('nom')
