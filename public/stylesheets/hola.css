@@ -29,16 +29,15 @@ body {
     
     
 }
-@media (max-width:800px){
+@media (max-width:799px){
     .wrapper{
-        position: relative;
-        width: 500px;
-        height: 1000px;
-        background: transparent;
-        border: 2px solid #0ef;
-        box-shadow: 0 0 25px #0ef;
-        overflow: hidden;
-        
+    
+        width: 90%;
+        height: auto;
+        top: auto;
+        right: auto;
+        box-shadow: none;
+    
     }
   
 }
@@ -193,7 +192,7 @@ transition: .5s;
     padding: 0 40px 60px 150px;
     
 }
-@media (max-width:800px){
+@media (max-width:799px){
     .wrapper .info-text.login{
         top: -270px;
         right: 150px;
@@ -282,6 +281,17 @@ color: #fff;
         right: 30%;
     }
 
+    @media (max-width:799px){
+        .box3{
+            width: 90%;
+            height: auto;
+            top: auto;
+            right: auto;
+            box-shadow: none;
+        }
+    }
+
+
 .box4{
  position: absolute;
  width: 35%;
@@ -289,4 +299,15 @@ color: #fff;
  justify-content: center;
  display: flex;
  box-shadow: 0 0 25px #0ef;
+}
+@media (max-width:799px){
+    .box4{
+    
+            width: 90%;
+            height: auto;
+            top: auto;
+            right: auto;
+            box-shadow: none;
+        
+    }
 }
