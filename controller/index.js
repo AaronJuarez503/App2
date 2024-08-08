@@ -1,16 +1,36 @@
 var conexion = require('../config/index')
 var consulta = require('../model/index')
 var email= require('../controller/enviargmail')
+var aux=require('../controller/auxiliar')
 
 var gcodigo;
 
 module.exports={
 
     RegistrarCliente:function(req,res){
-        console.log(req.body)
-        const {nom,apell,user,correo,pass} = req.body;
+       // console.log("datos"+req.body)
+      // const {nom,apell,correo,pass} = req.body;
 
-        consulta.RegistrarCliente(conexion,{nom,apell,user,correo,pass})
+       req.session.datos=req.body;
+   
+       res.render('usuario')
+
+    },
+
+
+    insertregistrer:function (req,res) {
+
+        console.log('datos para ingresar'+req.session.datos.nom)
+        var nom=req.session.datos.nom;
+        var apell=req.session.datos.apell;
+        var correo=req.session.datos.correo;
+        var pass=req.session.datos.pass;
+        var username = req.body.usuario
+        console.log(username)
+
+
+
+        consulta.RegistrarCliente(conexion,{nom,apell,username,correo,pass})
         .then(datos => {
             console.log('datos insertados con exito',datos)
             res.redirect('/inicioC')
@@ -21,9 +41,60 @@ module.exports={
         })
       
     },
+
+
+
     IniciarSesion:function(req, res){
 
-        req.session.correo;
+        async  function para() {
+            var username=req.body.username; 
+            var password=req.body.password;
+            // buscando usuario en la bd
+            try {
+                var  respuestabd = await consulta.buscarusuario(conexion,username,password)
+                console.log("tu respuesta de la bd es  ; " + respuestabd)
+                res.render('cliente');
+
+                
+    
+    
+             /*   const payload = {
+                    rol:respuestabd.id_rol,
+                    nombre:respuestabd.usuario,
+                    email:respuestabd.correo,
+                }
+    
+    
+                const payload2 = {
+                    rol:respuestabd.id_rol,
+                    nombre:respuestabd.usuario,
+                    email:respuestabd.correo,
+                    refresh:'true'
+                }
+    
+                console.log(payload)
+               
+                const token = Gtoken.generarToken(payload);
+                res.cookie('authToken', token, { httpOnly: true,secure: true });
+               // res.cookie('correo', respuestabd.correo,);
+               // console.log("cokkie de correo almacenado con exito")
+                const refreshToken = Gtoken.refreshToken(payload2);
+                res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
+                res.cookie('correo', respuestabd.correo, { httpOnly: true,secure: true });*/
+    
+              
+                //aux.craertokens(res,respuestabd)
+            } catch (error) {
+                console.error('Error al buscar usuario:', error.message);
+                res.render('inicio',{err:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});
+            }
+            
+            }
+    
+            para()
+        },
+
+       /* req.session.correo;
         const {user, pass} = req.body;
 
         consulta.IniciarSesion(conexion, {user, pass})
@@ -36,7 +107,8 @@ module.exports={
             res.status(500).send('Error al iniciar sesion')
         })
 
-    },
+    },*/
+
     RecuperarCuenta:function(req, res){
         const {correo} = req.body;
 
@@ -120,7 +192,14 @@ module.exports={
             res.status(500).send('error al actualizar la contraseña')
         })
 
-    }
+    },
+    findByEmail: async function (email) {
+        try {
+          return await consulta.FindByEmail(conexion,email);
+        } catch (error) {
+            console.error('correo no encontrado');
+        }
+    },
    
    
 }//fin de modules exports no idont delet
