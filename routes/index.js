@@ -19,6 +19,8 @@ router.get('/recuperar_cuenta', function(req, res){
 });
 router.post('/recuperar_cuenta',validator.Precuperar,controlador.RecuperarCuenta)//validar correo
 
+router.post('/rrrr1',controlador.insertregistrer)
+
 router.get('/verificar_codigo', function(req, res){ //introdusircodgio
   res.render('codigo')
 });

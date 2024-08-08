@@ -19,7 +19,7 @@
     <div class="form-box login ">
        <h2 class="animation">Inicio de sesion</h2>
           <div class="input-box animation ">
-             <input type="text" name="user" id="user" value="<% if(typeof valores != 'undefined') { %><%= valores.user %><% } %>">
+             <input type="text" name="username" id="user" value="<% if(typeof valores != 'undefined') { %><%= valores.user %><% } %>">
              <label>Usuario</label>
              <i class='bx bxs-user'></i>
              <% if (typeof errors !== 'undefined') { %>
@@ -41,7 +41,7 @@
           </div>
 
             <div class="input-box animation">
-               <input type="password" name="pass" id="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
+               <input type="password" name="password" id="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
                <label>Contraseña</label>
                <i class='bx bxs-lock-alt'></i>
                <% if (typeof errors !== 'undefined') { %>
@@ -61,6 +61,22 @@
                   <% } %>
                   <% } %>
             </div>
+            <% if (typeof err !== 'undefined') { %>
+
+                        <div>
+                            <h2 class="error" 
+                                
+                                style="font-family: 'Arial', Times, serif;
+                                font: small-caps 200% serif;
+                                font-size: 18px;
+                                color: #ff0000;
+                                position: relative;
+                                top: -15x;
+
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0c0c;"></i> <%= err %></h2>
+                            </div>
+                  <% } %>
+                  
 
             <button type="submit" class="btn animation">Iniciar
             </button>

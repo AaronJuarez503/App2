@@ -1,7 +1,28 @@
 module.exports={
 
-    RegistrarCliente:function(conexion, {nom, apell, user, correo, pass}) {
-        const insertar = `INSERT INTO cliente (nombre, apellido, usuario, correo, contraseña) VALUES ('${nom}', '${apell}', '${user}', '${correo}', '${pass}')`;
+    buscarusuario:function (conexion,username,password) {
+        const consulta = `SELECT * FROM cliente WHERE usuario = '${username}' AND contraseña ='${password}'`;
+        //id_rol,usuario,correo, contraseña
+        return new Promise((resolve,reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    if (datos.length > 0) {
+                        console.log(datos)
+                        
+                        return resolve(datos[0]);
+                    } else {
+                        return reject(new Error('usuario no encontrado '));
+                        // No se encontró ningún usuario
+                    }
+                }
+            });
+        });
+    },
+
+    RegistrarCliente:function(conexion, {nom, apell, username, correo, pass}) {
+        const insertar = `INSERT INTO cliente (nombre, apellido, usuario, correo, contraseña) VALUES ('${nom}', '${apell}','${username}', '${correo}', '${pass}')`;
         return new Promise((resolve, reject) => {
             conexion.query(insertar, function (error, resultado) {
                 if (error) {
@@ -53,14 +74,14 @@ module.exports={
     },
 
     findemail:function(conexion,correo) {
-        const consulta = `SELECT * FROM cliente WHERE correo = '${correo}'`;
+        const consulta = `SELECT correo FROM cliente WHERE correo = '${correo}'`;
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
                     throw error
                 } else {
                     if (resultado.length>0) {
-                        console.log(resultado) 
+                       // console.log(resultado) 
                         return resolve(true); 
                        
                     } else {
@@ -72,5 +93,25 @@ module.exports={
             });
         });
     },
+
+    FindByEmail:function (conexion,email) {
+        const consulta = `SELECT correo FROM cliente WHERE correo = '${email}'`;
+        return new Promise((resolve,reject) => {
+            conexion.query(consulta, function (error,resultado) {
+                if (error) {
+                    throw error;
+                } else {
+                    if (resultado.length > 0) {
+                       // console.log(datos)
+                        return resolve(true);
+                    } else {
+                        return reject(false);// No se encontró ningún usuario
+                    }
+                }
+            });
+        });
+        
+    },
+  
 
 }

@@ -10,12 +10,12 @@
 
 </head>
 <body>
-   <form action="/registrar" method="post">
+  
       <div class="box2">
      
         <spa class="bg-animate"></spa>
         <spa class="bg-animate2"></spa>
-
+     <form action="/registrar" method="post">
 
         <div class="form-box register{}">
             <h2>Crear Cuenta</h2>
@@ -63,27 +63,6 @@
                     <% } %>
              </div>
               
-                 <div class="input-box">
-                    <input type="text"  name="user" value="<% if(typeof valores != 'undefined') { %><%= valores.user %><% } %>">
-                    <label>Usuario</label>
-                    <i class='bx bxs-lock-alt'></i>
-                    <% if (typeof errors !== 'undefined') { %>
-                     <% if ( errors.user ) { %>
-                             <div>
-                                 <h2 class="error" 
-                                     
-                                     style="font-family: 'Arial', Times, serif;
-                                     font: small-caps 200% serif;
-                                     font-size: 18px;
-                                     color: #fd0000;
-                                     position: relative;
-                                     top: -15x;
-     
-                                     "><i class="fa-solid fa-circle-exclamation" style="color: #db0c0c;"></i> <%= errors.user %></h2>
-                                 </div>
-                       <% } %>
-                       <% } %>
-                 </div>
                  
                     <div class="input-box">
                        <input type="email"  name="correo" value="<% if(typeof valores != 'undefined') { %><%= valores.correo %><% } %>">
