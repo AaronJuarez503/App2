@@ -11,6 +11,23 @@
         <label for="ingresa tu usuario"></label>
         <input type="text" name="usuario" id="" placeholder="usuario">
 
+        <% if (typeof errors !== 'undefined') { %>
+            <% if ( errors.usuario) { %>
+            <div>
+                <h2 class="error" 
+                    
+                    style="font-family: 'Arial', Times, serif;
+                    font: small-caps 200% serif;
+                    font-size: 18px;
+                    color: #ff0000;
+                    position: relative;
+                    top: -15x;
+
+                    "><%= errors.usuario%></h2>
+                </div>
+      <% } %>
+      <% } %>
+
         <button  type="submit">enviar</button>
     </form>
 </body>
