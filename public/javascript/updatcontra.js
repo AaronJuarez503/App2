@@ -39,7 +39,7 @@ $(function() {
                                 style="position: relative;
                                 font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
-                                font-size: 18px;
+                                font-size: 10px;
                                 color: #9b599b;
     
     
@@ -56,7 +56,7 @@ $(function() {
                                 style="position: relative;
                                 font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
-                                font-size: 18px;
+                                font-size: 10px;
                                 color: #9b599b;
     
     
