@@ -33,8 +33,8 @@ body {
 @media (max-width:799px){
     .wrapper{
         position: relative;
-        width: 500px;
-        height: 900px;
+        width: 400px;
+        height: 850px;
         background: transparent;
         border: 2px solid #0ef;
         box-shadow: none;
@@ -63,8 +63,10 @@ body {
 }
 @media (max-width:799px){
     .wrapper .form-box.login{
-    justify-content: center;
-        padding: 0 60px 0 40px;
+            top: 160px;
+            width: 90%;
+            justify-content: center;
+            padding: 0 60px 0 40px;
     }
     
 }
