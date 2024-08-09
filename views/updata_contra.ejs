@@ -29,7 +29,7 @@
               <div class="input-box">
                  <input type="text" name="confirm-pass" id="contra2" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
                  <label>Confirmar Contraseña</label>
-                 <i class='bx bxs-lock-alt'></i>
+                 <i class='bx bxs-lock'></i>
                 
               </div>
               <div id="inpu2" ></div>
@@ -61,7 +61,6 @@
    </form>
 
 
- 
 
 
 
@@ -75,6 +74,51 @@
    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
    
    <script src="../javascript/updatcontra.js"></script>
+
+   <script>
+      $(function() {
+
+                  
+
+            $('.bxs-lock-alt').on('click', function() {
+
+
+
+            // Cambiar el icono
+            $(this).toggleClass('bxs-lock-open');
+            
+            // Mostrar/ocultar contraseña
+         
+            var passwordInput = $('#contraseña');
+            if (passwordInput.attr('type') === 'password'  ) {
+               passwordInput.attr('type', 'text');
+            } else {
+               passwordInput.attr('type', 'password');
+            }
+            });
+            $('.bxs-lock').on('click', function() {
+
+
+
+            // Cambiar el icono
+            $(this).toggleClass('bxs-lock-open');
+
+            // Mostrar/ocultar contraseña
+
+            var password = $('#contra2');
+            if (password.attr('type') === 'password'  ) {
+               password.attr('type', 'text');
+            } else {
+               password.attr('type', 'password');
+            }
+            });
+
+
+
+
+
+});
+   </script>
 
 
 

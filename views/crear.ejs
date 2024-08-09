@@ -87,9 +87,9 @@
                     </div>
                     
                         <div class="input-box">
-                           <input type="password" name="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
+                           <input type="password" name="pass" id="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
                            <label>Contraseña</label>
-                           <i class='bx bx-right-arrow-alt'></i>
+                           <i class='bx bxs-lock-alt'></i>
                            <% if (typeof errors !== 'undefined') { %>
                               <% if ( errors.pass ) { %>
                                       <div>
@@ -121,6 +121,14 @@
 
        </div>
    </form>
+
+
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+
+
+
+<script src="/javascript/candado.js"></script>
 
 </body>
 </html>
