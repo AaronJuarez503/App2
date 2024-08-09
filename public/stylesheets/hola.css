@@ -383,3 +383,14 @@ color: #fff;
 .checkmark{
     left: 560px;
 }
+#boton2{
+    position: absolute;
+    left: 100px;
+    top: 450px;
+}
+#successMessage{
+    height: 30px;
+    border: none;
+    zoom :100%;
+    
+}
