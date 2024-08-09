@@ -12,7 +12,12 @@
           <img src="/images/image-removebg-preview.png" alt="Perfil">
           <h2>Nombre Usuario</h2>
           <p>usuario@example.com</p>
+
+
+          <button id="btn"  >Cerrar Sesion</button>
       </div>
+
+
       <!-- Aquí puedes agregar más contenido al sidebar si lo deseas -->
   </div>
 
@@ -55,5 +60,20 @@
          <button>Ir</button>
       </div>
       </div>
+
+      <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+      <script>
+
+        $(function () {
+            $("#btn").click(function () {
+                window.location.href="/"
+            });
+            
+        })
+
+      </script>
+
+
 </body>
 </html>
