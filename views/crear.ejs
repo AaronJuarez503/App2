@@ -21,12 +21,12 @@
             <h2>Crear Cuenta</h2>
             
                <div class="input-box">
-                  <input type="text"  name="nom" value="<% if(typeof valores != 'undefined') { %><%= valores.nom %><% } %>">
+                  <input class="inpu1" type="text"  name="nom" value="<% if(typeof valores != 'undefined') { %><%= valores.nom %><% } %>">
                   <label>Nombre</label>
                   <i class='bx bxs-user'></i>
                   <% if (typeof errors !== 'undefined') { %>
                      <% if ( errors.nom ) { %>
-                             <div>
+                             <div  id="div1">
                                  <h2 class="error" 
                                      
                                      style="font-family: 'Arial', Times, serif;
@@ -42,12 +42,12 @@
                        <% } %>
                </div>
                <div class="input-box">
-                <input type="text"  name="apell" value="<% if(typeof valores != 'undefined') { %><%= valores.apell %><% } %>">
+                <input  class="inpu2"  type="text"  name="apell" value="<% if(typeof valores != 'undefined') { %><%= valores.apell %><% } %>">
                 <label>Apellido</label>
                 <i class='bx bxs-envelope'></i>
                 <% if (typeof errors !== 'undefined') { %>
                   <% if ( errors.apell ) { %>
-                          <div>
+                          <div  id="div2">
                               <h2 class="error" 
                                   
                                   style="font-family: 'Arial', Times, serif;
@@ -65,12 +65,12 @@
               
                  
                     <div class="input-box">
-                       <input type="email"  name="correo" value="<% if(typeof valores != 'undefined') { %><%= valores.correo %><% } %>">
+                       <input type="email" class="inpu3"  name="correo" value="<% if(typeof valores != 'undefined') { %><%= valores.correo %><% } %>">
                        <label>Correo</label>
                        <i class='bx bx-store'></i>
                        <% if (typeof errors !== 'undefined') { %>
                         <% if ( errors.correo ) { %>
-                                <div>
+                                <div id="div3">
                                     <h2 class="error" 
                                         
                                         style="font-family: 'Arial', Times, serif;
@@ -87,12 +87,12 @@
                     </div>
                     
                         <div class="input-box">
-                           <input type="password" name="pass" id="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
+                           <input type="password" name="pass" class="inpu4" id="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
                            <label>Contraseña</label>
                            <i class='bx bxs-lock-alt'></i>
                            <% if (typeof errors !== 'undefined') { %>
                               <% if ( errors.pass ) { %>
-                                      <div>
+                                      <div id="div4">
                                           <h2 class="error" 
                                               
                                               style="font-family: 'Arial', Times, serif;
@@ -125,6 +125,9 @@
 
    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
+
+
+<script src="/javascript/limpiarerrores.js"></script>
 
 
 

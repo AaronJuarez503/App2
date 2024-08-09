@@ -19,12 +19,12 @@
     <div class="form-box login ">
        <h2 class="animation">Inicio de sesion</h2>
           <div class="input-box animation ">
-             <input type="text" name="username" id="user" value="<% if(typeof valores != 'undefined') { %><%= valores.username %><% } %>">
+             <input class="inpu1" type="text" name="username" id="user" value="<% if(typeof valores != 'undefined') { %><%= valores.username %><% } %>">
              <label>Usuario</label>
              <i class='bx bxs-user'></i>
              <% if (typeof errors !== 'undefined') { %>
                 <% if ( errors.username ) { %>
-                        <div>
+                        <div id="div1">
                             <h2 class="error" 
                                 
                                 style="font-family: 'Arial', Times, serif;
@@ -41,12 +41,12 @@
           </div>
 
             <div class="input-box animation">
-               <input type="password" name="password" id="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.password %><% } %>">
+               <input class="inpu2" type="password" name="password" id="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.password %><% } %>">
                <label>Contraseña</label>
                <i class='bx bxs-lock-alt'></i>
                <% if (typeof errors !== 'undefined') { %>
                 <% if ( errors.password ) { %>
-                        <div>
+                        <div id="div2">
                             <h2 class="error" 
                                 
                                 style="font-family: 'Arial', Times, serif;
@@ -63,7 +63,7 @@
             </div>
             <% if (typeof err !== 'undefined') { %>
 
-                        <div>
+                        <div id="div1">
                             <h2 class="error" 
                                 
                                 style="font-family: 'Arial', Times, serif;
@@ -100,7 +100,7 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
-
+<script src="/javascript/limpiarerrores.js"></script>
 
 
 <script src="/javascript/candado.js"></script>

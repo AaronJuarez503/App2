@@ -18,13 +18,13 @@
         <p class="holi2"> Ingrese su Usuario</p>
         <form action="/rrrr1" method="post">
            <div class="input-box">
-              <input type="text"   name="usuario" >
+              <input type="text" id="usuario"  name="usuario" >
               <label>@example_123</label>
               <i class='bx bx-user'></i>
            </div>
            <% if (typeof errors !== 'undefined') { %>
             <% if ( errors.usuario) { %>
-            <div>
+            <div id="err">
                 <h2 class="error" 
                     
                     style="font-family: 'Arial', Times, serif;
@@ -43,6 +43,26 @@
            </form>
            </div>
         </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script>
+          $(function () {
+
+            var $passwordInputs = $('#usuario');
+               
+                
+        
+               $passwordInputs.on('input', function() {
+                   // Oculta el mensaje de error
+           
+               
+                   $('#err').empty();
+               });
+            
+          })
+           
+        </script>
 
 
 </body>
