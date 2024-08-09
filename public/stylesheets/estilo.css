@@ -72,3 +72,13 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+#btn{
+    margin-top: 380px;
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 200px;
+}
