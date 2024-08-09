@@ -26,6 +26,7 @@ body {
     border: 2px solid #0ef;
     box-shadow: 0 0 25px #0ef;
     overflow: hidden;
+    zoom: 80%;
     
     
 }
@@ -33,13 +34,16 @@ body {
     .wrapper{
         position: relative;
         width: 500px;
-        height: 1000px;
+        height: 900px;
         background: transparent;
         border: 2px solid #0ef;
-        box-shadow: 0 0 25px #0ef;
+        box-shadow: none;
         overflow: hidden;
+         zoom:75% ;
     }
 }
+
+
 
 
 
@@ -54,8 +58,15 @@ body {
     justify-content: center ;
 }
 .wrapper .form-box.login{
-    left: 0;
+    left:0;
     padding: 0 60px 0 40px;
+}
+@media (max-width:799px){
+    .wrapper .form-box.login{
+    justify-content: center;
+        padding: 0 60px 0 40px;
+    }
+    
 }
 
 
@@ -255,6 +266,16 @@ color: #fff;
     justify-content: center ;
     box-shadow: 0 0 25px #0ef;
 }
+@media (max-width:799px){
+    .box{
+        width: 90%;
+        height: auto;
+        top: auto;
+        right: auto;
+        box-shadow: none;
+        zoom: 170%;
+    }
+}
 .box2{
     top: 5%;
     right: 23%;
@@ -272,7 +293,10 @@ color: #fff;
         top: auto;
         right: auto;
         box-shadow: none;
+        zoom: 170%;
+        
     }
+   
 }
 .holi2{
     font-size: 16px;
@@ -295,6 +319,7 @@ color: #fff;
             top: auto;
             right: auto;
             box-shadow: none;
+            zoom: 170%;
         }
     }
 
@@ -316,6 +341,7 @@ color: #fff;
     top: auto;
     right: auto;
     box-shadow: none;
+    zoom: 170%;
     }
 }
 .box5{
@@ -333,5 +359,8 @@ color: #fff;
         top: auto;
         right: auto;
         box-shadow: none;
+        zoom: 170%;
         }
+ 
    }
+
