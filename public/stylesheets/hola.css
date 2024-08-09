@@ -26,22 +26,24 @@ body {
     border: 2px solid #0ef;
     box-shadow: 0 0 25px #0ef;
     overflow: hidden;
+    zoom: 80%;
     
     
 }
-@media (max-width:800px){
+@media (max-width:799px){
     .wrapper{
         position: relative;
-        width: 500px;
-        height: 1000px;
+        width: 400px;
+        height: 850px;
         background: transparent;
         border: 2px solid #0ef;
-        box-shadow: 0 0 25px #0ef;
+        box-shadow: none;
         overflow: hidden;
-        
+         zoom:75% ;
     }
-  
 }
+
+
 
 
 
@@ -56,8 +58,17 @@ body {
     justify-content: center ;
 }
 .wrapper .form-box.login{
-    left: 0;
+    left:0;
     padding: 0 60px 0 40px;
+}
+@media (max-width:799px){
+    .wrapper .form-box.login{
+            top: 160px;
+            width: 90%;
+            justify-content: center;
+            padding: 0 60px 0 40px;
+    }
+    
 }
 
 
@@ -193,7 +204,7 @@ transition: .5s;
     padding: 0 40px 60px 150px;
     
 }
-@media (max-width:800px){
+@media (max-width:799px){
     .wrapper .info-text.login{
         top: -270px;
         right: 150px;
@@ -257,6 +268,16 @@ color: #fff;
     justify-content: center ;
     box-shadow: 0 0 25px #0ef;
 }
+@media (max-width:799px){
+    .box{
+        width: 90%;
+        height: auto;
+        top: auto;
+        right: auto;
+        box-shadow: none;
+        zoom: 100%;
+    }
+}
 .box2{
     top: 5%;
     right: 23%;
@@ -266,6 +287,18 @@ color: #fff;
     display: flex;
     justify-content: center ;
     box-shadow: 0 0 25px #0ef;
+}
+@media (max-width:799px){
+    .box2{
+        width: 90%;
+        height: auto;
+        top: auto;
+        right: auto;
+        box-shadow: none;
+        zoom: 100%;
+        
+    }
+   
 }
 .holi2{
     font-size: 16px;
@@ -281,6 +314,19 @@ color: #fff;
         top: 110px;
         right: 30%;
     }
+    @media (max-width:799px){
+        .box3{
+            width: 90%;
+            height: auto;
+            top: auto;
+            right: auto;
+            box-shadow: none;
+            zoom: 100%;
+        }
+    }
+
+
+
 
 .box4{
  position: absolute;
@@ -290,3 +336,33 @@ color: #fff;
  display: flex;
  box-shadow: 0 0 25px #0ef;
 }
+@media (max-width:799px){
+    .box4{
+    width: 90%;
+    height: auto;
+    top: auto;
+    right: auto;
+    box-shadow: none;
+    zoom: 100%;
+    }
+}
+.box5{
+    position: absolute;
+    width: 35%;
+    height: 60%;
+    justify-content: center;
+    display: flex;
+    box-shadow: 0 0 25px #0ef;
+   }
+   @media (max-width:799px){
+    .box5{
+        width: 90%;
+        height: auto;
+        top: auto;
+        right: auto;
+        box-shadow: none;
+        zoom: 100%;
+        }
+ 
+   }
+
