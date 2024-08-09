@@ -19,11 +19,11 @@
     <div class="form-box login ">
        <h2 class="animation">Inicio de sesion</h2>
           <div class="input-box animation ">
-             <input type="text" name="username" id="user" value="<% if(typeof valores != 'undefined') { %><%= valores.user %><% } %>">
+             <input type="text" name="username" id="user" value="<% if(typeof valores != 'undefined') { %><%= valores.username %><% } %>">
              <label>Usuario</label>
              <i class='bx bxs-user'></i>
              <% if (typeof errors !== 'undefined') { %>
-                <% if ( errors.user ) { %>
+                <% if ( errors.username ) { %>
                         <div>
                             <h2 class="error" 
                                 
@@ -34,18 +34,18 @@
                                 position: relative;
                                 top: -15x;
 
-                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0c0c;"></i> <%= errors.user %></h2>
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0c0c;"></i> <%= errors.username %></h2>
                             </div>
                   <% } %>
                   <% } %>
           </div>
 
             <div class="input-box animation">
-               <input type="password" name="password" id="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
+               <input type="password" name="password" id="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.password %><% } %>">
                <label>Contraseña</label>
                <i class='bx bxs-lock-alt'></i>
                <% if (typeof errors !== 'undefined') { %>
-                <% if ( errors.pass ) { %>
+                <% if ( errors.password ) { %>
                         <div>
                             <h2 class="error" 
                                 
@@ -56,7 +56,7 @@
                                 position: relative;
                                 top: -15x;
 
-                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0c0c;"></i> <%= errors.pass %></h2>
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0c0c;"></i> <%= errors.password %></h2>
                             </div>
                   <% } %>
                   <% } %>

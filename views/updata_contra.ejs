@@ -4,45 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/hola.css">
+    <link rel="stylesheet" href="/stylesheets/update_contra.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/54b3975121.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Document</title>
 </head>
 <body>
-   <form action="/nueva_pass" method="post">
+   <form   method="post">
             <div class="box3">
                
                <br>
 
-    <div class="form-box register{}">
+    <div class="form-box register{}" id="formulario" style="display:block;">
         <h2 >Nueva Contraseña</h2><br>
         <p class="holi2"> Ingrese su nueva contraseña</p>
            <div class="input-box">
-              <input type="text" name="pass" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
+              <input type="text" name="pass" id="contraseña" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
               <label>Contraseña</label>
               <i class='bx bxs-lock-alt'></i>
-              <% if (typeof errors !== 'undefined') { %>
-               <% if ( errors.pass ) { %>
-                       <div>
-                           <h2 class="error" 
-                               
-                               style="font-family: 'Arial', Times, serif;
-                               font: small-caps 200% serif;
-                               font-size: 18px;
-                               color: #ff0000;
-                               position: relative;
-                               top: -15x;
-
-                               "><i class="fa-solid fa-circle-exclamation" style="color: #db0c0c;"></i> <%= errors.pass %></h2>
-                           </div>
-                 <% } %>
-                 <% } %>
+              <div id="inpu1" ></div>
            </div>
-
+           <p class="holi2"> Repartir contraseña </p>
+              <div class="input-box">
+                 <input type="text" name="confirm-pass" id="contra2" value="<% if(typeof valores != 'undefined') { %><%= valores.pass %><% } %>">
+                 <label>Confirmar Contraseña</label>
+                 <i class='bx bxs-lock-alt'></i>
+                
+              </div>
+              <div id="inpu2" ></div>
            <button type="submit" class="btn">Cambiar
            </button>
+          
 
            </div>
+           
+        </div>
+
+        <div id="errorMessage" style="display: none;"> </div>
+
+
+        <div id="successMessage" style="display:none;" >
+
+            <center>
+        
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                  </svg>
+                  <p class="ley" style="color: green;">¡Contraseña cambiada con éxito!</p>
+                  <button id="boton2" class="buton" type="button" >iniciar sesion</button> 
+        
+            </center>
+           
         </div>
    </form>
+
+
+ 
+
+
+
+
+
+
+  
+
+
+
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   
+   <script src="../javascript/updatcontra.js"></script>
+
+
+
+
+
 </body>
 </html>
