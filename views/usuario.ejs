@@ -16,12 +16,28 @@
                <br>
         <h2 >Nombre de Usuario</h2><br>
         <p class="holi2"> Ingrese su Usuario</p>
-        <form action="#">
+        <form action="/rrrr1" method="post">
            <div class="input-box">
-              <input type="text" required>
+              <input type="text"   name="usuario" >
               <label>@example_123</label>
               <i class='bx bx-user'></i>
            </div>
+           <% if (typeof errors !== 'undefined') { %>
+            <% if ( errors.usuario) { %>
+            <div>
+                <h2 class="error" 
+                    
+                    style="font-family: 'Arial', Times, serif;
+                    font: small-caps 200% serif;
+                    font-size: 18px;
+                    color: #ff0000;
+                    position: relative;
+                    top: -15x;
+
+                    "> <%= errors.usuario%> </h2>
+                </div>
+      <% } %>
+      <% } %>
            <button type="submit" class="btn">Enviar
         </button>
            </form>
