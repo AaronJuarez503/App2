@@ -86,7 +86,7 @@ module.exports={
                 //aux.craertokens(res,respuestabd)
             } catch (error) {
                 console.error('Error al buscar usuario:', error.message);
-                res.render('inicio',{err:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});
+                res.render('inicio',{err:"usuario o contraseña incorrecto"});
             }
             
             }

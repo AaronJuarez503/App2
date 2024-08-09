@@ -26,7 +26,6 @@ body {
     border: 2px solid #0ef;
     box-shadow: 0 0 25px #0ef;
     overflow: hidden;
-    zoom: 80%;
     
     
 }
@@ -37,13 +36,10 @@ body {
         height: 850px;
         background: transparent;
         border: 2px solid #0ef;
-        box-shadow: none;
+        box-shadow: 0 0 25px #0ef;
         overflow: hidden;
-         zoom:75% ;
     }
 }
-
-
 
 
 
@@ -65,10 +61,10 @@ body {
     .wrapper .form-box.login{
         position: relative;
         left: 30px;
-         top: 125px;
-         width: 90%;
-         justify-content: center;
-         padding: 0 60px 0 40px;
+        top: 160px;
+        width: 90%;
+        justify-content: center;
+        padding: 0 60px 0 40px;
     }
     
 }
@@ -222,21 +218,27 @@ transition: .5s;
  
 }
 .info-text h2{
-    font-size: 36px;
+    font-size: 40px;
     color: #fff;
     line-height: 1.3;
     text-transform: uppercase;
+    right: 65px;
+    position: relative;
 }
 .info-text p{
-    font-size: 16px;
+    font-size: 21px;
+    line-height: 1.3;
     color:#fff;
+    right: 65px;
+    position: relative;
+    height: 140px;
 }
 .wrapper .bg-animate{
      position: absolute;
-     top: -4px;
+     top: 70px;
      right: 0;
-     width: 850px;
-     height: 600px;
+     width: 750px;
+     height: 400px;
      background: linear-gradient(45deg ,#081b29 , #0ef);
      border-bottom: 3px solid #0ef;
     transform: rotate(10deg)skewY(40deg) ;
@@ -262,24 +264,26 @@ color: #fff;
 }
 .box{
     position: absolute;
-    top: 100px;
+    top: 200px;
     right: 24%;
     width: 50%;
-    height: 70%;
+    height: 80%;
     display: flex;
     justify-content: center ;
     box-shadow: 0 0 25px #0ef;
 }
 @media (max-width:799px){
     .box{
-        width: 90%;
+        width: 100%;
         height: auto;
-        top: auto;
+        top: 250px;
         right: auto;
         box-shadow: none;
-        zoom: 100%;
+        
     }
+   
 }
+
 .box2{
     top: 5%;
     right: 23%;
@@ -292,12 +296,11 @@ color: #fff;
 }
 @media (max-width:799px){
     .box2{
-        width: 90%;
+        width: 100%;
         height: auto;
         top: auto;
         right: auto;
         box-shadow: none;
-        zoom: 100%;
         
     }
    
@@ -309,21 +312,21 @@ color: #fff;
     .box3{
         position: absolute;
         width: 35%;
-        height: 60%;
+        height: 70%;
         display: flex;
         justify-content: center ;
         box-shadow: 0 0 25px #0ef;
-        top: 110px;
+        top: 160px;
         right: 30%;
     }
     @media (max-width:799px){
         .box3{
-            width: 90%;
+            position: relative;
+            width: 100%;
             height: auto;
             top: auto;
             right: auto;
             box-shadow: none;
-            zoom: 100%;
         }
     }
 
@@ -340,12 +343,11 @@ color: #fff;
 }
 @media (max-width:799px){
     .box4{
-    width: 90%;
+    width: 100%;
     height: auto;
     top: auto;
     right: auto;
     box-shadow: none;
-    zoom: 100%;
     }
 }
 .box5{
@@ -363,8 +365,28 @@ color: #fff;
         top: auto;
         right: auto;
         box-shadow: none;
-        zoom: 100%;
         }
  
    }
+   .wrapper .img{
+    width: 100px;
+}
+.ley{
+    left: 448px;
+}
+@media (max-width:799px){
+    .ley{
+        left: 255px;
+    }
+}
+.btn{
+    top: 100px;
+    height: 50px;
+    width: 200px;
+    left: 35px;
+}
+.checkmark{
+    left: 560px;
+}
+
 

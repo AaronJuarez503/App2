@@ -16,7 +16,7 @@
                
                <br>
 
-    <div class="form-box register{}" id="formulario" style="display:block;">
+    <div class="form-box register{}" id="formulario" style="display:none;">
         <h2 >Nueva Contraseña</h2><br>
         <p class="holi2"> Ingrese su nueva contraseña</p>
            <div class="input-box">
@@ -41,10 +41,10 @@
            
         </div>
 
-        <div id="errorMessage" style="display: none;"> </div>
+        <div class="box6" id="errorMessage" style="display: none;"> </div>
 
 
-        <div id="successMessage" style="display:none;" >
+        <div id="successMessage" style="display:block;"  >
 
             <center>
         
@@ -53,7 +53,9 @@
                     <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
                   </svg>
                   <p class="ley" style="color: green;">¡Contraseña cambiada con éxito!</p>
-                  <button id="boton2" class="buton" type="button" >iniciar sesion</button> 
+
+                  <button  id="boton2" type="submit" class="btn animation">Iniciar Sesion
+                  </button>
         
             </center>
            
