@@ -59,17 +59,29 @@ module.exports={
         });
     },
     Nuevacontra:function(conexion, pass, correo ) {
-        const consulta = `UPDATE cliente SET contraseña = '${pass}' WHERE correo = '${correo}'`;
+       
         return new Promise((resolve, reject) => {
+
+            if (typeof correo !== 'undefined') {
+                
+            const consulta = `UPDATE cliente SET contraseña = '${pass}' WHERE correo = '${correo}'`;
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
                     console.log("actualizasion de contraseña fallida ...")
-                    return reject(error);
+             
+                   throw error
                 } else {
+                    
                     resolve(true);
                     console.log("actualizado correctamente.....")
                 }
             });
+                
+            } else {
+                return reject(false);
+                
+            }
+
         });
     },
 
@@ -111,6 +123,26 @@ module.exports={
             });
         });
         
+    },
+
+
+    FindUser:function (conexion,username) {
+        const consulta = `SELECT usuario FROM cliente WHERE usuario = '${username}'`;
+        return new Promise((resolve,reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    if (datos.length > 0) {
+                        console.log(datos[0])
+                        return resolve(true);
+                    } else {
+                        console.log("usuario encontrado ")
+                        return reject(false);// No se encontró ningún usuario
+                    }
+                }
+            });
+        });
     },
 
 

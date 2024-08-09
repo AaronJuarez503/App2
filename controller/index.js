@@ -177,19 +177,23 @@ module.exports={
         
     },
     Nuevacontra:function(req, res){
-        const pass = req.body.pass;
+        const pass = req.body.password;
         console.log("tu correo que pedi es ;" + req.session.correo)
 
-        consulta.Nuevacontra(conexion,pass,req.session.correo)
+        const correo = req.session.correo;
+        
+        delete req.session.correo
+
+        consulta.Nuevacontra(conexion,pass,correo)
         .then(datos => {
             console.log('contraseña actualizada', datos)
-            res.send("contraseña actualiada con exito");
+            res.json({ valid:true});
 
            //  res.redirect('/')
         })
         .catch(error => {
             console.error('error al actualizar la contraseña', error)
-            res.status(500).send('error al actualizar la contraseña')
+            res.json({ valid:false});
         })
 
     },
@@ -200,6 +204,13 @@ module.exports={
             console.error('correo no encontrado');
         }
     },
-   
-   
+
+    findUser: async function (user) {
+        try {
+          return await consulta.FindUser(conexion,user);
+        } catch (error) {
+            console.error('usuario no encontrado');
+        }
+    },
+
 }//fin de modules exports no idont delet

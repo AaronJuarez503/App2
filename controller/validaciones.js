@@ -2,7 +2,7 @@ const {body,validationResult} = require('express-validator');
 //const { assign } = require('nodemailer/lib/shared');
 const model = require ('../model/index')
 const conexion = require ('../config/index')
-const cont =require('../controller/index')
+const controller =require('../controller/index')
 
 const result = (req)=>{
   return new Promise((resolve, reject) => {
@@ -21,6 +21,13 @@ module.exports={
     body('usuario')
     .notEmpty().withMessage('El nombre es requerido')
     .isLength({min:5}).withMessage('el nombre debe contener almenos 5 caracteres'),
+    body('usuario').custom(async value => {            
+     const user = await controller.findUser(value);
+      if (user) {
+        throw new Error('El usuario ya esta en uso');
+      }
+        return true; // Usuario no existe, lo cual es lo que queremos
+}),
     (req,res,next)=>{
       result(req)
       .then(() => {
@@ -37,7 +44,6 @@ module.exports={
             console.log(errorMessages);
           }
         });
-     
         res.render('usuario',{errors:errorMessages}); 
     });
   }
@@ -55,13 +61,12 @@ module.exports={
           .isEmail().withMessage('El email no es valido')
           .notEmpty().withMessage('EL email es requerido'),
       body('correo').custom(async value => {
-            const email = await cont.findByEmail(value)
+            const email = await controller.findByEmail(value)
             if (email) {
               throw new Error('el correo ya esta en uso')
             }else{
               return true;
             }
-
           
           }),
       body('pass')
@@ -156,11 +161,14 @@ module.exports={
    ],
 
    PnuevaPass:[
-    body('pass')
-    .notEmpty().withMessage('La contraseña es requerida')
-    .isLength({min:8}).withMessage('La contraseña debe tener al menos 8 caracteres')
+    body('password')
+    .notEmpty().withMessage('El campo  no puede estar vacío')
+    .isLength({ min:8 }).withMessage("La contraseña debe tener al menos 8 caracteres")
     .matches(/[a-zA-Z]/).withMessage('La contraseña debe contener al menos una letra')
     .matches(/[0-9]/).withMessage('La contraseña debe contener al menos un número'),
+    body('Confirmar_contraseña').custom((value, { req }) => {
+      return value === req.body.password;
+    }).withMessage("La contraseña y la confirmación de contraseña no coinciden"),
     (req, res, next)=>{
       result(req)
       .then(() => {
@@ -168,9 +176,6 @@ module.exports={
       })
       .catch((errors) => {
         console.log(errors);
-        var datos = req.body;
-        console.log(datos);
-        // Mantener los datos del formular});
         const errorMessages = {};
         errors.array().forEach(error => {
           if (!errorMessages[error.path]) {
@@ -178,9 +183,11 @@ module.exports={
             console.log(errorMessages);
           }
         });
-        res.render('updata_contra', {errors: errorMessages, valores: datos});
-    });
-   }
-   ]
+         res.json({errors:errorMessages});
+        }
+      );
+    }
+   ],
+
 
 }
