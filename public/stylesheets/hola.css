@@ -314,13 +314,12 @@ color: #fff;
     }
     @media (max-width:799px){
         .box3{
-            width:90%;
+            position: relative;
+            width: 100%;
             height: auto;
             top: auto;
             right: auto;
             box-shadow: none;
-            zoom:100%;
-
         }
     }
 
