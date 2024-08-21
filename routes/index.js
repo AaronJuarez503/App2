@@ -35,4 +35,11 @@ router.get('/inicioC', function(req, res){
   res.render('cliente')
 });
 
+router.get('/tienda',function(req,res){
+  res.render('ingreso')
+})
+router.get('/productos',function(req,res){
+  res.render('productos')
+})
+
 module.exports = router;//no borrar 
