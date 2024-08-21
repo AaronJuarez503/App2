@@ -42,4 +42,7 @@ router.get('/productos',function(req,res){
   res.render('productos')
 })
 
+router.get('/compras',function(req,res){
+  res.render('compras')
+})
 module.exports = router;//no borrar 
