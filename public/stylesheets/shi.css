@@ -109,3 +109,21 @@ body{
 .container .card:hover .content p{
     opacity: 1;
 }
+
+.carri{
+    position: absolute;
+    text-align: center;
+    top: -50%;
+    left: 102%;
+    height: 25%;
+    width: 15%;
+}
+
+.carrito{
+    height: 130%;
+    width: 90%;
+    position: absolute;
+    right: 10%;
+    top: -10%;
+    cursor: pointer;
+}
