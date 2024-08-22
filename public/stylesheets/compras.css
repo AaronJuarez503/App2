@@ -17,7 +17,7 @@ body{
     text-align: center;
     color: white;
     left: 40%;
-    top: 2%;
+    top: 8%;
 }
 
 .contenedor{
@@ -26,12 +26,11 @@ body{
     height: 300px;
     width: 600px;
     top: 20%;
-    left: 30%;
+    left: 28%;
     border-color: aqua;
     overflow: auto;
 }
-
-.pedidos{
+.pedidos1{
     position: absolute;
     top: 2%;
     border: 2px solid;
@@ -39,16 +38,65 @@ body{
     height: 30%;
     width: 100%;
     border-radius: 12px;
-    background-color: rgba(105, 105, 105, 0.342);
-}
 
-.logo{
+}
+.pedidos2{
+    position: absolute;
+    top: 35%;
+    border: 2px solid;
+    border-color: white;
+    height: 30%;
+    width: 100%;
+    border-radius: 12px;
+}
+.pedidos3{
+    position: absolute;
+    top: 68%;
+    border: 2px solid;
+    border-color: white;
+    height: 30%;
+    width: 100%;
+    border-radius: 12px;
+}
+.pedidos4{
+    position: absolute;
+    top: 101%;
+    border: 2px solid;
+    border-color: white;
+    height: 30%;
+    width: 100%;
+    border-radius: 12px;
+}
+/*/contenido de imagen/*/
+.logo1{
     position: absolute;
     height: 100%;
     width: 20%;
     background-color: aqua;
     left: 1%;
 }
+.logo2{
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    background-color: aqua;
+    left: 1%;
+}
+.logo3{
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    background-color: aqua;
+    left: 1%;
+}
+.logo4{
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    background-color: aqua;
+    left: 1%;
+}
+/*/ contenido de descripcion/*/
 .descrip{
     position: absolute;
     text-align: center;
@@ -56,9 +104,7 @@ body{
     left: 23%;
     height: 100%;
     width: 30%;
-    
 }
-
 .stock{
     position: absolute;
     text-align: center;
@@ -89,8 +135,9 @@ body{
     left: 0%;
     top: 1px;
     font-size: 15px;
-    border-color: #081b29;
+    border-color: #000000;
 }
+
 .pedidoss{
     position: absolute;
     left: 16%;
@@ -123,10 +170,52 @@ body{
     left: 15%;
     color: aqua;
 }
-.eliminar{
+/*/ Boton de eliminar o editar etc/*/
+.eliminar1{
     position: absolute;
-    left: 95%;
+    left: 94%;
     top: 4%;
     font-size: 30px;
     cursor: pointer;
+}
+.eliminar2{
+    position: absolute;
+    left: 94%;
+    top: 37%;
+    font-size: 30px;
+    cursor: pointer;
+}
+.eliminar3{
+    position: absolute;
+    left: 94%;
+    top: 70%;
+    font-size: 30px;
+    cursor: pointer;
+}
+.eliminar4{
+    position: absolute;
+    left: 94%;
+    top: 103%;
+    font-size: 30px;
+    cursor: pointer;
+}
+.acep{
+    position: absolute;
+    top: 85%;
+    left: 54%;
+    height: 35px;
+    width: 80px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(134, 2, 90);
+}
+.cance{
+    position: absolute;
+    top: 85%;
+    left: 42%;
+    height: 35px;
+    width: 80px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(4, 157, 168);
 }
