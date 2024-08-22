@@ -8,7 +8,7 @@ $('#tiendita').on('submit', function(e) {
         if (tienda === '') {
         $('#tiendaError').text('El nombre la tienda es requerido');
         hasErrors = true;
-        } else if (tienda.length < 3) {
+        } else if (tienda.length < 4) {
         $('#tiendaError').text('El nombre debe tener al menos 4 caracteres');
         hasErrors = true;
         } else {
@@ -62,4 +62,10 @@ $('#tiendita').on('submit', function(e) {
                     $('#' + this.id + 'Error').text('Este campo es requerido');
                 } 
             });
+        
+            $('#Ntienda').on('blur', function() {
+                if ($(this).val().trim() === '') {
+                        $('#tiendaError').text('Este campo es requerido');
+                    } 
+                });
     });
