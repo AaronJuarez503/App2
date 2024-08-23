@@ -35,6 +35,23 @@
     .counter input:focus {
         outline: none;
     }
+    .add-to-cart {
+            display: flex;
+            justify-content: left;
+        }
+        .add-to-cart button {
+            padding: 10px 20px;
+            background-color: #277e2a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            top: 5px;
+            position: relative;
+        }
+        .add-to-cart button:hover {
+            background-color: #45a049;
+        }
 </style>
 <body>
     <div class="container">
@@ -47,8 +64,11 @@
                 </p>
                 <div class="counter">
                     <button onclick="decrement()">&#8722;</button>
-                    <input type="text" id="number" value="1" readonly>
+                    <input type="text" id="number" value="0" readonly>
                     <button onclick="increment()">&#43;</button>
+                </div>
+                <div class="add-to-cart">
+                    <button onclick="addToCart()">Agregar al carrito</button>
                 </div>
             </div>
         </div>
@@ -82,9 +102,14 @@
         
             function decrement() {
                 let numberInput = document.getElementById('number');
-                if (parseInt(numberInput.value) > 1) {
+                if (parseInt(numberInput.value) >= 1) {
                     numberInput.value = parseInt(numberInput.value) - 1;
                 }
+            }
+
+            function addToCart() {
+                let numberInput = document.getElementById('number').value;
+                alert('Has agregado ' + numberInput + ' producto(s) al carrito.');
             }
         </script>
 </body>
