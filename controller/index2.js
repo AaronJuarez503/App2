@@ -17,5 +17,16 @@ module.exports={
 
 
 
+    },
+
+    productos: async function (req,res) {
+        try {
+            var r= await model.productos(con)
+            res.send(r)
+            
+        } catch (error) {
+            
+        }
+        
     }
 }

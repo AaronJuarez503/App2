@@ -9,7 +9,7 @@ $(function(){
         success: function(data) {
             
             console.log('Datos recibidos:', data);
-          function crearDivConImagen(clase, texto, urlImagen) {
+         /* function crearDivConImagen(clase, texto, urlImagen) {
             var $div = $('<div>', { class: clase });
             var $img = $('<img>', { src:urlImagen , alt: texto });
             var $p = $('<p>', { text: texto });
@@ -33,7 +33,7 @@ $(function(){
                     
                 }
                 
-            }
+            }*/
             
         },
 
