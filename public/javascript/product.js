@@ -3,7 +3,7 @@ $(function(){
     var id=$('buton');
 
     $.ajax({
-        url: `/users/pr0ducts${id}`,
+        url: `/users/pr0ducts`,
         method: 'GET',
         dataType: 'json',
         success: function(data) {

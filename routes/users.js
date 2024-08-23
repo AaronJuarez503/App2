@@ -6,7 +6,7 @@ var controller=require('../controller/index2')
 router.get('/',controller.marcas);
 
 
-router.get('/pr0ducts/:id',controller.marcas);
+router.get('/pr0ducts',controller.marcas);
 
 
 
