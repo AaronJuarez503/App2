@@ -8,6 +8,51 @@
     
     <title>Document</title>
 </head>
+<style>
+    .counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 120px;
+        border: 1px solid #0084ff;
+        border-radius: 5px;
+    }
+    .counter button {
+        background-color: #025a69;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .counter button:focus {
+        outline: none;
+    }
+    .counter input {
+        width: 40px;
+        text-align: center;
+        border: none;
+        font-size: 16px;
+    }
+    .counter input:focus {
+        outline: none;
+    }
+    .add-to-cart {
+            display: flex;
+            justify-content: left;
+        }
+        .add-to-cart button {
+            padding: 10px 20px;
+            background-color: #277e2a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            top: 5px;
+            position: relative;
+        }
+        .add-to-cart button:hover {
+            background-color: #45a049;
+        }
+</style>
 <body>
 
     
@@ -19,6 +64,14 @@
                 <p>Ricos y crujientes frituras de maiz con un condimento 
                     picante para esos paladares enamorados del picante
                 </p>
+                <div class="counter">
+                    <button onclick="decrement()">&#8722;</button>
+                    <input type="text" id="number" value="0" readonly>
+                    <button onclick="increment()">&#43;</button>
+                </div>
+                <div class="add-to-cart">
+                    <button onclick="addToCart()">Agregar al carrito</button>
+                </div>
             </div>
         </div>
         <div class="card">
@@ -27,7 +80,6 @@
                 <h3>Galletas Picnic<br><span>Diana</span></h3>
                 <p>Dulces y crujientes galletas tipo wafer rellenas con un delicioso sabor vainilla de alta calidad.
                 </p>
-                
             </div>
         </div>    
        
@@ -43,5 +95,24 @@
         <div class="carri">
             <img class="carrito" src="/stylesheets/image.png" alt="">
         </div>
+
+        <script>
+            function increment() {
+                let numberInput = document.getElementById('number');
+                numberInput.value = parseInt(numberInput.value) + 1;
+            }
+        
+            function decrement() {
+                let numberInput = document.getElementById('number');
+                if (parseInt(numberInput.value) >= 1) {
+                    numberInput.value = parseInt(numberInput.value) - 1;
+                }
+            }
+
+            function addToCart() {
+                let numberInput = document.getElementById('number').value;
+                alert('Has agregado ' + numberInput + ' producto(s) al carrito.');
+            }
+        </script>
 </body>
 </html>
