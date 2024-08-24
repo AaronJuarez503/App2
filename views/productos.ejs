@@ -4,55 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../stylesheets/shi.css">
-
-    
     <title>Document</title>
 </head>
-<style>
-    .counter {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 120px;
-        border: 1px solid #0084ff;
-        border-radius: 5px;
-    }
-    .counter button {
-        background-color: #025a69;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-    }
-    .counter button:focus {
-        outline: none;
-    }
-    .counter input {
-        width: 40px;
-        text-align: center;
-        border: none;
-        font-size: 16px;
-    }
-    .counter input:focus {
-        outline: none;
-    }
-    .add-to-cart {
-            display: flex;
-            justify-content: left;
-        }
-        .add-to-cart button {
-            padding: 10px 20px;
-            background-color: #277e2a;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            top: 5px;
-            position: relative;
-        }
-        .add-to-cart button:hover {
-            background-color: #45a049;
-        }
-</style>
 <body>
       <!--empesas aca-->
 <div id="mio">
@@ -60,9 +13,8 @@
         <div class="card">
             <div class="imgBx" style="background-image: url();"></div>
             <div class="content">
-                <h3>Jalapeños Medianos<br><span>Diana</span></h3>
-                <p>Ricos y crujientes frituras de maiz con un condimento 
-                    picante para esos paladares enamorados del picante
+                <h3><br><span></span></h3>
+                <p>
                 </p>
                 <div class="counter">
                     <button onclick="decrement()">&#8722;</button>
@@ -74,26 +26,7 @@
                 </div>
             </div>
         </div>
-          <!--terninas aca-->
-
-      
-        <div class="card">
-            <div class="imgBx" style="--img:url(/public/images/galletas.jpg)"></div>
-            <div class="content">
-                <h3>Galletas Picnic<br><span>Diana</span></h3>
-                <p>Dulces y crujientes galletas tipo wafer rellenas con un delicioso sabor vainilla de alta calidad.
-                </p>
-            </div>
-        </div>    
-       
-        <div class="card">
-            <div class="imgBx" style="--img:url(/public/images/galletas.jpg)"></div>
-            <div class="content">
-                <h3>Galletas Picnic<br><span>Diana</span></h3>
-                <p>Dulces y crujientes galletas tipo wafer rellenas con un delicioso sabor vainilla de alta calidad.
-                </p>
-            </div>
-        </div>   
+          <!--terninas aca-->  
         <div class="carri">
             <img class="carrito" src="/stylesheets/image.png" alt="">
         </div>
@@ -101,23 +34,5 @@
 </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="/javascript/product.js"></script>
-        <script>
-            function increment() {
-                let numberInput = document.getElementById('number');
-                numberInput.value = parseInt(numberInput.value) + 1;
-            }
-        
-            function decrement() {
-                let numberInput = document.getElementById('number');
-                if (parseInt(numberInput.value) >= 1) {
-                    numberInput.value = parseInt(numberInput.value) - 1;
-                }
-            }
-
-            function addToCart() {
-                let numberInput = document.getElementById('number').value;
-                alert('Has agregado ' + numberInput + ' producto(s) al carrito.');
-            }
-        </script>
 </body>
 </html>
