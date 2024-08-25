@@ -4,41 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../stylesheets/shi.css">
-
-    
     <title>Document</title>
 </head>
 <body>
+      <!--empesas aca-->
+<div id="mio">
     <div class="container">
         <div class="card">
-            <div class="imgBx" style="--img:url(/public/images/jalapeños2.webp)"></div>
+            <div class="imgBx" style="background-image: url();"></div>
             <div class="content">
-                <h3>Jalapeños Medianos<br><span>Diana</span></h3>
-                <p>Ricos y crujientes frituras de maiz con un condimento 
-                    picante para esos paladares enamorados del picante
+                <h3><br><span></span></h3>
+                <p>
                 </p>
+                <div class="counter">
+                    <button onclick="decrement()">&#8722;</button>
+                    <input type="text" id="number" value="0" readonly>
+                    <button onclick="increment()">&#43;</button>
+                </div>
+                <div class="add-to-cart">
+                    <button onclick="addToCart()">Agregar al carrito</button>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="imgBx" style="--img:url(/public/images/galletas.jpg)"></div>
-            <div class="content">
-                <h3>Galletas Picnic<br><span>Diana</span></h3>
-                <p>Dulces y crujientes galletas tipo wafer rellenas con un delicioso sabor vainilla de alta calidad.
-                </p>
-                
-            </div>
-        </div>    
-       
-        <div class="card">
-            <div class="imgBx" style="--img:url(/public/images/galletas.jpg)"></div>
-            <div class="content">
-                <h3>Galletas Picnic<br><span>Diana</span></h3>
-                <p>Dulces y crujientes galletas tipo wafer rellenas con un delicioso sabor vainilla de alta calidad.
-                </p>
-            </div>
-        </div>    
-        <
-        
- 
+          <!--terninas aca-->  
+        <div class="carri">
+            <img class="carrito" src="/stylesheets/image.png" alt="">
+        </div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/javascript/product.js"></script>
 </body>
 </html>

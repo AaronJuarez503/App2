@@ -109,3 +109,64 @@ body{
 .container .card:hover .content p{
     opacity: 1;
 }
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    border: 1px solid #0084ff;
+    border-radius: 5px;
+}
+.counter button {
+    background-color: #025a69;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.counter button:focus {
+    outline: none;
+}
+.counter input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+}
+.counter input:focus {
+    outline: none;
+}
+.add-to-cart {
+        display: flex;
+        justify-content: left;
+    }
+    .add-to-cart button {
+        padding: 10px 20px;
+        background-color: #277e2a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        top: 5px;
+        position: relative;
+    }
+    .add-to-cart button:hover {
+        background-color: #45a049;
+    }
+    
+.carri{
+    position: absolute;
+    text-align: center;
+    top: -50%;
+    left: 102%;
+    height: 25%;
+    width: 15%;
+}
+
+.carrito{
+    height: 130%;
+    width: 90%;
+    position: absolute;
+    right: 10%;
+    top: -10%;
+    cursor: pointer;
+}

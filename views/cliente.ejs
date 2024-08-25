@@ -7,7 +7,7 @@
    <title>Document</title>
 </head>
 <body>
-   <div class="sidebar">
+    <!--<div class="sidebar">
       <div class="profile">
           <img src="/images/image-removebg-preview.png" alt="Perfil">
           <h2>Nombre Usuario</h2>
@@ -21,8 +21,10 @@
       <!-- Aquí puedes agregar más contenido al sidebar si lo deseas -->
   </div>
 
-  <div class="main-content">
-      <button class="cart-button">Carrito de Compra</button>
+ 
+
+ 
+     <!--- <button class="cart-button">Carrito de Compra</button>
 
       <div class="product">
           <img src="/images/images.png" alt="Producto 1">
@@ -43,25 +45,85 @@
 
  <br><br>
 
-      <div class="product">
-         <img src="/images/CIavLpX4_400x400.png" alt="Producto 1">
-         <button>Ir</button>
-      </div>
-      <div class="product">
-         <img src="/images/images3.png" alt="Producto 2">
-         <button>Ir</button>
-      </div>
-      <div class="product">
-         <img src="/images/Snacksyummmies_seo.png" alt="Producto 3">
-         <button>Ir</button>
-      </div>
-      <div class="product">
-         <img src="/images/images4.png" alt="Producto 4">
-         <button>Ir</button>
-      </div>
-      </div>
+       
+            <div class="product">
+                <img src="/images/CIavLpX4_400x400.png" alt="Producto 1">
+                <button>Ir</button>
+            </div>
+            <div class="product">
+                <img src="/images/images3.png" alt="Producto 2">
+                <button>Ir</button>
+            </div>
+            <div class="product">
+                <img src="/images/Snacksyummmies_seo.png" alt="Producto 3">
+                <button>Ir</button>
+            </div>
+            <div class="product">
+                <img src="/images/images4.png" alt="Producto 4">
+                <button>Ir</button>
+            </div>--->
+         
+        
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f0f0f0;
+                    margin: 0;
+                    padding: 20px;
+                }
+                .container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    max-width: 800px;
+                    margin: 0 auto;
+                }
+                .item {
+                    display: flex;
+                    background-color: white;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                }
+                .image-container {
+                    flex: 1;
+                    min-width: 200px;
+                    max-width: 200px;
+                }
+                .image-container img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .description-container {
+                    flex: 2;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                h2 {
+                    color: #333;
+                    margin-bottom: 15px;
+                }
+                p {
+                    color: #666;
+                    line-height: 1.6;
+                }
+            </style>
+
+
+        <div id="dataContainer" class="container">
+            <!-- Los elementos se añadirán aquí dinámicamente -->
+        </div>
+        
+
+     
 
       <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+      <script src="/javascript/mostarmarcas.js"></script>
+      <script src="/javascript/product.js"></script>
+      
 
       <script>
 

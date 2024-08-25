@@ -52,6 +52,9 @@ router.post('/yyyyyy',validator.codigoventa,()=>{
 
 })
 
+router.get('/compras',function(req,res){
+  res.render('compras')
+})
 module.exports = router;//no borrar 
 
 
