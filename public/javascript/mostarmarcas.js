@@ -7,7 +7,7 @@ $(function(){
         success: function(data) {
             
             console.log('Datos recibidos:', data);
-          function crearDivConImagen(clase, texto, urlImagen) {
+          /*function crearDivConImagen(clase, texto, urlImagen) {
             var $div = $('<div>', { class: clase });
             var $img = $('<img>', { src:urlImagen , alt: texto });
             var $p = $('<p>', { text: texto });
@@ -15,10 +15,26 @@ $(function(){
             $div.append($img).append($p);
             return $div;
             
-        }
+        }*/
+            function addItemToContainer(descripcion,imagen,nombre) {
+                const $itemHtml = `
+                    <div class="item">
+                        <div class="image-container">
+                            <img src="${imagen}" alt="">
+                        </div>
+                        <div class="description-container">
+                            <h2>${nombre}</h2>
+                            <p>${descripcion}</p>
+                        </div>
+                    </div>
+                `;
+               
+                return $itemHtml
+            }
+
         data.forEach(function(item) {
-            var $itemDiv = crearDivConImagen('item-con-imagen', item.descripcion, item.imagen);
-            $('#contenedor').append($itemDiv);})
+            var $itemDiv = addItemToContainer( item.descripcion,item.imagen,item.nombre);
+            $('.container').append($itemDiv);})
         
 
         
