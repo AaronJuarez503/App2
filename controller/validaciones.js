@@ -188,6 +188,25 @@ module.exports={
       );
     }
    ],
+   codigoventa:[
+    body('code')
+    .notEmpty().withMessage('El campo  no puede estar vacío')
+    .isLength({min:5}).withMessage('Debe tener 5 caracteres')
+    .isLength({max:5}).withMessage(' solo puede  tener 5 caracteres')
+    .isNumeric().withMessage('solo debe contener numeros'),
+    (req,res,net)=>{
+      result(req)
+      .then(()=>{
+        next();
+      })
+      .catch((errors)=>{
+        console.log(errors);
+
+
+      })
+
+    }
+   ]
 
 
 }
