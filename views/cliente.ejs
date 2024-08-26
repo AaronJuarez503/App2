@@ -116,16 +116,51 @@
         <div id="dataContainer" class="container">
             <!-- Los elementos se añadirán aquí dinámicamente -->
         </div>
+
+        <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+<script>
+ var swipeArea = document.getElementById('swipeArea');
+    
+    // Crea una instancia de Hammer en el área seleccionada
+    var hammer = new Hammer(document.body);
+
+    hammer.on('swipeleft', function(event) {
+    // Código para manejar el deslizamiento hacia la izquierda
+    alert('Deslizamiento hacia la izquierda detectado');
+});
+
+// Escucha el evento de deslizamiento hacia la derecha
+hammer.on('swiperight', function(event) {
+    // Código para manejar el deslizamiento hacia la derecha
+    window.location.href = '/tienda'
+    
+});
+    
+    // Configura para detectar deslizamientos hacia la izquierda
+   /* hammer.get('swipe').set({ direction: Hammer.DIRECTION_LEFT });
+    
+    // Escucha el evento de deslizamiento hacia la izquierda
+    hammer.on('swipeleft', function(event) {
+      
+      // Redirige a otra página o muestra otro archivo
+      window.location.href = 'index2.html'})*/
+
+
+
+
+</script>
         
 
      
 
       <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-      <script src="/javascript/mostarmarcas.js"></script>
+      <script type="module" src="/javascript/mostarmarcas.js" ></script>
       <script src="/javascript/product.js"></script>
       
-
+      
+     
       <script>
+
 
         $(function () {
             $("#btn").click(function () {
