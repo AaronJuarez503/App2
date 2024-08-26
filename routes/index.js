@@ -41,8 +41,20 @@ router.get('/tienda',function(req,res){
 router.get('/productos',function(req,res){
   res.render('productos')
 })
+router.get('/pedido',function(req,res){
+  res.render('estado_pedido')
+})
+router.get('/codigoventa',function(req,res){
+  res.render('codigo_pedido')
+})
+router.post('/yyyyyy',validator.codigoventa,()=>{
+  console.log('no habido errores')
+
+})
 
 router.get('/compras',function(req,res){
   res.render('compras')
 })
 module.exports = router;//no borrar 
+
+

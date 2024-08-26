@@ -212,5 +212,6 @@ module.exports={
             console.error('usuario no encontrado');
         }
     },
+    
 
 }//fin de modules exports no idont delet

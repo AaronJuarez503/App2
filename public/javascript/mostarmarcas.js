@@ -16,11 +16,11 @@ $(function(){
             return $div;
             
         }*/
-            function addItemToContainer(descripcion,imagen,nombre) {
+            function addItemToContainer(descripcion,imagen,nombre,marca) {
                 const $itemHtml = `
                     <div class="item">
                         <div class="image-container">
-                            <img src="${imagen}" alt="">
+                            <img id="miImagen" src="${imagen}" data-id=${marca} alt="">
                         </div>
                         <div class="description-container">
                             <h2>${nombre}</h2>
@@ -33,7 +33,7 @@ $(function(){
             }
 
         data.forEach(function(item) {
-            var $itemDiv = addItemToContainer( item.descripcion,item.imagen,item.nombre);
+            var $itemDiv = addItemToContainer( item.descripcion,item.imagen,item.nombre,item.id_marca);
             $('.container').append($itemDiv);})
         
 
@@ -48,4 +48,24 @@ $(function(){
         }
     });
 
+    
+
+
+    $('#dataContainer ').on('click', function(e) {
+
+        const r = $(e.target).attr('data-id');
+
+
+
+
+
+       
+        console.log('ID capturado:',r);
+        window.location.href='/productos'
+
+
+        
+    });
+
 })
+
