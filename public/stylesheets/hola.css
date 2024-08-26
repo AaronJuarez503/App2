@@ -153,7 +153,7 @@ transition: .5s;
     font-weight: 600;
     z-index: 1;
     overflow: hidden ;
-    top: 12px;
+    top: 10px;
 }
 
 .btn::before {
@@ -379,6 +379,11 @@ color: #fff;
     }
 }
 .btn{
+    height: 50px;
+    width: 200px;
+    left: 10px;
+}
+.btn2{
     height: 50px;
     width: 200px;
     left: 10px;
