@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+   
       <!--empesas aca-->
 <div id="mio">
 
@@ -37,7 +38,40 @@
 
 
 </div>
+
+<div class="float-div">
+    <h3>Información adicional</h3>
+    <p>Este es un div que flota en la esquina superior derecha.</p>
+    <span class="close-btn">×</span>
+  </div>
+
+  <style>
+    .float-div .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .float-div {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 999;
+    }
+
+
+  </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="/javascript/product.js"></script>
+    <script>
+         $(".close-btn").click(function() {
+          $(".float-div").hide();
+        });
+    </script>
 </body>
 </html>
