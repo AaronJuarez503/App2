@@ -61,7 +61,7 @@ $(function(){
 
        
         console.log('ID capturado:',r);
-        window.location.href='/productos'
+        window.location.href='/pedirproductos'
 
 
         
