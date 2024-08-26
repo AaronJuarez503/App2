@@ -21,7 +21,10 @@ $(function() {
                 var $button1 = $template.find('button').eq(0);
                 var $button2 = $template.find('button').eq(1);
                 var $button3 = $template.find('button').eq(2);
+                $button3.attr('data-id', item.id_marca);
+                $button3.attr('data-id', item.id);
 
+                
                 // Funcionalidad para decrementar
                 $button1.on('click', function() {
                     var currentValue = parseInt($input.val(), 10);
