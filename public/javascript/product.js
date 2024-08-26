@@ -50,7 +50,7 @@ $(function() {
             });
 
             // Elimina la tarjeta original si no deseas mantenerla
-            $('.card').first().remove();
+            $('.container').first().remove();
         }
     });
 });
