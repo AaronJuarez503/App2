@@ -18,24 +18,24 @@
     <div class="form-box register{}">
         <h2 >Ingreso de Tienda</h2><br>
         <p class="holi2">¡Hola! Ingresa estos datos <br>para poder registrar tu tienda</p>
-        <form id="tiendita" action="#">
+        <form id="tiendita" action ="/users/tienda" method="post" >
 
            <div class="input-box">
-              <input id="Ntienda" type="text" >
+              <input name="nombre" id="Ntienda" type="text" >
               <label>Nombre de Tienda</label>
               <b><span class="error" id="tiendaError"></span></b>
               <i class='bx bx-store'></i>
            </div>
 
            <div class="input-box">
-            <input id="direccion" type="text" >
+            <input name="direccion" id="direccion" type="text" >
             <label>Direccion</label>
             <b><span class="error" id="direccionError"></span></b>
             <i class='bx bx-right-arrow-alt'></i>
          </div>
 
          <div class="input-box">
-            <input id="numero" type="text" >
+            <input name="numero" id="numero" type="text" >
             <label>Numero de Telefono</label>
             <b><span class="error" id="numeroError"></span></b>
             <i class='bx bx-phone'></i>

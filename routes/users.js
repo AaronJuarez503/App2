@@ -9,5 +9,7 @@ router.get('/',controller.marcas);
 router.get('/products',controller.productos);
 
 
+router.post('/tienda', controller.Insertartienda);
+
 
 module.exports = router;

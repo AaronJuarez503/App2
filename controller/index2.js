@@ -28,5 +28,17 @@ module.exports={
             
         }
         
+    },
+
+    Insertartienda: async function (req,res) {
+        try {
+            console.log(req.body)
+           await model.Insertartienda(con,38,req.body)
+            res.send('hola')
+
+        } catch (error) {
+
+        }
+
     }
 }
