@@ -253,15 +253,15 @@ body{
 .carri{
     position: absolute;
     text-align: center;
-    top: -50%;
-    left: 102%;
+    top: 10px;
+    left: 250px;
     height: 25%;
     width: 15%;
 }
 
 .carrito{
-    height: 130%;
-    width: 90%;
+    height: 90px;
+    width: 90px;
     position: absolute;
     right: 10%;
     top: -10%;

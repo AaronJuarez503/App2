@@ -14,6 +14,7 @@ $(function() {
                 // Actualizar los elementos de la tarjeta con los datos del producto
                 $template.find('h3').html(`${item.nombre}<br><span>$${item.precio}</span>`);
                 $template.find('p').text(item.descripcion);
+                $template.find('.imgBx').css('background-image', `url(${item.imagen})`);
 
                 // Obtener y configurar los elementos de la tarjeta
                 var $input = $template.find('input[type="text"]');
@@ -50,7 +51,7 @@ $(function() {
             });
 
             // Elimina la tarjeta original si no deseas mantenerla
-            $('.container').first().remove();
+            $('.card').first().remove();
         }
     });
 });
