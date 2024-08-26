@@ -39,7 +39,7 @@ $(function(){
 
     $('#container ').on('click', function(e) {
 
-       // const r = $(e.target).attr('data-id');
+        const r = $(e.target).attr('data-id');
 
 
 
@@ -47,7 +47,7 @@ $(function(){
 
        
         console.log(e.target);
-        //window.location.href='/pedirproductos'
+        window.location.href='/productos'
 
 
         
