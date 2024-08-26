@@ -20,7 +20,7 @@ $(function() {
                 var $input = $template.find('input[type="text"]');
                 var $button1 = $template.find('button').eq(0);
                 var $button2 = $template.find('button').eq(1);
-                var $button3 = $template.find('button').eq(2);
+               // var $button3 = $template.find('button').eq(2);
 
                 // Funcionalidad para decrementar
                 $button1.on('click', function() {
