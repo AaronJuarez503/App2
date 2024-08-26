@@ -15,7 +15,7 @@
         <div class="card">
             <div class="imgBx" style="background-image: url();"></div>
             <div class="content">
-                <h3><br><span></span></h3>
+                <h3 id="nombre"><br><span id="precio" ></span></h3>
                 <p>
                 </p>
                 <div class="counter">
@@ -24,7 +24,7 @@
                     <button onclick="increment()">&#43;</button>
                 </div>
                 <div class="add-to-cart">
-                    <button onclick="addToCart()">Agregar al carrito</button>
+                    <button id="btn">Agregar al carrito</button>
                 </div>
             </div>
         </div>
@@ -40,32 +40,90 @@
 </div>
 
 <div class="float-div">
-    <h3>Información adicional</h3>
-    <p>Este es un div que flota en la esquina superior derecha.</p>
-    <span class="close-btn">×</span>
+  <h3>Carrito de Compras</h3>
+  <div class="cart-item">
+    <div class="item-image" style="background-image: url('https://example.com/product1.jpg');"></div>
+    <div class="item-info">
+      <div class="item-name">Producto 1</div>
+      <div class="item-price">$10.00</div>
+      <div class="item-quantity">Cantidad: 1</div>
+    </div>
+    <span class="remove-item">×</span>
   </div>
+  <div class="cart-item">
+    <div class="item-image" style="background-image: url('https://example.com/product2.jpg');"></div>
+    <div class="item-info">
+      <div class="item-name">Producto 2</div>
+      <div class="item-price">$15.00</div>
+      <div class="item-quantity">Cantidad: 2</div>
+    </div>
+    <span class="remove-item">×</span>
+  </div>
+  <span class="close-btn">×</span>
+</div>
 
-  <style>
-    .float-div .close-btn {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .float-div {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #333;
-      color: #fff;
-      padding: 10px;
-      border-radius: 5px;
-      z-index: 999;
-    }
+<style>
+  .float-div {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 999;
+    width: 300px;
+  }
 
+  .float-div h3 {
+    margin-top: 0;
+  }
 
-  </style>
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .item-image {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+  }
+
+  .item-info {
+    flex-grow: 1;
+  }
+
+  .item-name {
+    font-weight: bold;
+  }
+
+  .item-price {
+    font-size: 14px;
+  }
+
+  .item-quantity {
+    font-size: 12px;
+  }
+
+  .remove-item {
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="/javascript/product.js"></script>
     <script src="/javascript/mostrarp.js"></script>
@@ -73,6 +131,12 @@
          $(".close-btn").click(function() {
           $(".float-div").hide();
         });
+    </script>
+
+    <script>
+       $('.remove-item').click(function() {
+      $(this).closest('.cart-item').remove();
+    });
     </script>
 </body>
 </html>

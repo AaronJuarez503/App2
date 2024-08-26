@@ -37,14 +37,14 @@ $(function() {
                 });
 
                 // Funcionalidad para agregar al carrito
-                $button3.on('click', function() {
+               /* $button3.on('click', function() {
                     var cantidad = parseInt($input.val(), 10);
                     if (cantidad > 0) {
                         alert(`${item.nombre} agregado al carrito con cantidad: ${cantidad}`);
                     } else {
                         alert('Por favor, selecciona una cantidad mayor a 0.');
                     }
-                });
+                });*/
 
                 // Añadir la tarjeta actualizada al contenedor
                 $('#mio').append($template);
