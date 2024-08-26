@@ -130,7 +130,7 @@
             position: fixed;
             top: 10px;
             right: 10px;
-            font-size: 24px;
+            font-size: 30px;
             cursor: pointer;
             z-index: 1000;
         }
@@ -138,10 +138,10 @@
             position: fixed;
             top: 50px;
             right: 20px;
-            background-color: #333;
+            background-color: #0000008e;
             color: #fff;
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 12px;
             z-index: 999;
             width: 300px;
             max-height: 400px;
@@ -160,6 +160,7 @@
             width: 50px;
             height: 50px;
             background-size: cover;
+            background-color: #363636;
             background-position: center;
             margin-right: 10px;
         }
@@ -191,19 +192,27 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #4CAF50;
+            background-color: #0c5a7e;
             color: white;
             text-align: center;
             text-decoration: none;
             margin-top: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #realizar-compra:hover{
+            background-color: rgba(143, 1, 72, 0.438);
         }
         #total-carrito {
             display: inline-block;
             width: 35%;
             padding: 10px;
-            background-color: #311818;
             text-align: center;
             margin-top: 10px;
+        }
+
+        #contador-carrito{
+
         }
     </style>
 
@@ -269,7 +278,7 @@
 
         actualizarContadorCarrito();
         actualizarTotalCarrito();
-        $('#carrito-icono').css('color', 'red');
+        $('#contador-carrito').css('color', 'red');
     });
 
     function actualizarCantidadEnUI(producto) {
