@@ -53,7 +53,7 @@ module.exports={
             try {
                 var  respuestabd = await consulta.buscarusuario(conexion,username,password)
                 console.log("tu respuesta de la bd es  ; " + respuestabd)
-                res.render('cliente');
+                res.render('marca');
 
                 
     
