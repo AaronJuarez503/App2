@@ -19,11 +19,6 @@ body{
     left: 40%;
     top: 8%;
 }
-@media (max-width:799px){
-    .titulo{
-        left: 80px;
-    }
-}
 
 .contenedor{
     position: absolute;
@@ -34,13 +29,6 @@ body{
     left: 28%;
     border-color: aqua;
     overflow: auto;
-}
-@media (max-width:799px){
-    .contenedor{
-        position: absolute;
-        width: 400px;
-        left: 0px;
-    }
 }
 
 table {
