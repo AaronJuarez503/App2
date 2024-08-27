@@ -14,7 +14,6 @@ $(function(){
                 <img src="${imagen}" data-id=${marca} alt="Marca 1">
             </div>
                 `;
-               
                 return $itemHtml
             }
 
@@ -38,6 +37,8 @@ $(function(){
 
 
     $('#container ').on('click', function(e) {
+
+        console.log(e.target)
 
         const r = $(e.target).attr('data-id');
 
