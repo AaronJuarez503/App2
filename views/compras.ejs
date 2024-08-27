@@ -11,7 +11,7 @@
     <h1 class="titulo">Lista de tu Pedidos</h1>
 
     <div class="contenedor">
-        <table>
+        <table id="container">
             <thead>
                 <tr>
                     <th>Imagen</th>
@@ -22,33 +22,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><img src="imagen1.jpg" alt="Producto 1"></td>
-                    <td>Producto 1</td>
-                    <td>10</td>
-                    <td>En stock</td>
-                    <td><button>Eliminar</button></td>
-                </tr>
-                <tr>
-                    <td><img src="imagen2.jpg" alt="Producto 2"></td>
-                    <td>Producto 2</td>
-                    <td>5</td>
-                    <td>Agotado</td>
-                    <td><button>Eliminar</button></td>
-                </tr>
-                <tr>
-                    <td><img src="imagen3.jpg" alt="Producto 3"></td>
-                    <td>Producto 3</td>
-                    <td>8</td>
-                    <td>En stock</td>
-                    <td><button>Eliminar</button></td>
-                </tr>
+                
             </tbody>
         </table>
     </div>  
 
+<<<<<<< HEAD
     <button>Confirmar Pedido</button>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+=======
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
     <script>
         $(function () {
             $('.acep').click(function () {
@@ -60,7 +44,7 @@
     </script>
 
 
-    <!--<script >
+    <script >
         $(function () {
             $.ajax({
         url: '/users/compra',
@@ -70,31 +54,16 @@
             
             console.log('Datos recibidos:', data);
           
-           function addItemToContainer(imagen,nombre,cantidad,total) {
+           function addItemToContainer(imagen,nombre,cantidad,precio) {
                 const $itemHtml = `
-                <div class="pedidos1">
-                    <img class="logo1" src="${imagen}" alt="">
-                    <div class="descrip">
-                        <label for=""> Descripcion</label>
-                        <label class="descripp" for="">${nombre}</label>
-                    </div>
+                <tr id="${nombre}">
+                    <td><img src="${imagen}" alt="Producto 1"></td>
+                    <td>${nombre}</td>
+                    <td>${cantidad}</td>
+                    <td>${precio}</td>
+                    <td><button data-id="${nombre}"  id="btn">Eliminar</button></td>
+                </tr>
                 
-                    <div class="stock">
-                        <div class="unidd">
-                            <label for="">cantidad</label>
-                            <label class="pedidoss" for="">${cantidad} unidades</label>
-                        </div>
-                    </div>
-
-                    <div class="precio">
-                    <label class="titulo2" for="">Stock</label>
-                    <label class=" titulo3" for="">$${total}</label>
-                    </div>
-                </div>
-                <div class="eliminar1">
-                <i class='bx bxs-trash' style='color:#ff0000'></i>
-
-                </div>
                
                 `;
                 return $itemHtml
@@ -105,8 +74,8 @@
         data.forEach(function(item) {
             console.log(item)
 
-            var $itemDiv = addItemToContainer(item.imagen,item.nombre,item.cantidad,item.total);
-            $('.contenedor').append($itemDiv);})
+            var $itemDiv = addItemToContainer(item.imagen,item.nombre,item.cantidad,item.precio);
+            $('#container').append($itemDiv);})
         
 
         
@@ -119,6 +88,29 @@
             $('#resultado').html('Error al cargar los datos');
         }
     });
+
+    $('#container').off('click', '#btn').on('click', '#btn', function() {
+        console.log('hola')
+
+        var id = $(this).data('id');
+
+        console.log(id)
+        $(`#${id}`).closest('tr').remove();
+
+    })
+
+    
+
+        
+        
+
+
+
+
+
+
+
+    
             
         })
         
@@ -126,6 +118,6 @@
             
              
         
-    </script>-->
+    </script>
 </body>
 </html>
