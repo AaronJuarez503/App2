@@ -27,10 +27,13 @@
         </table>
     </div>  
 
+   
+
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
         $(function () {
             $('.acep').click(function () {
+                console.log('hola')
                 
                 location.href = '/pedido';
             });
@@ -56,7 +59,7 @@
                     <td>${nombre}</td>
                     <td>${cantidad}</td>
                     <td>${precio}</td>
-                    <td><button data-id="${nombre}"  id="btn">Eliminar</button></td>
+                    <td><button data-id="${nombre}"  id="btn">Aceptar</button></td>
                 </tr>
                 
                
@@ -87,10 +90,11 @@
     $('#container').off('click', '#btn').on('click', '#btn', function() {
         console.log('hola')
 
-        var id = $(this).data('id');
+       /* var id = $(this).data('id');
 
         console.log(id)
-        $(`#${id}`).closest('tr').remove();
+        $(`#${id}`).closest('tr').remove();*/
+        location.href = '/pedido';
 
     })
 
