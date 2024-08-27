@@ -31,44 +31,32 @@ body{
     overflow: auto;
 }
 
-
-.pedidos1{
-    position: absolute;
-    top: 2%;
-    border: 2px solid;
-    border-color: white;
-    height: 30%;
+table {
     width: 100%;
-    border-radius: 12px;
-
+    border-collapse: collapse;
 }
-.pedidos2{
-    position: absolute;
-    top: 35%;
-    border: 2px solid;
-    border-color: white;
-    height: 30%;
-    width: 100%;
-    border-radius: 12px;
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
 }
-.pedidos3{
-    position: absolute;
-    top: 68%;
-    border: 2px solid;
-    border-color: white;
-    height: 30%;
-    width: 100%;
-    border-radius: 12px;
+th {
+    background-color: #f2f2f2;
 }
-.pedidos4{
-    position: absolute;
-    top: 101%;
-    border: 2px solid;
-    border-color: white;
-    height: 30%;
-    width: 100%;
-    border-radius: 12px;
+img {
+    width: 50px;
+    height: 50px;
 }
+button {
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #cc0000;
+}¬
 
 /*/contenido de imagen/*/
 .logo1{
