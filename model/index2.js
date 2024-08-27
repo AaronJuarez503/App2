@@ -12,8 +12,8 @@ module.exports={
             
         })
     },
-    productos:function(conexion){
-        const consulta = `SELECT * FROM productos  `;
+    productos:function(conexion,id){
+        const consulta = `SELECT * FROM productos WHERE id_marca = ${id}`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
