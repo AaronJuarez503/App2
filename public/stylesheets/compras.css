@@ -30,43 +30,6 @@ body{
     border-color: aqua;
     overflow: auto;
 }
-.pedidos1{
-    position: absolute;
-    top: 2%;
-    border: 2px solid;
-    border-color: white;
-    height: 30%;
-    width: 100%;
-    border-radius: 12px;
-
-}
-.pedidos2{
-    position: absolute;
-    top: 35%;
-    border: 2px solid;
-    border-color: white;
-    height: 30%;
-    width: 100%;
-    border-radius: 12px;
-}
-.pedidos3{
-    position: absolute;
-    top: 68%;
-    border: 2px solid;
-    border-color: white;
-    height: 30%;
-    width: 100%;
-    border-radius: 12px;
-}
-.pedidos4{
-    position: absolute;
-    top: 101%;
-    border: 2px solid;
-    border-color: white;
-    height: 30%;
-    width: 100%;
-    border-radius: 12px;
-}
 /*/contenido de imagen/*/
 .logo1{
     position: absolute;
