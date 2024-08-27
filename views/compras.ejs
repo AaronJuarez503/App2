@@ -12,8 +12,9 @@
 
     <div class="contenedor">
 
+
         
-        <div class="pedidos1">
+       <!-- <div class="pedidos1">
             <img class="logo1" src="/stylesheets/image.png" alt="">
             <div class="descrip">
                 <label for=""> Descripcion</label>
@@ -107,9 +108,80 @@
         <div class="eliminar4">
         <i class='bx bxs-trash' style='color:#ff0000'></i>
 
-        </div>
+        </div>-->
     </div>
     <button class="acep">Aceptar</button>
     <button class="cance">Cancelar</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+    <script >
+        $(function () {
+            $.ajax({
+        url: '/users/compra',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            
+            console.log('Datos recibidos:', data);
+          
+           function addItemToContainer(imagen,nombre,cantidad,total) {
+                const $itemHtml = `
+                <div class="pedidos1">
+                    <img class="logo1" src="${imagen}" alt="">
+                    <div class="descrip">
+                        <label for=""> Descripcion</label>
+                        <label class="descripp" for="">${nombre}</label>
+                    </div>
+                
+                    <div class="stock">
+                        <div class="unidd">
+                            <label for="">cantidad</label>
+                            <label class="pedidoss" for="">${cantidad} unidades</label>
+                        </div>
+                    </div>
+
+                    <div class="precio">
+                    <label class="titulo2" for="">Stock</label>
+                    <label class=" titulo3" for="">$${total}</label>
+                    </div>
+                </div>
+                <div class="eliminar1">
+                <i class='bx bxs-trash' style='color:#ff0000'></i>
+
+                </div>
+               
+                `;
+                return $itemHtml
+            }
+
+            vari=0;
+
+        data.forEach(function(item) {
+            console.log(item)
+
+            var $itemDiv = addItemToContainer(item.imagen,item.nombre,item.cantidad,item.total);
+            $('.contenedor').append($itemDiv);})
+        
+
+        
+
+           
+            
+        },
+        error: function(xhr, status, error) {
+            console.error('Error en la petición AJAX:', error);
+            $('#resultado').html('Error al cargar los datos');
+        }
+    });
+            
+        })
+        
+        
+            
+             
+        
+    </script>
 </body>
 </html>

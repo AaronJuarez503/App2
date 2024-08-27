@@ -8,12 +8,27 @@
 <body>
     <h1>Confirmación de Compra</h1>
     <% if (items.length > 0) { %>
-        <h2>Artículos comprados:</h2>
-        <ul>
         <% items.forEach(function(item) { %>
-            <li>
-                <%= item.nombre %> - Cantidad: <%= item.cantidad %> - Precio: $<%= item.total.toFixed(2) %>
-            </li>
+            <div class="pedidos1">
+                <img class="logo1" src="<%= item.imagen %> " alt="">
+                <div class="descrip">
+                    <label for=""> Descripcion</label>
+                    <label class="descripp" for=""<%= item.nombre %> </label>
+                </div>
+            
+                <div class="stock">
+                    <div class="unidd">
+                        <label for="">cantidad</label>
+                        <label class="pedidoss" for=""><%= item.cantidad %> unidades</label>
+                    </div>
+                 </div>
+        
+                <div class="precio">
+                  <label class="titulo2" for="">Stock</label>
+                  <label class=" titulo3" for=""> $<%= items.reduce((sum, item) => sum + item.total, 0).toFixed(2) %></label>
+                </div>
+            </div>
+            
         <% }); %>
         </ul>
         <h3>Total: $<%= items.reduce((sum, item) => sum + item.total, 0).toFixed(2) %></h3>
@@ -21,5 +36,9 @@
         <p>No hay artículos en tu compra.</p>
     <% } %>
     <a href="/">Volver a la tienda</a>
+
+
+
+   
 </body>
 </html>

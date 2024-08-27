@@ -27,6 +27,8 @@ router.post('/procesar-compra',function (req,res) {
     // Aquí puedes procesar los items, guardarlos en una base de datos, etc.
     // Por ahora, simplemente los guardamos en la sesión
     req.session.compraItems = items;
+
+    console.log(items)
     res.json({ success: true });
     
     
@@ -36,8 +38,14 @@ router.post('/procesar-compra',function (req,res) {
 });
 
 router.get('/confirmacion-compra', (req, res) => {
+   
+    res.render('compras');
+});
+
+
+router.get('/compra', (req, res) => {
     const items = req.session.compraItems || [];
-    res.render('confirmacion-compra', { items: items });
+    res.send(items)
 });
 
 
