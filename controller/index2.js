@@ -24,7 +24,7 @@ module.exports={
         try {
             const productoId = req.query.productoId;
             console.log(productoId)
-            var r= await model.productos(con)
+            var r= await model.productos(con,productoId)
             res.send(r)
             
         } catch (error) {

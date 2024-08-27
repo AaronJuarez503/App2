@@ -1,10 +1,10 @@
 $(function() {
 
-    var id = "<%= mensaje %>";
-    console.log("Mensaje del servidor:", id);
+    var $id = "<%= mensaje %>";
+    console.log("Mensaje del servidor:",$id);
 
     $.ajax({
-        url: `/users/products?productoId=${id}`,
+        url: `/users/products?productoId=${$id}`,
         method: 'GET',
         dataType: 'json',
         success: function(data) {
