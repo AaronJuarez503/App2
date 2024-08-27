@@ -20,5 +20,14 @@ router.get('/pedirproductos',function (req,res) {
 });
 
 
+router.get('/detalles',function (req,res) {
+    const producto = req.query.products;
+    console.log(producto)
+
+    //res.render('compras',{mensaje:productoId})
+    
+});
+
+
 
 module.exports = router;

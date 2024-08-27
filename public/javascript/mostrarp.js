@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    console.log('hola marcas')
     let list = [];
 
     // Mostrar/ocultar carrito
