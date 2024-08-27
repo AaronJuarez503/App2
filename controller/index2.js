@@ -20,7 +20,10 @@ module.exports={
     },
 
     productos: async function (req,res) {
+
         try {
+            const productoId = req.query.productoId;
+            console.log(productoId)
             var r= await model.productos(con)
             res.send(r)
             

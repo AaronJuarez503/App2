@@ -19,7 +19,7 @@ $(function(){
             }
 
         data.forEach(function(item) {
-            var $itemDiv = addItemToContainer(item.imagen,item.id_marca);
+            var $itemDiv = addItemToContainer(item.imagen,item.id);
             $('#container').append($itemDiv);})
         
 
@@ -46,8 +46,8 @@ $(function(){
 
 
        
-        console.log(e.target);
-        window.location.href='/productos'
+        console.log(r);
+        window.location.href=`/users/pedirproductos?productoId=${r}`
 
 
         

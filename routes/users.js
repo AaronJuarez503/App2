@@ -10,6 +10,9 @@ router.get('/products',controller.productos);
 
 
 router.get('/pedirproductos',function (req,res) {
+    const productoId = req.query.productoId;
+
+    res.render('productos',{mensaje:productoId})
     
 });
 
