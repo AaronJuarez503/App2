@@ -33,7 +33,7 @@ module.exports={
         consulta.RegistrarCliente(conexion,{nom,apell,username,correo,pass})
         .then(datos => {
             console.log('datos insertados con exito',datos)
-            res.redirect('/inicioC')
+            res.redirect('/marca')
         })
         .catch(error => {
             console.error('error al insertar', error)
