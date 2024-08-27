@@ -34,7 +34,7 @@ $(function(){
 
         data.forEach(function(item) {
             var $itemDiv = addItemToContainer( item.descripcion,item.imagen,item.nombre,item.id_marca);
-            $('#container').append($itemDiv);})
+            $('.container').append($itemDiv);})
         
 
         
@@ -61,7 +61,7 @@ $(function(){
 
        
         console.log('ID capturado:',r);
-        window.location.href='/users/pedirproductos'
+
 
 
         
