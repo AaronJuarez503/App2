@@ -216,8 +216,14 @@ $.ajax({
 
     <script>
       $(document).ready(function() {
-        console.log('hola marcas')
-    let list = [];
+      
+    //let list = [];
+
+    let list = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function guardarCarritoEnLocalStorage() {
+        localStorage.setItem('carrito', JSON.stringify(list));
+    }
 
     // Mostrar/ocultar carrito
     $('#carrito-icono').click(function() {
@@ -265,6 +271,8 @@ $.ajax({
            
         };
 
+        localStorage.setItem('carrito', JSON.stringify(datos));
+
         let productoExistente = list.find(item => item.id === datos.id);
 
         if (productoExistente) {
@@ -275,6 +283,7 @@ $.ajax({
             list.push(datos);
             agregarNuevoProductoAUI(datos);
         }
+        guardarCarritoEnLocalStorage();
 
         actualizarContadorCarrito();
         actualizarTotalCarrito();
@@ -308,6 +317,7 @@ $.ajax({
         var nombreProducto = $(this).closest('.cart-item').data('nombre');
         list = list.filter(item => item.nombre !== nombreProducto);
         $(this).closest('.cart-item').remove();
+        guardarCarritoEnLocalStorage();
         actualizarContadorCarrito();
         actualizarTotalCarrito();
     });
@@ -346,6 +356,16 @@ $.ajax({
                 alert("El carrito está vacío.");
             }
         });
+
+        function cargarCarritoDesdeLocalStorage() {
+        list.forEach(producto => {
+                agregarNuevoProductoAUI(producto);
+            });
+            actualizarContadorCarrito();
+            actualizarTotalCarrito();
+        }
+
+        cargarCarritoDesdeLocalStorage();
 });
   
     </script>
