@@ -59,6 +59,12 @@ router.get('/compras',function(req,res){
 router.get('/marca',function(req,res){
   res.render('marca')
 })
+router.get('/principal',function(req,res){
+  res.render('pagina_inicio/index')
+})
+
+
+
 module.exports = router;//no borrar 
 
 
