@@ -171,7 +171,7 @@ $.ajax({
             var $button1 = $template.find('button').eq(0);
             var $button2 = $template.find('button').eq(1);
             var $button3 = $template.find('button').eq(2);
-            $button3.attr('data-id', item.id_marca);
+            $button3.attr('data-id_m', item.id_marca);
             $button3.attr('data-id', item.id);
 
             
@@ -229,24 +229,43 @@ $.ajax({
         $('.float-div').hide();
     });
 
+   
+
     // Agregar producto al carrito
     $('#mio').off('click', '#btn').on('click', '#btn', function() {
         var container = $(this).closest(".container");
         var headingContent = container.find("h3").text();
+
+        var id = $(this).data('id');
+        var id_marca = $(this).data('id_m');
+        console.log(id,':',id_marca)
+
+
+        const partes = headingContent.split('$');
+        const nombre = partes[0].trim(); // Eliminar espacios al final
+        const numeros = partes[1];
+        console.log(nombre,':',numeros)
+        
+          
+
         var imageUrl = container.find('.imgBx').css("background-image").replace(/url\("?|"?\)$/g, '');
+       
       
-        var precioTexto = container.find("span").text();
-        var precio = parseFloat(precioTexto.replace('$', '').trim());
+        
+        var precio = parseFloat(numeros);
 
         var datos = {
-            nombre: headingContent,
+            id:id,
+            id_marca: id_marca,
+            nombre: nombre,
             imagen: imageUrl,
             precio: precio,
             cantidad: 1,
             total: precio
+           
         };
 
-        let productoExistente = list.find(item => item.nombre === datos.nombre);
+        let productoExistente = list.find(item => item.id === datos.id);
 
         if (productoExistente) {
             productoExistente.cantidad++;
