@@ -63,6 +63,11 @@ router.get('/principal',function(req,res){
   res.render('pagina_inicio/index')
 })
 
+router.get('/codigoapp',function(req,res){
+  res.render('Codigo_verificacion')
+})
+
+
 
 
 module.exports = router;//no borrar 
