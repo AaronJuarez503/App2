@@ -54,3 +54,83 @@ img {
 .bx:hover{
     color: rgb(255, 0, 149);
 }
+.logo{
+    position: absolute;
+    height: 40%;
+    width: 26%;
+    top: -10%;
+}
+.accep{
+    position: absolute;
+    border: none;
+    top: 74%;
+    left: 50%;
+    height: 38px;
+    width: 100px;
+    border-radius: 5px;
+    color: #f2f2f2;
+    background-color: #072f4d;
+    cursor: pointer;
+}
+ .accep:hover{
+    background-color: #09bb21;
+    color: #ffffff;
+}
+.cancel{
+    position: absolute;
+    border: none;
+    top: 74%;
+    left: 40%;
+    height: 38px;
+    width: 100px;
+    border-radius: 5px;
+    color: #f2f2f2;
+    background-color: #072f4d;
+    cursor: pointer;
+}
+ .cancel:hover{
+    background-color: #cc0000;
+    color: #ffffff;
+}
+/* Default styles for desktop */
+/* ... existing CSS ... */
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: #081b29;
+  }
+
+  .titulo {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+  }
+
+  .contenedor {
+    height: auto;
+    width: 90%;
+    left: 5%;
+    top: 25%;
+    overflow: visible;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 4px;
+  }
+
+  .logo {
+    display: none;
+  }
+  .accep, .cancel {
+    position: static;
+    margin: 10px auto;
+    display: block;
+    left: 0;
+    right: 0;
+  }
+}
