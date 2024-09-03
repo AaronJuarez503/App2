@@ -9,7 +9,6 @@
 
 body {
     display: flex;
-    
     justify-content:center;
     align-items: center;
     min-height: 100vh;
@@ -34,7 +33,7 @@ body {
         width: 400px;
         height: 950px;
         background: transparent;
-        border: 2px solid #DB241B;
+        border: none;
         box-shadow: none;
         overflow: hidden;
         zoom:none ;
