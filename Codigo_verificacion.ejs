@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/verficacion.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="titulo_tema">Ordershop te da la Bienvenida</h1>
+
+    <img class="logo" src="" alt="">
+
+    <div  class="conteiner">
+        <form action="/adminr/uploads" method="get">
+            <p class="titulo_codigo">Tu Codigo Generado es el Siguiente: </p>
+            
+            
+        <p class="contenido_codigo"># <span><% if(typeof codigo != 'undefined') { %><%= codigo %><% } %></span></p>
+
+        <button class="accion_ok" type="submit">Aceptar</button>
+
+        </form>
+    </div>        
+</body>
+</html>
