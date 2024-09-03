@@ -64,7 +64,7 @@ router.get('/principal',function(req,res){
 })
 
 router.get('/codigoapp',function(req,res){
-  res.render('Codigo_verificacion')
+  res.render('codigove')
 })
 
 

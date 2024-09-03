@@ -30,9 +30,10 @@ body{
     position: absolute;
     color: white;
     text-align: center;
-    font-size: 25px;
-    top: 9%;
-    left: 16%;
+    font-size: 21px;
+    top: 9%;    
+    text-align: center;
+    left: 1%;
 }
 .codigo_generado{
     position: absolute;
@@ -45,7 +46,7 @@ body{
 }
 .contenido_codigo{
     position: absolute;
-    top: 45%;
+    top: 35%;
     left: 33%;
     border: 2px solid;
     border-radius: 8px;
@@ -57,6 +58,16 @@ body{
     font-size: 23px;
     box-shadow:  0 0 25px rgb(139, 3, 44);
 }
+.codigos{
+    position: absolute;
+    top: 50%;
+    left: 34%;
+    height: 10%;
+    width: 30%;
+    border: 2px solid;
+    border-color: red;
+    box-shadow:  0 0 25px rgb(139, 3, 44);
+}
 .logo{
     position: absolute;
     top: -10%;
@@ -65,7 +76,7 @@ body{
 }
 .accion_ok{
     position: absolute;
-    top: 72%;
+    top: 65%;
     left: 39%;
     height: 12%;
     width: 18%;
