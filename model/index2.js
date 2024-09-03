@@ -12,6 +12,25 @@ module.exports={
             
         })
     },
+    buscarmarcas:function(conexion){
+        const consulta = `
+                SELECT t.id, t.nombre
+                FROM tiendas t
+                JOIN cliente c ON t.cliente_id = c.id
+                WHERE a.id = ?
+                LIMIT 1
+            `;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, resultado) {
+                if (error) {
+                    throw (error);
+                } else if (resultado.length >0) {
+                    resolve(resultado);
+                }
+            });
+            
+        })
+    },
     productos:function(conexion,id){
         const consulta = `SELECT * FROM productos WHERE marca_id = ${id}`;
         return new Promise((resolve, reject) => {

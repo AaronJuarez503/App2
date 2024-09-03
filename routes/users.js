@@ -48,6 +48,11 @@ router.get('/compra', (req, res) => {
     res.send(items)
 });
 
+router.get('/pedido', (req, res) => {
+    const items = req.session.compraItems || [];
+    res.send(items)
+});
+
 
 router.get('/vertienda', (req, res) => {
     
