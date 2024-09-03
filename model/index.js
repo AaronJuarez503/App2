@@ -1,7 +1,7 @@
 module.exports={
 
     buscarusuario:function (conexion,username,password) {
-        const consulta = `SELECT * FROM cliente WHERE usuario = '${username}' AND contraseña ='${password}'`;
+        const consulta = `SELECT * FROM usuarios WHERE usuario = '${username}' AND contrasena ='${password}'`;
         //id_rol,usuario,correo, contraseña
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
@@ -21,13 +21,27 @@ module.exports={
         });
     },
 
-    RegistrarCliente:function(conexion, {nom, apell, username, correo, pass}) {
-        const insertar = `INSERT INTO cliente (nombre, apellido, usuario, correo, contraseña) VALUES ('${nom}', '${apell}','${username}', '${correo}', '${pass}')`;
+    RegistrarCliente:function(conexion, {username, correo, pass,rol}) {
+        const insertar = `INSERT INTO usuarios ( usuario, email, contrasena,rol) VALUES ('${username}', '${correo}', '${pass}', '${rol}')`;
         return new Promise((resolve, reject) => {
             conexion.query(insertar, function (error, resultado) {
                 if (error) {
                     reject(error);
                 } else {
+                    
+                    resolve(resultado);
+                }
+            });
+        });
+    },
+    Cliente:function(conexion, id, nombre, apellido) {
+        const insertar = `INSERT INTO clientes ( id, nombre, apellido) VALUES (${id}, '${nombre}', '${apellido}')`;
+        return new Promise((resolve, reject) => {
+            conexion.query(insertar, function (error, resultado) {
+                if (error) {
+                    reject(error);
+                } else { 
+                    console.log('datos de clientes insertados correctamente')
                     resolve(resultado);
                 }
             });
@@ -35,7 +49,7 @@ module.exports={
     },
 
     IniciarSesion:function(conexion, { user, pass }) {
-        const consulta = `SELECT * FROM cliente WHERE usuario = '${user}' AND contraseña = '${pass}'`;
+        const consulta = `SELECT * FROM usuarios WHERE usuario = '${user}' AND contraseña = '${pass}'`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
@@ -47,7 +61,7 @@ module.exports={
         });
     },
     RecuperarCuenta:function(conexion, { correo }) {
-        const consulta = `SELECT * FROM cliente WHERE correo = '${correo}'`;
+        const consulta = `SELECT * FROM usuarios WHERE email = '${correo}'`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
@@ -86,7 +100,7 @@ module.exports={
     },
 
     findemail:function(conexion,correo) {
-        const consulta = `SELECT correo FROM cliente WHERE correo = '${correo}'`;
+        const consulta = `SELECT email FROM usuarios WHERE email = '${correo}'`;
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
@@ -107,7 +121,7 @@ module.exports={
     },
 
     FindByEmail:function (conexion,email) {
-        const consulta = `SELECT correo FROM cliente WHERE correo = '${email}'`;
+        const consulta = `SELECT email FROM usuarios WHERE email = '${email}'`;
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error,resultado) {
                 if (error) {
@@ -127,7 +141,7 @@ module.exports={
 
 
     FindUser:function (conexion,username) {
-        const consulta = `SELECT usuario FROM cliente WHERE usuario = '${username}'`;
+        const consulta = `SELECT usuario FROM usuarios WHERE usuario = '${username}'`;
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {

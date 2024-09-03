@@ -18,27 +18,39 @@ module.exports={
     },
 
 
-    insertregistrer:function (req,res) {
+    insertregistrer:async function (req,res) {
 
         console.log('datos para ingresar'+req.session.datos.nom)
+        var rol=req.session.datos.rol;
         var nom=req.session.datos.nom;
         var apell=req.session.datos.apell;
         var correo=req.session.datos.correo;
         var pass=req.session.datos.pass;
         var username = req.body.usuario
-        console.log(username)
+        console.log(req.session.datos)
 
 
 
-        consulta.RegistrarCliente(conexion,{nom,apell,username,correo,pass})
-        .then(datos => {
-            console.log('datos insertados con exito',datos)
+
+        try {
+            var datos = await consulta.RegistrarCliente(conexion,{username,correo,pass,rol})
+            console.log('datos insertados')
+            console.log(datos)
+            var id = datos.insertId
+
+            await consulta.Cliente(conexion,id,nom,apell)
+
+
             res.redirect('/marca')
-        })
-        .catch(error => {
+            
+        } catch (error) {
             console.error('error al insertar', error)
             res.status(500).send('Error al insertar')
-        })
+            
+        }
+
+        
+       
       
     },
 

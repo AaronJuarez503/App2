@@ -1,6 +1,6 @@
 module.exports={
     marcas:function(conexion){
-        const consulta = `SELECT * FROM marca  `;
+        const consulta = `SELECT * FROM marcas  `;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
@@ -13,7 +13,7 @@ module.exports={
         })
     },
     productos:function(conexion,id){
-        const consulta = `SELECT * FROM productos WHERE id_marca = ${id}`;
+        const consulta = `SELECT * FROM productos WHERE marca_id = ${id}`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
