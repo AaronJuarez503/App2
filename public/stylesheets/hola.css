@@ -13,7 +13,7 @@ body {
     justify-content:center;
     align-items: center;
     min-height: 100vh;
-    background: #081b29;
+    background: #080202;
     height: 700px;
 }
 .wrapper{
@@ -21,10 +21,10 @@ body {
     width: 800px;
     height: 500px;
     background: transparent;
-    border: 2px solid #0ef;
-    box-shadow: 0 0 25px #0ef;
+    border: 2px solid  #DB241B;
+    box-shadow: 0 0 25px #DB241B;
     overflow: hidden;
-    zoom: 80%;
+    zoom: 50px;
     
     
 }
@@ -34,10 +34,10 @@ body {
         width: 400px;
         height: 950px;
         background: transparent;
-        border: 2px solid #0ef;
+        border: 2px solid #DB241B;
         box-shadow: none;
         overflow: hidden;
-        zoom:125% ;
+        zoom:none ;
     }
 }
 
@@ -107,7 +107,7 @@ transition: .5s;
 
 .input-box input:focus,
 .input-box input:valid {
-    border-bottom-color:#0ef;
+    border-bottom-color:#DB241B;
 }
 
 .input-box label {
@@ -123,7 +123,7 @@ transition: .5s;
 .input-box input:focus~label,
 .input-box input:valid~label{
     top: -5px;
-    color: #0ef;
+    color: #A7A7A7;
 }
 
 .input-box i{
@@ -137,14 +137,14 @@ transition: .5s;
 }
 .input-box input:focus~i,
 .input-box input:valid~i{
-    color: #0ef;
+    color:#DB241B;
 }
 .btn{
     position: relative;
     width: 100%;
     height: 45px;
     background: transparent;
-    border: 2px solid #0ef;
+    border: 2px solid #080202;
     outline: none;
     border-radius: 40px;
     cursor: pointer;
@@ -163,7 +163,7 @@ transition: .5s;
     left: 0;
     width: 100%;
     height: 300%;
-    background: linear-gradient(#081b29,#0ef,#081b29,#0ef);
+    background: linear-gradient(#DB241B,#080202,#DB241B,#080202);
     z-index: -1;
     transition: .5s;
 }
@@ -174,13 +174,13 @@ transition: .5s;
 
 .form-box .logreg-link{
     font-size: 14.5px;
-    color: #fff;
+    color:  #A7A7A7;
     text-align: center;
     margin: 20px 0 10px;
 }
 
 .logreg-link p a{
-    color: #0ef;
+    color: #A7A7A7;
     text-decoration: none;
     font-weight: 600;
 }
@@ -234,14 +234,14 @@ transition: .5s;
      right: 0;
      width: 850px;
      height: 480px;
-     background: linear-gradient(45deg ,#081b29 , #0ef);
-     border-bottom: 3px solid #0ef;
+     background: linear-gradient(45deg ,#080202 , #A7A7A7);
+     border-bottom: 3px solid #DB241B;
     transform: rotate(10deg)skewY(40deg) ;
    /* transform: rotate (0) skewY(0);*/
     transform-origin:bottom right ;
 }
 .wrapper .bg-animate2{
-    position: absolute;
+   /* position: absolute;
     top: 100%;
     left: 250px;
     width: 850px;
@@ -249,9 +249,10 @@ transition: .5s;
     background:#081b29;
     border-top: 3px solid #0ef;
     border-top: 3px soli #0ef;
-   /* transform: rotate(-11deg) skewY(-41deg);*/
+    transform: rotate(-11deg) skewY(-41deg);
     transform: rotate(0) skewY(0);
     transform-origin: bottom left;
+    */
 }
 .holi{
 font-size: 11px;
@@ -265,7 +266,7 @@ color: #fff;
     height: 70%;
     display: flex;
     justify-content: center ;
-    box-shadow: 0 0 25px #0ef;
+    box-shadow: 0 0 25px #DB241B;
     
 }
 @media (max-width:799px){
@@ -288,7 +289,7 @@ color: #fff;
     height: 90%;
     display: flex;
     justify-content: center ;
-    box-shadow: 0 0 25px #0ef;
+    box-shadow: 0 0 25px #DB241B;
 }
 @media (max-width:799px){
     .box2{
@@ -312,7 +313,7 @@ color: #fff;
         height: 60%;
         justify-content: center;
         display: flex;
-        box-shadow: 0 0 25px #0ef;
+        box-shadow: 0 0 25px #DB241B;
     }
     @media (max-width:799px){
         .box3{
@@ -333,7 +334,7 @@ color: #fff;
  height: 60%;
  justify-content: center;
  display: flex;
- box-shadow: 0 0 25px #0ef;
+ box-shadow: 0 0 25px #DB241B;
 }
 @media (max-width:799px){
     .box4{
@@ -351,7 +352,7 @@ color: #fff;
     height: 60%;
     justify-content: center;
     display: flex;
-    box-shadow: 0 0 25px #0ef;
+    box-shadow: 0 0 25px #DB241B;
    }
    @media (max-width:799px){
     .box5{
@@ -363,13 +364,7 @@ color: #fff;
         zoom: 125%;
         }
  
-   }
-   .wrapper .img{
-    position: relative;
-    width: 300px;
-    height: 300px;
-    left: 550px;
-}
+
 .ley{
     left: 448px;
 }
