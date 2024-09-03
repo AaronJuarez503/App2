@@ -19,7 +19,7 @@ const result = (req)=>{
 module.exports={
   user:[
     body('usuario')
-    .notEmpty().withMessage('El nombre es requerido')
+    .notEmpty().withMessage('El Usuario es requerido')
     .isLength({min:5}).withMessage('el nombre debe contener almenos 5 caracteres'),
     body('usuario').custom(async value => {            
      const user = await controller.findUser(value);
