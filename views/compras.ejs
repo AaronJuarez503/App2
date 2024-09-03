@@ -31,7 +31,7 @@
     <img class="logo" src="/stylesheets/logos-removebg-preview.png" alt="">
 
     <!--botones de aceptar y cancelar el pedido-->
-    <button class="accep">Aceptar</button>
+    <button class="accep" >Aceptar</button>
     <button class="cancel">Cancelar</button>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -91,14 +91,14 @@
         }
     });
 
-    $('#container').off('click', '#btn').on('click', '#btn', function() {
+    $('.accep').click(function() {
         console.log('hola')
 
        /* var id = $(this).data('id');
 
         console.log(id)
         $(`#${id}`).closest('tr').remove();*/
-        location.href = '/pedido';
+        location.href = '/users/pedido';
 
     })
 
