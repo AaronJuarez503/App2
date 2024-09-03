@@ -64,8 +64,18 @@ module.exports={
             // buscando usuario en la bd
             try {
                 var  respuestabd = await consulta.buscarusuario(conexion,username,password)
-                console.log("tu respuesta de la bd es  ; " + respuestabd)
+                console.log("tu respuesta de la bd es  ; " )
+                console.log( respuestabd)
+                var play={
+                    id:respuestabd.id
+                  }
+                  res.cookie('perfil',play,{ httpOnly: true,secure: true });
+  
                 res.render('Pagina_inicio/index');
+
+         
+
+                
 
                 
     

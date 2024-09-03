@@ -23,7 +23,7 @@
 
                 <div class="menu-1">
                     <ul>
-                        <li><a href="/tienda">Ingresar Tienda</a></li>
+                        <li><a href="/tienda" id="link-1" >Ingresar Tienda</a></li>
                         <li><a href="/marca">Marcas</a></li>
                         <li><a href="/pedido">Estado del pedido</a></li>
                     </ul>
@@ -429,7 +429,7 @@
                         <div class="social">
                             <img src="images2/s3.svg" alt="">
                         </div>
-                    </a>
+                    </a >
                 </div>
             </div> 
         </div>
@@ -440,6 +440,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="../javascript/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
+      if (renderedValue !== "") {
+        $('#captured-value').text(renderedValue);
+        $('#link-1').text('Al parecer ya tienes una tienda quieres verla 🥵');
+        $('#link-1').attr('href', '/users/vertienda');
+        console.log('Valor capturado:', renderedValue);
+      } else {
+        console.log('No se recibió un valor desde el servidor.');
+      }
+        });</script>
 </body>
 
 </html>

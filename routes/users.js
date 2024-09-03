@@ -49,6 +49,12 @@ router.get('/compra', (req, res) => {
 });
 
 
+router.get('/vertienda', (req, res) => {
+    
+    res.send("<center><h1 style='color: red;' >UPS! ocurrio un error estamos trabajando en ello regresa mas tarde</h1></center>")
+});
+
+
 
 
 

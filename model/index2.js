@@ -25,9 +25,9 @@ module.exports={
             
         })
     },
-    Insertartienda:function(conexion,id_cliente,datos){
+    Insertartienda:function(conexion,cliente_id,nombre,direccion){
         console.log('entrando')
-        const consulta = `INSERT INTO tienda (id_cliente, nombre, direccion, telefono) VALUES ('${id_cliente}', '${datos.nombre}', '${datos.direccion}', '${datos.numero}')`;
+        const consulta = `INSERT INTO tiendas (cliente_id, nombre, dirreccion) VALUES (${cliente_id}, '${nombre}','${direccion}')`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {

@@ -34,10 +34,13 @@ module.exports={
     },
 
     Insertartienda: async function (req,res) {
+
+        const token = req.cookies.perfil;
+        console.log(token)
         try {
             console.log(req.body)
-           await model.Insertartienda(con,38,req.body)
-            res.send('hola')
+           await model.Insertartienda(con,token.id,req.body.nombre,req.body.direccion)
+            res.render('Pagina_inicio/index',{value:'hola'})
 
         } catch (error) {
 

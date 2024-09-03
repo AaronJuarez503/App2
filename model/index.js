@@ -1,7 +1,7 @@
 module.exports={
 
     buscarusuario:function (conexion,username,password) {
-        const consulta = `SELECT * FROM usuarios WHERE usuario = '${username}' AND contrasena ='${password}'`;
+        const consulta = `SELECT * FROM usuarios WHERE usuario = '${username}' AND contrasena ='${password}' AND rol ='cliente'`;
         //id_rol,usuario,correo, contraseña
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
@@ -9,7 +9,7 @@ module.exports={
                     throw error;
                 } else {
                     if (datos.length > 0) {
-                        console.log(datos)
+                        
                         
                         return resolve(datos[0]);
                     } else {
