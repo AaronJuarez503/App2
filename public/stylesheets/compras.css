@@ -22,12 +22,10 @@ body{
 
 .contenedor{
     position: absolute;
-    border: 2px solid;
     height: 300px;
     width: 600px;
     top: 20%;
     left: 28%;
-    border-color: aqua;
     overflow: auto;
 }
 
@@ -49,166 +47,90 @@ img {
     width: 50px;
     height: 50px;
 }
-button {
-    background-color: #ff3333;
-    color: white;
-    border: none;
-    padding: 5px 10px;
+.bx{
     cursor: pointer;
 }
-button:hover {
-    background-color: #cc0000;
-}¬
 
-/*/contenido de imagen/*/
-.logo1{
-    position: absolute;
-    height: 100%;
-    width: 20%;
-    background-color: aqua;
-    left: 1%;
+.bx:hover{
+    color: rgb(255, 0, 149);
 }
-.logo2{
+.logo{
     position: absolute;
-    height: 100%;
-    width: 20%;
-    background-color: aqua;
-    left: 1%;
+    height: 40%;
+    width: 26%;
+    top: -10%;
 }
-.logo3{
+.accep{
     position: absolute;
-    height: 100%;
-    width: 20%;
-    background-color: aqua;
-    left: 1%;
-}
-.logo4{
-    position: absolute;
-    height: 100%;
-    width: 20%;
-    background-color: aqua;
-    left: 1%;
-}
-/*/ contenido de descripcion/*/
-.descrip{
-    position: absolute;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    left: 23%;
-    height: 100%;
-    width: 30%;
-}
-.stock{
-    position: absolute;
-    text-align: center;
-    color: white;
-    left: 55%;
-    height: 100%;
-    width: 36%;
-}
-.descripp{
-    position: absolute;
-    text-align: center;
-    top: 30%;
-    right: 6%;
-    color: aqua;
-}
-.unidades{
-    position: absolute;
-    top: 30%;
-    right: 50%;
+    border: none;
+    top: 74%;
     left: 50%;
-    font-size: 15px;
+    height: 38px;
+    width: 100px;
+    border-radius: 5px;
+    color: #f2f2f2;
+    background-color: #072f4d;
+    cursor: pointer;
 }
-.unidd{
+ .accep:hover{
+    background-color: #09bb21;
+    color: #ffffff;
+}
+.cancel{
     position: absolute;
-    border: 2px solid;
-    height: 99%;
-    width: 51%;
-    left: 0%;
-    top: 1px;
-    font-size: 15px;
-    border-color: #000000;
+    border: none;
+    top: 74%;
+    left: 40%;
+    height: 38px;
+    width: 100px;
+    border-radius: 5px;
+    color: #f2f2f2;
+    background-color: #072f4d;
+    cursor: pointer;
 }
+ .cancel:hover{
+    background-color: #cc0000;
+    color: #ffffff;
+}
+/* Default styles for desktop */
+/* ... existing CSS ... */
 
-.pedidoss{
-    position: absolute;
-    left: 16%;
-    top: 33%;
-    color: aqua;
-}
-.precio{
-    position: absolute;
-    border: 2px solid;
-    height: 100%;
-    width: 18%;
-    left: 73%;
-    font-size: 15px;
-}
-.prec{
-    position: absolute;
-    top: 40%;
-    left: 20%;
-}
-.titulo2{
-    position: absolute;
-    text-align: center;
-    left: 30%;
-    font-size: 17px;
-    color: white;
-}
-.titulo3{
-    position: absolute;
-    top: 35%;
-    left: 15%;
-    color: aqua;
-}
-/*/ Boton de eliminar o editar etc/*/
-.eliminar1{
-    position: absolute;
-    left: 94%;
-    top: 4%;
-    font-size: 30px;
-    cursor: pointer;
-}
-.eliminar2{
-    position: absolute;
-    left: 94%;
-    top: 37%;
-    font-size: 30px;
-    cursor: pointer;
-}
-.eliminar3{
-    position: absolute;
-    left: 94%;
-    top: 70%;
-    font-size: 30px;
-    cursor: pointer;
-}
-.eliminar4{
-    position: absolute;
-    left: 94%;
-    top: 103%;
-    font-size: 30px;
-    cursor: pointer;
-}
-.acep{
-    position: absolute;
-    top: 85%;
-    left: 54%;
-    height: 35px;
-    width: 80px;
-    border: none;
-    border-radius: 6px;
-    background-color: rgb(134, 2, 90);
-}
-.cance{
-    position: absolute;
-    top: 85%;
-    left: 42%;
-    height: 35px;
-    width: 80px;
-    border: none;
-    border-radius: 6px;
-    background-color: rgb(4, 157, 168);
+/* Media query for mobile devices */
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: #081b29;
+  }
+
+  .titulo {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+  }
+
+  .contenedor {
+    height: auto;
+    width: 90%;
+    left: 5%;
+    top: 25%;
+    overflow: visible;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 4px;
+  }
+
+  .logo {
+    display: none;
+  }
+  .accep, .cancel {
+    position: static;
+    margin: 10px auto;
+    display: block;
+    left: 0;
+    right: 0;
+  }
 }

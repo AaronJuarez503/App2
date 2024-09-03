@@ -17,17 +17,30 @@
                     <th>Imagen</th>
                     <th>Descripción</th>
                     <th>Cantidad</th>
-                    <th>Stock</th>
                     <th>Acciones</th>
+                    <th>Total</th>
                 </tr>
+                <!--se la come ever -->
+                <tr id="${nombre}">
+                    <td><img src='nrgtg'' alt="Producto 1"></td>
+                    <td>ever</td>
+                    <td>12</td>
+                    <td>1500</td>
+                    <td><i class='bx bxs-trash' style='color:#ff0000; font-size: 24px;''></i></td>
+                </tr>
+                
             </thead>
             <tbody>
                 
             </tbody>
         </table>
     </div>  
+   <!--logo de la empresa-->
+    <img class="logo" src="/stylesheets/logos-removebg-preview.png" alt="">
 
-   
+    <!--botones de aceptar y cancelar el pedido-->
+    <button class="accep">Aceptar</button>
+    <button class="cancel">Cancelar</button>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
@@ -59,6 +72,7 @@
                     <td>${nombre}</td>
                     <td>${cantidad}</td>
                     <td>${precio}</td>
+                    td>${total}</td>
                     <td><button data-id="${nombre}"  id="btn">Aceptar</button></td>
                 </tr>
                 
