@@ -19,8 +19,8 @@ body{
     position: absolute;
     left: 31%;
     top: 25%;
-    width: 40%;
-    height: 60%;
+    width: 41%;
+    height: 65%;
     border-radius: 12px;
     border: 2px solid;
     border-color: aqua;
@@ -31,42 +31,37 @@ body{
     color: white;
     text-align: center;
     font-size: 21px;
-    top: 9%;    
+    top: 40%;    
     text-align: center;
     left: 1%;
 }
-.codigo_generado{
+.adver{
     position: absolute;
-    left: 24%;
-    top: 30%;
-    width: 50%;
-    height: 9%;
-    border: none;
-    border-radius: 8px;
-}
-.contenido_codigo{
-    position: absolute;
-    top: 35%;
-    left: 33%;
-    border: 2px solid;
-    border-radius: 8px;
-    border-color: #0ef;
-    height: 8%;
+    height: 35%;
     width: 30%;
-    color: white;
-    text-align: center;
-    font-size: 23px;
-    box-shadow:  0 0 25px rgb(139, 3, 44);
+    left: 33%;
+    top: 5%;
 }
 .codigos{
     position: absolute;
-    top: 50%;
-    left: 34%;
+    top: 63%;
+    left: 28%;
     height: 10%;
-    width: 30%;
+    width: 40%;
     border: 2px solid;
     border-color: red;
     box-shadow:  0 0 25px rgb(139, 3, 44);
+}
+.cod{
+    position: absolute;
+    top: 1%;
+    height: 90%;
+    width: 97%;
+    border: none;
+    background: none;
+    color: white;
+    text-align:center;
+    outline: none;
 }
 .logo{
     position: absolute;
@@ -76,34 +71,30 @@ body{
 }
 .accion_ok{
     position: absolute;
-    top: 65%;
-    left: 39%;
+    top: 80%;
+    left: 36%;
     height: 12%;
-    width: 18%;
+    width: 25%;
     border-radius: 9px;
     border: none;
-    background-color: rgb(55, 89, 92);
+    background-color: rgb(3, 83, 88);
     color: white;
     cursor: pointer;
-}
-@keyframes scaleAnimation {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-.accion_ok:hover{
-    background-color: #5f1e34;
-}
-.accion_ok:hover {
-    background-color: #5f1e34;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    outline: 1px solid;
+    outline-color: rgba(83, 1, 1, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
 }
 
-.accion_ok:active {
-    animation: scaleAnimation 0.3s ease;
+.accion_ok:hover {
+    border: 1px solid;
+    border-color: #ff0000;
+    box-shadow: inset 0 0 20px rgba(248, 3, 3, 0.5),
+        0 0 20px rgba(255, 0, 0, 0.486);
+    outline-color: rgba(255, 0, 0, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #ff0000;
+    color: rgb(255, 0, 106);
+    background-color: rgb(19, 18, 18);
 }
