@@ -50,10 +50,6 @@ img {
 .bx{
     cursor: pointer;
 }
-
-.bx:hover{
-    color: rgb(255, 0, 149);
-}
 .logo{
     position: absolute;
     height: 40%;
