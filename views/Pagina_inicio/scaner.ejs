@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escáner de Códigos QR Simple</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        #reader {
+            width: 100%;
+            max-width: 500px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            word-break: break-all;
+        }
+        #restart-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Escáner de Códigos QR</h1>
+    <div id="reader"></div>
+    <div id="result"></div>
+    <button id="restart-button" style="display: none;">Reiniciar Escaneo</button>
+
+    <script>
+        const scanner = new Html5Qrcode("reader");
+        const resultElement = document.getElementById("result");
+        const restartButton = document.getElementById("restart-button");
+
+        function onScanSuccess(decodedText, decodedResult) {
+            resultElement.innerHTML = `Código QR escaneado: ${decodedText}`;
+            scanner.stop();
+            restartButton.style.display = 'block';
+        }
+
+        function onScanFailure(error) {
+            // Manejo de errores silencioso
+        }
+
+        function startScanner() {
+            scanner.start(
+                { facingMode: "environment" },
+                { fps: 10, qrbox: 250 },
+                onScanSuccess,
+                onScanFailure
+            ).catch((err) => {
+                console.error("Error al iniciar el escáner:", err);
+                resultElement.innerHTML = "Error al iniciar el escáner. Por favor, asegúrate de que tienes una cámara y has dado los permisos necesarios.";
+                restartButton.style.display = 'block';
+            });
+        }
+
+        restartButton.addEventListener('click', () => {
+            resultElement.innerHTML = "";
+            restartButton.style.display = 'none';
+            startScanner();
+        });
+
+        startScanner();
+    </script>
+</body>
+</html>
