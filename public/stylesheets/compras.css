@@ -50,10 +50,6 @@ img {
 .bx{
     cursor: pointer;
 }
-
-.bx:hover{
-    color: rgb(255, 0, 149);
-}
 .logo{
     position: absolute;
     height: 40%;
@@ -125,7 +121,7 @@ img {
 
   .logo {
     display: none;
-  }
+  }order_shop
   .accep, .cancel {
     position: static;
     margin: 10px auto;

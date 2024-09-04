@@ -1,0 +1,93 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #081b29;
+}
+.titulo_tema{
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 100%;
+    top: 4%;
+    left: 31%;
+    width: 40%;
+    font-size: 40px;
+}
+.conteiner{
+    position: absolute;
+    left: 31%;
+    top: 25%;
+    width: 41%;
+    height: 65%;
+    border-radius: 12px;
+    border: 2px solid;
+    border-color: aqua;
+    box-shadow:  0 0 25px #0ef;
+}
+.titulo_codigo{
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-size: 21px;
+    top: 40%;    
+    text-align: center;
+    left: 1%;
+}
+.adver{
+    position: absolute;
+    height: 35%;
+    width: 30%;
+    left: 33%;
+    top: 5%;
+}
+.codigos{
+    position: absolute;
+    top: 63%;
+    left: 28%;
+    height: 10%;
+    width: 40%;
+    border: 2px solid;
+    border-color: red;
+    box-shadow:  0 0 25px rgb(139, 3, 44);
+}
+.cod{
+    position: absolute;
+    top: 1%;
+    height: 90%;
+    width: 97%;
+    border: none;
+    background: none;
+    color: white;
+    text-align:center;
+    outline: none;
+}
+.logo{
+    position: absolute;
+    top: -10%;
+    height: 41%;
+    width: 25%;
+}
+.accion_ok{
+    position: absolute;
+    top: 80%;
+    left: 36%;
+    height: 12%;
+    width: 25%;
+    border-radius: 9px;
+    border: none;
+    background-color: rgb(3, 83, 88);
+    color: white;
+    cursor: pointer;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    outline: 1px solid;
+    outline-color: rgba(83, 1, 1, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
+}
+
+.accion_ok:hover {
+    background-color: black;
+    color: red;
+}
