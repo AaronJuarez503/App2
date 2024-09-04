@@ -225,22 +225,26 @@ body{
     justify-content: center;
     width: 120px;
     border: 1px solid #0084ff;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 .counter button {
-    background-color: #025a69;
+    background-color: transparent;
     border: none;
     padding: 10px;
     cursor: pointer;
+    color: white;
 }
 .counter button:focus {
     outline: none;
 }
 .counter input {
-    width: 40px;
+    width: 25px;
     text-align: center;
     border: none;
     font-size: 16px;
+    height: 33px;
+    background-color: transparent;
+    color: white;
 }
 .counter input:focus {
     outline: none;
