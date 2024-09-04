@@ -66,11 +66,19 @@ module.exports={
                 var  respuestabd = await consulta.buscarusuario(conexion,username,password)
                 console.log("tu respuesta de la bd es  ; " )
                 console.log( respuestabd)
+                var rmarca= await consulta.buscarmarcas(conexion,respuestabd.id)
+                console.log(rmarca)
                 var play={
-                    id:respuestabd.id
+                    id:respuestabd.id,
+                    tienda_id:rmarca.id,
+                    tienda_nom:rmarca.nombre
+                   
                   }
+                
+
+                 
                   res.cookie('perfil',play,{ httpOnly: true,secure: true });
-  
+                  
                 res.render('Pagina_inicio/index');
 
          

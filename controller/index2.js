@@ -46,5 +46,57 @@ module.exports={
 
         }
 
+    },
+    insertarpedido: async function(req,res) {
+        const token = req.cookies.perfil;
+        var productos=req.body.items
+        console.log(productos)
+
+        const idsYTotales = productos.map(producto => ({
+            cliente_id:token.id,
+            tienda_id:token.tienda_id,
+            marca_id:producto.marca,
+            total: producto.total
+          }));
+
+        const detallesp=productos.map(({ marca, ...resto }) => resto);
+          
+          console.log(idsYTotales);
+          console.log(detallesp);
+
+
+        
+
+          try {
+            var resultado = await model.Insertarpedido(con,idsYTotales)
+
+            const insertedIds = resultado.insertId ? [resultado.insertId] : [];
+            for (let i = 1; i < resultado.affectedRows; i++) {
+                insertedIds.push(resultado.insertId + i);
+            }
+
+            console.log(insertedIds)
+
+            const updatedProductos = detallesp.map((producto, index) => {
+                return {
+                  pedido_id: insertedIds[index],
+                  ...producto
+                };
+              });
+              
+              console.log(updatedProductos);
+
+              await model.Insertardetalles(con,updatedProductos)
+
+              res.send('Pedido realizado con éxito!')
+              
+
+            
+          } catch (error) {
+            
+          }
+
+        
+        
     }
 }

@@ -171,7 +171,7 @@ $.ajax({
             var $button1 = $template.find('button').eq(0);
             var $button2 = $template.find('button').eq(1);
             var $button3 = $template.find('button').eq(2);
-            $button3.attr('data-id_m', item.id_marca);
+            $button3.attr('data-id_m', item.marca_id);
             $button3.attr('data-id', item.id);
 
             
@@ -262,7 +262,7 @@ $.ajax({
 
         var datos = {
             id:id,
-            id_marca: id_marca,
+            marca:id_marca,
             nombre: nombre,
             imagen: imageUrl,
             precio: precio,
