@@ -8,7 +8,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color:  #081b29;
+    background-color:#080202  ;
     font-family: 'Poppins', sans-serif;
 }
 #mio{
@@ -18,6 +18,7 @@ body{
     gap: 50px;
     flex-wrap: wrap;
     justify-content: center;
+    border-color: #DB241B;
 
 }
 
@@ -25,10 +26,10 @@ body{
     position: relative;
     width: 300px;
     height: 300px;
-    right: 8.5%;
-    background: #fff;
+    right: 28%;
+    background: #0d0d0d;
     border-radius: 40px;
-    box-shadow: 0 20px 25px rgba (0,0,0,0.25,);
+    box-shadow: 0 20px 25px rgba (0,0,0,0.25,) ;
     transition: 0.5s;
     overflow: hidden;
 }
@@ -68,7 +69,7 @@ body{
     width: 100%;
     height: 80px;
     border-radius: 40px;
-    background: #fff;
+    background:#0d0d0d;
 }
 
 #mio .card .imgBx::after{
@@ -80,7 +81,7 @@ body{
     height: 80px;
     background: transparent;
     border-radius: 50%;
-    box-shadow: 75px 70px 0 40px #fff;
+    box-shadow: 75px 70px 0 40px #DB241B;
 
 }
 
@@ -95,7 +96,8 @@ body{
 #mio .card .content h3{
      position: relative;
     font-size: 1.25em;
-    color: #333;
+    color: #f4f4ff;
+    font-weight: 900;
 
 }
 
@@ -111,7 +113,7 @@ body{
     position: relative;
     opacity: 0;
     transition: 0.5s;
-    color: #333;
+    color: #f4f4ff;
 }
 
 #mio .card:hover .content p{
@@ -130,7 +132,7 @@ body{
     position: relative;
     width: 300px;
     height: 300px;
-    background: #fff;
+    background:#0d0d0d;
     border-radius: 40px;
     box-shadow: 0 20px 25px rgba (0,0,0,0.25,);
     transition: 0.5s;
@@ -168,7 +170,7 @@ body{
     width: 100%;
     height: 80px;
     border-radius: 40px;
-    background: #fff;
+    background:#0d0d0d;
 }
 
 .container .card .imgBx::after{
@@ -180,7 +182,7 @@ body{
     height: 80px;
     background: transparent;
     border-radius: 50%;
-    box-shadow: 75px 70px 0 40px #fff;
+    box-shadow: 75px 70px 0 40px #0d0d0d;
 
 }
 
@@ -277,4 +279,12 @@ body{
     right: 479%;
     top: -10%;
     cursor: pointer;
+}
+
+.product{
+    color: #DB241B;
+    position: relative;
+    top: -250px;
+    right: -145px;
+    
 }
