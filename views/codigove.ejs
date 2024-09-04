@@ -9,15 +9,17 @@
 <body>
     <h1 class="titulo_tema">Ordershop te da la Bienvenida</h1>
 
-    <img class="logo" src="" alt="">
+    <img class="logo" src="/stylesheets/logos-removebg-preview.png" alt="">
 
     <div  class="conteiner">
+        <img class="adver" src="/stylesheets/pngwing.com-removebg-preview.png" alt="">
         <form action="/adminr/uploads" method="get">
-            <p class="titulo_codigo">Tu Codigo Generado es el Siguiente: </p>
-            
-            
-        <p class="contenido_codigo"># <span><% if(typeof codigo != 'undefined') { %><%= codigo %><% } %></span></p>
+            <p class="titulo_codigo">Por motivos de seguridad de la empresa se le pide, por favor, ingresar el código que se le dio al registrarse con nosotros.</p>
 
+            <div class="codigos">
+                 <input class="cod" type="text" name="codigo" placeholder="Ingresa el código">
+            </div>
+           
         <button class="accion_ok" type="submit">Aceptar</button>
 
         </form>
