@@ -78,4 +78,49 @@ module.exports={
 
         })
     },
+
+    verpedidos:function (conexion) {
+        const consulta =`
+        
+       SELECT 
+        pa.id AS pedido_id,
+        pa.cliente_id,
+        pa.marca_id,
+        pa.fecha_pedido,
+        pa.estado,
+        pa.fecha_estimada_entrega,
+        pa.total,
+        dp.id AS detalle_pedido_id,
+        dp.producto_id,
+        dp.cantidad,
+        dp.precio_unitario,
+        dp.subtotal AS subtotal_producto,
+        p.id AS producto_id,
+        p.precio AS producto_precio,
+        p.imagen AS producto_imagen,
+        p.nombre AS producto_nombre,
+        m.nombre AS marca_nombre,
+        m.imagen AS marcas_imagen
+      FROM 
+        pedidos_activos pa
+        INNER JOIN detalles_pedido dp ON pa.id = dp.pedido_id
+        INNER JOIN productos p ON dp.producto_id = p.id
+        LEFT JOIN marcas m ON pa.marca_id = m.id
+      WHERE 
+        pa.cliente_id = ?
+        `
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, 16, function (error, resultado) {
+                if (error) {
+                    throw (error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+
+        })
+        
+    }
+
+
     }
