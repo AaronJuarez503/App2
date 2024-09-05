@@ -26,7 +26,7 @@
        
                 <input type="text" id="codigo" name="codigo" >
                 <label>Ingrese aqui</label>
-                <i class='bx bxs-camera'></i>
+                <i id="camera-icon" class='bx bxs-camera'></i>
              </div>
               
                  <button type="submit" class="btn6" id="boton">Enviar
@@ -41,7 +41,9 @@
     <button id="restart-button" style="display: none;">Reiniciar Escaneo</button>
 
     <script>
-        const scanner = new Html5Qrcode("reader");
+
+        function iniciar() {
+            const scanner = new Html5Qrcode("reader");
         const resultElement = document.getElementById("result");
         const restartButton = document.getElementById("restart-button");
 
@@ -75,6 +77,18 @@
         });
 
         startScanner();
+            
+        }
+    const cameraIcon = document.getElementById('camera-icon');
+
+    
+    cameraIcon.addEventListener('click', () => {
+     
+      iniciar()
+    })
+
+
+        
     </script>
         </div>
         <style>
