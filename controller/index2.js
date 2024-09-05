@@ -123,28 +123,42 @@ module.exports={
 
 
            const resultadoSeparado = separarPorMarcaId(result);
-           const unifiedArray = resultadoSeparado[4].reduce((acc, item) => {
-            const existingItem = acc.find(i => i.producto_id === item.producto_id);
-            if (existingItem) {
-              existingItem.cantidad += item.cantidad;
-              existingItem.total += item.total;
-            } else {
-              acc.push({
-                producto_id: item.producto_id,
-                imagen: item.producto_imagen,
-                nombre: item.producto_nombre,
-                cantidad: item.cantidad,
-                total: item.total
-              });
-            }
-            return acc;
-          }, []);
+
+           
+
+
+
           
           
           
-          console.log("Array unificado:", unifiedArray);
+          
+         
+
+          Object.keys(resultadoSeparado).forEach(marcaId => {
+            //console.log(`Datos de la marca con ID ${marcaId}:`) 
+            const unifiedArray = resultadoSeparado[marcaId].reduce((acc, item) => {
+                const existingItem = acc.find(i => i.producto_id === item.producto_id);
+                if (existingItem) {
+                  existingItem.cantidad += item.cantidad;
+                  existingItem.total += item.total;
+                } else {
+                  acc.push({
+                    producto_id: item.producto_id,
+                    imagen: item.producto_imagen,
+                    nombre: item.producto_nombre,
+                    cantidad: item.cantidad,
+                    total: item.total
+                  });
+                }
+                return acc;
+              }, []);
+
+              console.log(`Datos de la marca con ID ${marcaId}:`, unifiedArray);
+        })
+            
+
           //console.log(resultadoSeparado);
-          res.send(resultadoSeparado[4])
+          res.send(resultadoSeparado)
 
         
 
