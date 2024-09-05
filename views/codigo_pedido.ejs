@@ -38,19 +38,21 @@
          
     <div id="reader"></div>
     <div id="result"></div>
-    <button id="restart-button" style="display: none;">Reiniciar Escaneo</button>
-
+    
     <script>
 
         function iniciar() {
             const scanner = new Html5Qrcode("reader");
         const resultElement = document.getElementById("result");
-        const restartButton = document.getElementById("restart-button");
+        var inputElement = document.getElementById("codigo");
+
+       // const restartButton = document.getElementById("restart-button");
 
         function onScanSuccess(decodedText, decodedResult) {
-            resultElement.innerHTML = `Código QR escaneado: ${decodedText}`;
+          //  resultElement.innerHTML = `Código QR escaneado: ${decodedText}`;
+            inputElement.value = decodedText;
             scanner.stop();
-            restartButton.style.display = 'block';
+           // restartButton.style.display = 'block';
         }
 
         function onScanFailure(error) {
@@ -70,17 +72,18 @@
             });
         }
 
-        restartButton.addEventListener('click', () => {
+       /* restartButton.addEventListener('click', () => {
             resultElement.innerHTML = "";
             restartButton.style.display = 'none';
             startScanner();
-        });
+        });*/
         startScanner();
         }
     const cameraIcon = document.getElementById('camera-icon');
 
     
     cameraIcon.addEventListener('click', () => {
+        console.log('iniciando camara')
      
       iniciar()
     })
