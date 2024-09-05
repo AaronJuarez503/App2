@@ -73,6 +73,43 @@
        
     </div>
     <br>
+
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+            <script>
+            var swipeArea = document.getElementById('swipeArea');
+                
+                // Crea una instancia de Hammer en el área seleccionada
+                var hammer = new Hammer(document.body);
+
+                hammer.on('swipeleft', function(event) {
+                // Código para manejar el deslizamiento hacia la izquierda
+                console.log('Deslizamiento hacia la izquierda detectado');
+                window.location.href = '/principal'
+            });
+
+            // Escucha el evento de deslizamiento hacia la derecha
+            hammer.on('swiperight', function(event) {
+                // Código para manejar el deslizamiento hacia la derecha
+                console.log('Deslizamiento hacia la derecha detectado');
+                
+                
+             
+                
+            });
+                
+                // Configura para detectar deslizamientos hacia la izquierda
+            /* hammer.get('swipe').set({ direction: Hammer.DIRECTION_LEFT });
+                
+                // Escucha el evento de deslizamiento hacia la izquierda
+                hammer.on('swipeleft', function(event) {
+                
+                // Redirige a otra página o muestra otro archivo
+                window.location.href = 'index2.html'})*/
+
+
+
+
+            </script>
     
 </body>
 </html>
