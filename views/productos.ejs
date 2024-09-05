@@ -158,7 +158,6 @@ $.ajax({
         `;
         $('#mio').append(html);
 
-        console.log(html)
        // $('#cart-items').append(html);
     }
         
@@ -263,8 +262,10 @@ $.ajax({
 
     function actualizarCantidadEnUI(producto) {
         var $item = $(`.cart-item[data-nombre="${producto.nombre}"]`);
-        $item.find('.item-quantity').text(`Cantidad: ${producto.cantidad}`);
+       // $item.find('.item-quantity').text(`Cantidad: ${producto.cantidad}`);
         $item.find('.item-price').text(`$${producto.total.toFixed(2)}`);
+        var $item = $(`.counter[data-nombre="${producto.nombre}"]`);
+        $item.find('#number').val(`${producto.cantidad}`);
     }
 
     function agregarNuevoProductoAUI(producto) {
@@ -274,12 +275,12 @@ $.ajax({
                 <div class="item-info">
                     <div class="item-name">${producto.nombre}</div>
                     <div class="item-price">$${producto.total.toFixed(2)}</div>
-                    <div class="item-quantity">Cantidad: ${producto.cantidad}</div>
+
                 </div>
-                 <div class="counter">
-                    <button onclick="decrement()">&#8722;</button>
-                    <input type="text" id="number" value="0" readonly>
-                    <button onclick="increment()">&#43;</button>
+                 <div class="counter" data-nombre="${producto.nombre}" >
+                    <button id="men" data-id="${producto.id}" >&#8722;</button>
+                    <input type="text" id="number" value="${producto.cantidad}" readonly>
+                    <button id="man" data-id="${producto.id}" >&#43;</button>
                 </div>
                 <span class="remove-item">×</span>
             </div>
@@ -342,6 +343,45 @@ $.ajax({
         }
 
         cargarCarritoDesdeLocalStorage();
+
+        //menos mas
+
+        function actualizarCantidad(id, incremento) {
+            let producto = list.find(p => p.id === id);
+            if (producto) {
+                producto.cantidad += incremento;
+                actualizarCantidadEnUI(producto);
+                if (producto.cantidad < 1) {
+                 producto.cantidad = 1; // Asegura que la cantidad no baje de 1
+                 producto.total = producto.precio * producto.cantidad;
+                 actualizarCantidadEnUI(producto);
+                 actualizarTotalCarrito();
+                }
+                producto.total = producto.cantidad * producto.precio;
+                actualizarCantidadEnUI(producto);
+                guardarCarritoEnLocalStorage();
+                actualizarTotalCarrito();
+            }
+            }
+
+            // Incrementar cantidad del producto con id 2
+            
+
+            // Decrementar cantidad del producto con id 3
+            
+
+        $('#cart-items').off('click', '#men').on('click', '#men', function() {
+            var id = $(this).data('id');
+            console.log(id)
+            actualizarCantidad(id, -1);
+           
+        })
+        $('#cart-items').off('click', '#man').on('click', '#man', function() {
+            var id = $(this).data('id');
+            console.log(id)
+            actualizarCantidad(id, 1);
+            
+})
 });
   
     </script>
