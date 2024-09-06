@@ -68,7 +68,7 @@ router.get('/codigoapp',function(req,res){
 })
 
 router.get('/fecha',function(req,res){
-  res.render('confirmar')
+  res.render('pagina_inicio/deltalles')
 })
 
 
