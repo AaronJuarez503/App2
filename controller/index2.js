@@ -98,5 +98,77 @@ module.exports={
 
         
         
+    },
+    pruebas:async function (req,res) {
+        function separarPorMarcaId(datos) {
+            const separados = {};
+          
+            datos.forEach(item => {
+              const marcaId = item.marca_id;
+              if (!separados[marcaId]) {
+                separados[marcaId] = [];
+              }
+              separados[marcaId].push(item);
+            });
+          
+            return separados;
+          }
+          
+         
+          
+          
+        try {
+           var result = await model.verpedidos(con)
+           //console.log(result)
+
+
+           const resultadoSeparado = separarPorMarcaId(result);
+
+           
+
+
+
+          
+          
+          
+          
+         
+
+          Object.keys(resultadoSeparado).forEach(marcaId => {
+            //console.log(`Datos de la marca con ID ${marcaId}:`) 
+            const unifiedArray = resultadoSeparado[marcaId].reduce((acc, item) => {
+                const existingItem = acc.find(i => i.producto_id === item.producto_id);
+                if (existingItem) {
+                  existingItem.cantidad += item.cantidad;
+                  existingItem.total += item.total;
+                } else {
+                  acc.push({
+                    producto_id: item.producto_id,
+                    imagen: item.producto_imagen,
+                    nombre: item.producto_nombre,
+                    cantidad: item.cantidad,
+                    total: item.total
+                  });
+                }
+                return acc;
+              }, []);
+
+              console.log(`Datos de la marca con ID ${marcaId}:`, unifiedArray);
+        })
+            
+
+          //console.log(resultadoSeparado);
+          res.send(resultadoSeparado)
+
+        
+
+
+
+
+        } catch (error) {
+            console.log('errror')
+            
+        }
+        
     }
 }

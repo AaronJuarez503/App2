@@ -63,5 +63,7 @@ router.get('/vertienda', (req, res) => {
 
 router.post('/insert', controller.insertarpedido);
 
+router.get('/pruebas',controller.pruebas )
+
 
 module.exports = router;
