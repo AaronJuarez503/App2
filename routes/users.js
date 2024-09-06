@@ -65,5 +65,7 @@ router.post('/insert', controller.insertarpedido);
 
 router.get('/pruebas',controller.pruebas )
 
+router.get('/validarcodigo',controller.vercodigo)
+
 
 module.exports = router;

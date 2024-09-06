@@ -170,5 +170,12 @@ module.exports={
             
         }
         
+    },
+    vercodigo: async function (req,res) {
+
+      console.log(req.query.codigo)
+
+      res.send({data:true})
+      
     }
 }

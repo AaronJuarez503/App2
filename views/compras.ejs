@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/compras.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/stylesheets/hola.css">
+    <link rel="stylesheet" href="/stylesheets/hola2.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/html5-qrcode"></script>
     <title>Document</title>
 </head>
 <body>
+
+    <div id="tab" style="display: block;"> 
+
+  
     <h1 class="titulo">Lista de tu Pedidos</h1>
 
     <div class="contenedor">
@@ -33,16 +41,226 @@
     <!--botones de aceptar y cancelar el pedido-->
     <button class="accep" >Aceptar</button>
     <button class="cancel">Cancelar</button>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <div class="box4" style="display: none;">
+     
+        <spa class="bg-animate"></spa>
+        <spa class="bg-animate2"></spa>
+    
+    
+    
+        <div class="form-box register{}"><br>
+            <h2 class="codi">Confirmacion de Compra</h2><br>
+                <p class="holi">Ingrese el codigo de compra brindado</p>
+               <div class="input-box">
+       
+                <input type="text" id="codigo" name="codigo" >
+                <label>Ingrese aqui</label>
+                <i id="camera-icon" class='bx bxs-camera'></i>
+             </div>
+              
+                 <button style="display: none;" type="submit" class="btn6" id="boton">Enviar
+                 </button>
+                
+        </div>
+          
+    </div>
+    
+
+     
+
+
+     
+
+
+  
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script>
+    
+    var $codigo = $('#codigo');
+    var $boton = $('#boton');
+
+    $codigo.on('input', function() {
+        var codigoIntroducido = $(this).val();
+            // Verifica si el código tiene exactamente 5 dígitos
+        if ( /^\d{5}$/.test(codigoIntroducido)) {
+            $boton.prop('disabled', false);
+            $boton.css({
+            'display':'block',
+          
+        });
+
+        } else {
+            $boton.prop('disabled', true);
+            $boton.css({
+            'display':'none',
+          
+        });
+
+        }
+
+       
+    });
+
+</script>
+
+<script>
+
+    function iniciar() {
+        const scanner = new Html5Qrcode("reader");
+    const resultElement = document.getElementById("result");
+    var inputElement = document.getElementById("codigo");
+
+   // const restartButton = document.getElementById("restart-button");
+
+    function onScanSuccess(decodedText, decodedResult) {
+      //  resultElement.innerHTML = `Código QR escaneado: ${decodedText}`;
+        inputElement.value = decodedText;
+        scanner.stop();
+       // restartButton.style.display = 'block';
+    }
+
+    function onScanFailure(error) {
+        // Manejo de errores silencioso
+    }
+
+    function startScanner() {
+        scanner.start(
+            { facingMode: "environment" },
+            { fps: 10, qrbox: 250 },
+            onScanSuccess,
+            onScanFailure
+        ).catch((err) => {
+            console.error("Error al iniciar el escáner:", err);
+            resultElement.innerHTML = "Error al iniciar el escáner. Por favor, asegúrate de que tienes una cámara y has dado los permisos necesarios.";
+            restartButton.style.display = 'block';
+        });
+    }
+
+
+    startScanner();
+    }
+const cameraIcon = document.getElementById('camera-icon');
+
+
+cameraIcon.addEventListener('click', () => {
+    console.log('iniciando camara')
+ 
+  iniciar()
+})
+
+
+    
+</script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        #reader {
+            height: 50%;
+            width: 100%;
+            max-width: 500px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            word-break: break-all;
+            color: white;
+        }
+        #restart-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<script>
+    $(function () {
+        
+        
+    })
+</script>
     <script>
         $(function () {
-            $('.acep').click(function () {
-                console.log('hola')
+            function mandar() {
+                let list = JSON.parse(localStorage.getItem('carrito')) || [];
+            console.log('lista')
+        console.log(list)
+
+       
+
+        const carritoModificado = list.map(({ imagen, nombre, ...resto }) => resto);
+             console.log('modificado')
+            console.log(carritoModificado);
+            if (list.length > 0) {
+                $.ajax({
+            url: '/users/insert',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ items: carritoModificado }),
+            success: function(response) {
+                // Redirige a la página de confirmación
+                alert('tu pedido asido enviado por favor te pedimos estar pendiente de tu estado de pedido')
+            },
+            error: function(error) {
+                console.error('Error al procesar la compra:', error);
+                alert('Hubo un error al procesar tu compra. Por favor, inténtalo de nuevo.');
+            }
+        });
                 
-                location.href = '/pedido';
-            });
+            } else {
+                alert("El carrito está vacío.");
+            }
             
+        }
+
+
+            $('.btn6').click(function () {
+                var r= $('#codigo').val();
+                console.log('codigo'+r)
+
+
+                $.ajax({
+                    url: `/users/validarcodigo?codigo=${r}`,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        
+                        console.log('Datos recibidos:', data.data);
+
+                        if (data.data) {
+                            mandar()
+                        } else {
+                            $('.holi').text('al pareser el codigo que has proporcionado no es valido')
+                            
+                        }
+
+
+
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error en la petición AJAX:', error);
+                                $('#resultado').html('Error al cargar los datos');
+                            }
+                        });
+                                });
+                                
         })
     </script>
 
@@ -116,44 +334,16 @@
 
     $('.accep').click(function() {
 
-        window.location.href='/codigoventa'
-
-        
-        
-       /* console.log('lista')
-        console.log(list)
-
-       /* var id = $(this).data('id');
-
-        console.log(id)
-        $(`#${id}`).closest('tr').remove();
-
-        const carritoModificado = list.map(({ imagen, nombre, ...resto }) => resto);
-             console.log('modificado')
-            console.log(carritoModificado);
-            if (list.length > 0) {
-                $.ajax({
-            url: '/users/insert',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ items: carritoModificado }),
-            success: function(response) {
-                // Redirige a la página de confirmación
-                alert('tu pedido asido enviado por favor te pedimos estar pendiente de tu estado de pedido')
-            },
-            error: function(error) {
-                console.error('Error al procesar la compra:', error);
-                alert('Hubo un error al procesar tu compra. Por favor, inténtalo de nuevo.');
-            }
+        $('.box4').css({
+            'display':'block',
+          
         });
-                
-            } else {
-                alert("El carrito está vacío.");
-            }*/
-        
 
-            
-   
+        $('#tab').css({
+            'display':'none',
+          
+        });
+
 
     })
 

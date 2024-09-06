@@ -17,7 +17,7 @@
         <spa class="bg-animate"></spa>
         <spa class="bg-animate2"></spa>
 
-    <form action=" /vcodigo" method="post">
+    <form action=" /users/codigo" method="post">
 
         <div class="form-box register{}"><br>
             <h2 class="codi">Confirmacion de Compra</h2><br>
@@ -29,15 +29,46 @@
                 <i id="camera-icon" class='bx bxs-camera'></i>
              </div>
               
-                 <button type="submit" class="btn6" id="boton">Enviar
+                 <button style="display: none;" type="submit" class="btn6" id="boton">Enviar
                  </button>
                 
         </div>
           
         <div>
          
-    <div id="reader"></div>
+    <div  id="reader"></div >
     <div id="result"></div>
+
+      
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        
+        var $codigo = $('#codigo');
+        var $boton = $('#boton');
+
+        $codigo.on('input', function() {
+            var codigoIntroducido = $(this).val();
+                // Verifica si el código tiene exactamente 5 dígitos
+            if ( /^\d{5}$/.test(codigoIntroducido)) {
+                $boton.prop('disabled', false);
+                $boton.css({
+                'display':'block',
+              
+            });
+
+            } else {
+                $boton.prop('disabled', true);
+                $boton.css({
+                'display':'none',
+              
+            });
+
+            }
+
+           
+        });
+    
+    </script>
     
     <script>
 
