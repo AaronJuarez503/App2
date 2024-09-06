@@ -67,6 +67,9 @@ router.get('/codigoapp',function(req,res){
   res.render('codigove')
 })
 
+router.get('/fecha',function(req,res){
+  res.render('confirmar')
+})
 
 
 
