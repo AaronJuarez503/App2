@@ -385,7 +385,24 @@ $.ajax({
 });
   
     </script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <script>
+    var swipeArea = document.getElementById('swipeArea');
+        
+        // Crea una instancia de Hammer en el área seleccionada
+        var hammer = new Hammer(document.body);
 
+
+        // Escucha el evento de deslizamiento hacia la derecha
+        hammer.on('swiperight', function(event) {
+        // Código para manejar el deslizamiento hacia la derecha
+        console.log('Deslizamiento hacia la derecha detectado');
+        window.location.href = '/marca'
+            
+     
+        
+    });
+    </script>
   
 
     
