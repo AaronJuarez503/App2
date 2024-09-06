@@ -14,22 +14,10 @@
 <div id="mio">
 
       
-<<<<<<< HEAD
-    <div class="container">
-        <div class="card">
-            <div class="imgBx" style="background-image: url();"></div>
-            <div class="content">
-                <h3 id="nombre"><br><span id="precio" ></span></h3>
-                <p>
-                </p>
-                <div class="add-to-cart">
-                    <button id="btn">Agregar al carrito</button>
-                </div>
-            </div>
-        </div>
-          
-       
-    </div>
+   
+
+    
+
 
 </div>
     <style>
@@ -226,6 +214,7 @@ $.ajax({
 
         var id = $(this).data('id');
         var id_marca = $(this).data('id_m');
+
         console.log(id,':',id_marca)
 
 
@@ -397,24 +386,26 @@ $.ajax({
 });
   
     </script>
-    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
-    <script>
-    var swipeArea = document.getElementById('swipeArea');
-        
-        // Crea una instancia de Hammer en el área seleccionada
-        var hammer = new Hammer(document.body);
+
+<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+<script>
+var swipeArea = document.getElementById('swipeArea');
+    
+    // Crea una instancia de Hammer en el área seleccionada
+    var hammer = new Hammer(document.body);
 
 
-        // Escucha el evento de deslizamiento hacia la derecha
-        hammer.on('swiperight', function(event) {
-        // Código para manejar el deslizamiento hacia la derecha
-        console.log('Deslizamiento hacia la derecha detectado');
-        window.location.href = '/marca'
-            
-     
+    // Escucha el evento de deslizamiento hacia la derecha
+    hammer.on('swiperight', function(event) {
+    // Código para manejar el deslizamiento hacia la derecha
+    console.log('Deslizamiento hacia la derecha detectado');
+    window.location.href = '/marca'
         
-    });
-    </script>
+ 
+    
+});
+</script>
+    
   
 
     

@@ -10,28 +10,11 @@
 <body>
    
       <!--empesas aca-->
+    <h1 class="product">Productos</h1>
 <div id="mio">
 
-    <div class="container">
-        <div class="card">
-            <div class="imgBx" style="background-image: url();"></div>
-            <div class="content">
-                <h3 id="nombre"><br><span id="precio" ></span></h3>
-                <p>
-                </p>
-                <div class="counter">
-                    <button onclick="decrement()">&#8722;</button>
-                    <input type="text" id="number" value="0" readonly>
-                    <button onclick="increment()">&#43;</button>
-                </div>
-                <div class="add-to-cart">
-                    <button id="btn">Agregar al carrito</button>
-                </div>
-            </div>
-        </div>
-          <!--terninas aca-->  
-        
-    </div>
+      
+   
 
     
 
@@ -132,7 +115,10 @@
     <div class="float-div">
         <span class="close-btn">&times;</span>
         <h3>Carrito de Compras</h3>
-        <div id="cart-items"></div>
+        <div id="cart-items">
+
+           
+        </div>
 
         
         <a href="#" id="realizar-compra">Realizar Compra</a>
@@ -155,54 +141,40 @@ $.ajax({
     success: function(data) {
         console.log('Datos recibidos:', data);
 
+
+        function agregarNuevoProducto(producto) {
+        var html = `
+        <div class="card">
+            <div class="imgBx" style="background-image: url(${producto.imagen});"></div>
+            <div class="content">
+                <h3 id="nombre">${producto.nombre}<br><span id="precio" >$${producto.precio}</span></h3>
+                <p>${producto.descripcion}
+                </p>
+                <div class="add-to-cart">
+                    <button data-id_m=${producto.marca_id} data-id=${producto.id} id="btn">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+        `;
+        $('#mio').append(html);
+
+       // $('#cart-items').append(html);
+    }
+        
+
+
+
+
+
+
         data.forEach(function(item) {
-            // Clonar la tarjeta existente
-            var $template = $('.container').first().clone();
-
-            // Actualizar los elementos de la tarjeta con los datos del producto
-            $template.find('h3').html(`${item.nombre}<br><span>$${item.precio}</span>`);
-            $template.find('p').text(item.descripcion);
-            $template.find('.imgBx').css('background-image', `url(${item.imagen})`);
-
-            // Obtener y configurar los elementos de la tarjeta
-            var $input = $template.find('input[type="text"]');
-            var $button1 = $template.find('button').eq(0);
-            var $button2 = $template.find('button').eq(1);
-            var $button3 = $template.find('button').eq(2);
-            $button3.attr('data-id_m', item.marca_id);
-            $button3.attr('data-id', item.id);
-
+            agregarNuevoProducto(item);
+           
             
-            // Funcionalidad para decrementar
-            $button1.on('click', function() {
-                var currentValue = parseInt($input.val(), 10);
-                if (currentValue > 0) {
-                    $input.val(currentValue - 1);
-                }
-            });
-
-            // Funcionalidad para incrementar
-            $button2.on('click', function() {
-                var currentValue = parseInt($input.val(), 10);
-                $input.val(currentValue + 1);
-            });
-
-            // Funcionalidad para agregar al carrito
-           /* $button3.on('click', function() {
-                var cantidad = parseInt($input.val(), 10);
-                if (cantidad > 0) {
-                    alert(`${item.nombre} agregado al carrito con cantidad: ${cantidad}`);
-                } else {
-                    alert('Por favor, selecciona una cantidad mayor a 0.');
-                }
-            });*/
-
-            // Añadir la tarjeta actualizada al contenedor
-            $('#mio').append($template);
-        });
+        })
 
         // Elimina la tarjeta original si no deseas mantenerla
-        $('.card').first().remove();
+       
     }
 });
 
@@ -237,7 +209,7 @@ $.ajax({
 
     // Agregar producto al carrito
     $('#mio').off('click', '#btn').on('click', '#btn', function() {
-        var container = $(this).closest(".container");
+        var container = $(this).closest(".card");
         var headingContent = container.find("h3").text();
 
         var id = $(this).data('id');
@@ -290,8 +262,10 @@ $.ajax({
 
     function actualizarCantidadEnUI(producto) {
         var $item = $(`.cart-item[data-nombre="${producto.nombre}"]`);
-        $item.find('.item-quantity').text(`Cantidad: ${producto.cantidad}`);
+       // $item.find('.item-quantity').text(`Cantidad: ${producto.cantidad}`);
         $item.find('.item-price').text(`$${producto.total.toFixed(2)}`);
+        var $item = $(`.counter[data-nombre="${producto.nombre}"]`);
+        $item.find('#number').val(`${producto.cantidad}`);
     }
 
     function agregarNuevoProductoAUI(producto) {
@@ -301,7 +275,12 @@ $.ajax({
                 <div class="item-info">
                     <div class="item-name">${producto.nombre}</div>
                     <div class="item-price">$${producto.total.toFixed(2)}</div>
-                    <div class="item-quantity">Cantidad: ${producto.cantidad}</div>
+
+                </div>
+                 <div class="counter" data-nombre="${producto.nombre}" >
+                    <button id="men" data-id="${producto.id}" >&#8722;</button>
+                    <input type="text" id="number" value="${producto.cantidad}" readonly>
+                    <button id="man" data-id="${producto.id}" >&#43;</button>
                 </div>
                 <span class="remove-item">×</span>
             </div>
@@ -364,6 +343,45 @@ $.ajax({
         }
 
         cargarCarritoDesdeLocalStorage();
+
+        //menos mas
+
+        function actualizarCantidad(id, incremento) {
+            let producto = list.find(p => p.id === id);
+            if (producto) {
+                producto.cantidad += incremento;
+                actualizarCantidadEnUI(producto);
+                if (producto.cantidad < 1) {
+                 producto.cantidad = 1; // Asegura que la cantidad no baje de 1
+                 producto.total = producto.precio * producto.cantidad;
+                 actualizarCantidadEnUI(producto);
+                 actualizarTotalCarrito();
+                }
+                producto.total = producto.cantidad * producto.precio;
+                actualizarCantidadEnUI(producto);
+                guardarCarritoEnLocalStorage();
+                actualizarTotalCarrito();
+            }
+            }
+
+            // Incrementar cantidad del producto con id 2
+            
+
+            // Decrementar cantidad del producto con id 3
+            
+
+        $('#cart-items').off('click', '#men').on('click', '#men', function() {
+            var id = $(this).data('id');
+            console.log(id)
+            actualizarCantidad(id, -1);
+           
+        })
+        $('#cart-items').off('click', '#man').on('click', '#man', function() {
+            var id = $(this).data('id');
+            console.log(id)
+            actualizarCantidad(id, 1);
+            
+})
 });
   
     </script>
