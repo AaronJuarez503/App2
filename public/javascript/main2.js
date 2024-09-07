@@ -25,11 +25,13 @@ $(function () {
 
 $('#container').off('click', '#btn').on('click', '#btn', function() {
     var imagen= $(this).data('imagen')
+    var marca= $(this).data('marca')    
     var fecha= $(this).data('fecha')
+   
 
-    console.log(imagen,fecha)
+   // console.log(imagen,fecha,marca)
 
-    window.location.href=`/users/detalles?imagen=${imagen}&fecha=${fecha}`
+    window.location.href=`/users/detalles?imagen=${imagen}&fecha=${fecha}&marca=${marca}`
 
 })
 

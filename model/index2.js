@@ -155,7 +155,14 @@ module.exports={
                 }
             });
 
-        })}
+        })
+    },
+
+    detalles:function (con,marca,fecha) {
+        
+        
+    }
+
 
 
     }

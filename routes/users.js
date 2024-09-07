@@ -74,11 +74,16 @@ router.get('/pmarcas',controller.pmarcas)
 
 router.get('/detalles',(req,res)=>{
     var imagen=req.query.imagen
+    var marca=req.query.marca
     var fecha=req.query.fecha
+    
 
-    console.log(`imagen:${imagen} °° fecha ${fecha}`)
-    res.render('pagina_inicio/deltalles',{imagen,fecha})
+
+    console.log(`imagen:${imagen} °° fecha ${fecha}°°marca ${marca}`)
+    res.render('pagina_inicio/deltalles',{imagen,fecha,marca})
 })
+
+router.get('/pernisos',controller.productos)
 
 
 module.exports = router;

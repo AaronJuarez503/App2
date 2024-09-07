@@ -158,5 +158,13 @@ module.exports={
 
         res.send(result)
         
+    },
+    productos: async function (req,res) {
+        var marca=req.query.marca
+        var fecha=req.query.fecha
+        console.log(marca)
+        console.log(fecha)
+
+        
     }
 }

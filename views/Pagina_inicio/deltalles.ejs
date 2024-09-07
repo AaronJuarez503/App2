@@ -110,22 +110,37 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    
     <script src="/javascript/funciones.js"></script>
-    <script src="/javascript/main.js"></script>
+    <script src="/javascript/petico.js"></script>
+    
 
     <script>
-        $(function () {
+       /* $(function () {
             const imagen = '<%= typeof imagen !== "undefined" ? imagen : "" %>';
             const fecha = '<%= typeof fecha !== "undefined" ? fecha : "" %>';
+            const marca = '<%= typeof marca !== "undefined" ? marca : "" %>';
 
-            $('.date').text('Fecha: '+fecha)
+            $('.date').text('Fecha: '+fecha+'|||'+ marca)
             $('#img').attr('src', imagen);
            
-        })
+        }) */
 
+        (function () {
+        window.pedidoData = {
+        imagen: '<%= typeof imagen !== "undefined" ? imagen : "" %>',
+        fecha: '<%= typeof fecha !== "undefined" ? fecha : "" %>',
+        marca: '<%= typeof marca !== "undefined" ? marca : "" %>'
+        };
 
-         
-  
+        window.actualizarUI = function(imagen,fecha,marca) {
+        $('.date').text('Fecha: ' + fecha + '||' + marca);
+        $('#img').attr('src', imagen);
+    }
+})();
     </script>
+    <script src="/javascript/detalle.js"></script>
+
 </body>
 </html>
