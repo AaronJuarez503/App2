@@ -54,7 +54,7 @@ router.get('/pedido', (req, res) => {
 });
 
 
-router.get('/vertienda', (req, res) => {
+router.get('/vertiendas', (req, res) => {
     
     res.send("<center><h1 style='color: red;' >UPS! ocurrio un error estamos trabajando en ello regresa mas tarde</h1></center>")
 });
@@ -84,6 +84,8 @@ router.get('/detalles',(req,res)=>{
 })
 
 router.get('/pernisos',controller.productos)
+
+router.get('/vertienda',controller.buscartienda)
 
 
 module.exports = router;

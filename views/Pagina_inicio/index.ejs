@@ -480,7 +480,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
+            /*const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
       if (renderedValue !== "") {
         $('#captured-value').text(renderedValue);
         $('#link-1').text('Al parecer ya tienes una tienda quieres verla 🥵');
@@ -488,7 +488,34 @@
         console.log('Valor capturado:', renderedValue);
       } else {
         console.log('No se recibió un valor desde el servidor.');
-      }
+      }*/
+
+      $.ajax({
+            url: '/users/vertienda',
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+               
+                if (data) {
+                    
+                    $('#link-1').text('Al parecer ya tienes una tienda quieres verla 🥵');
+                    $('#link-1').attr('href', '/users/vertiendas');
+                } else {
+                    console.log('no hay nada')
+                    
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error en la petición AJAX:', error);
+                $('#resultado').html('Error al cargar los datos');
+            }
+        })
+
+
+
+
+
+
         });</script>
 </body>
 

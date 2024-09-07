@@ -34,8 +34,8 @@ var Modulo1 = (function($) {
     
     
     return {
-        generarpedido: generarpedido ,
-        agregar:add
+        generarpedido:generarpedido,
+      
     };
 
 })(jQuery);

@@ -172,5 +172,20 @@ module.exports={
         }
 
         
+    },
+    buscartienda: async function (req,res) {
+        const token = req.cookies.perfil;
+        console.log(token.id)
+
+       try {
+        var rmarca= await model.buscartienda(con,token.id)
+        console.log(rmarca)
+
+        res.send(rmarca)
+       } catch (error) {
+        
+        
+       }
+        
     }
 }
