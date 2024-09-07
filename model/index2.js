@@ -158,8 +158,50 @@ module.exports={
         })
     },
 
-    detalles:function (con,marca,fecha) {
-        
+    detalles:function (conexion,marca,fecha) {
+        const query = `
+                
+           SELECT 
+    p.id AS producto_id, 
+    p.nombre AS producto_nombre, 
+    SUM(dp.cantidad) AS cantidad_total, 
+    dp.precio_unitario, 
+    SUM(dp.subtotal) AS subtotal_total, 
+    pa.id,
+    pa.estado 
+FROM 
+    productos p
+    JOIN detalles_pedido dp ON p.id = dp.producto_id 
+    JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
+    JOIN marcas m ON p.marca_id = m.id 
+WHERE 
+    m.id = ? 
+    AND pa.fecha_pedido >= ? 
+    
+GROUP BY 
+    p.id, dp.precio_unitario, pa.estado 
+ORDER BY 
+    p.nombre
+           
+
+      
+    `;
+
+    //JOIN marcas m ON p.marca_id = m.idGROUP BY p.id, dp.precio_unitario, pa.estado
+      //ORDER BY p.nombre
+
+
+        return new Promise((resolve, reject) => {
+            conexion.query(query,[marca, fecha], function (error, resultado) {
+                if (error) {
+                    throw (error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+            
+        })
+
         
     }
 

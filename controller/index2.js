@@ -162,8 +162,14 @@ module.exports={
     productos: async function (req,res) {
         var marca=req.query.marca
         var fecha=req.query.fecha
-        console.log(marca)
-        console.log(fecha)
+        try {
+            var result = await model.detalles(con,marca,fecha)
+            console.log(result)
+            //res.send(result)
+        } catch (error) {
+            console.error('error el consulta')
+            
+        }
 
         
     }
