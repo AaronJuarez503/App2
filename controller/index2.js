@@ -144,5 +144,19 @@ module.exports={
 
       res.send({data:true})
       
+    },
+    pedidos: async function (req,res) {
+        
+    },
+    pmarcas: async function (req,res) {
+
+
+        var result = await model.pmarcas(con)
+
+        console.log(result)
+
+
+        res.send(result)
+        
     }
 }

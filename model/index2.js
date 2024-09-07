@@ -120,7 +120,42 @@ module.exports={
 
         })
         
-    }
+    },
+    pmarcas:function(conexion){
+        console.log('entrando')
+        //SUM(dp.subtotal) AS total_pedido
+
+        const query = `
+         SELECT 
+        m.id AS marca_id,
+        m.nombre AS marca_nombre,
+        m.imagen AS marca_imagen,
+        DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:00') AS fecha_hora_pedido,
+        GROUP_CONCAT(DISTINCT pa.estado) AS estados,
+        SUM(dp.subtotal) AS total_pedido,
+        GROUP_CONCAT(DISTINCT pa.id) AS pedidos_ids
+      FROM 
+      marcas m
+      JOIN productos p ON m.id = p.marca_id
+      JOIN detalles_pedido dp ON p.id = dp.producto_id
+      JOIN pedidos_activos pa ON dp.pedido_id = pa.id
+      GROUP BY m.id, DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:00')
+      ORDER BY m.nombre, fecha_hora_pedido DESC
+
+
+    `;
+
+       
+        return new Promise((resolve, reject) => {
+            conexion.query(query, function (error, resultado) {
+                if (error) {
+                    throw (error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+
+        })}
 
 
     }

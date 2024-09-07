@@ -68,4 +68,17 @@ router.get('/pruebas',controller.pruebas )
 router.get('/validarcodigo',controller.vercodigo)
 
 
+router.get('/pedidos',controller.pedidos)
+
+router.get('/pmarcas',controller.pmarcas)
+
+router.get('/detalles',(req,res)=>{
+    var imagen=req.query.imagen
+    var fecha=req.query.fecha
+
+    console.log(`imagen:${imagen} °° fecha ${fecha}`)
+    res.render('pagina_inicio/deltalles',{imagen,fecha})
+})
+
+
 module.exports = router;

@@ -25,10 +25,10 @@
             align-items: center;
             margin-bottom: 20px;
         }
-        .logo {
+        .logo, #img {
             width: 40px;
             height: 40px;
-            background-color: #3498db;
+            
             color: white;
             display: flex;
             align-items: center;
@@ -93,8 +93,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">ST</div>
-            <div class="date">Fecha: 6/9/2024</div>
+            <div class="logo"><img id="img" src="" alt=""></div>
+            <div class="date"></div>
         </div>
         <table id="table">
             <tr>
@@ -112,5 +112,20 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="/javascript/funciones.js"></script>
     <script src="/javascript/main.js"></script>
+
+    <script>
+        $(function () {
+            const imagen = '<%= typeof imagen !== "undefined" ? imagen : "" %>';
+            const fecha = '<%= typeof fecha !== "undefined" ? fecha : "" %>';
+
+            $('.date').text('Fecha: '+fecha)
+            $('#img').attr('src', imagen);
+           
+        })
+
+
+         
+  
+    </script>
 </body>
 </html>
