@@ -102,7 +102,7 @@
             </tr>
             
         </table>
-        <div class="total">Total: 11000</div>
+        <div class="total"></div>
         <div class="buttons">
             <button class="cancel">Cancelar</button>
             <button class="accept">Aceptar</button>
@@ -135,7 +135,7 @@
         };
 
         window.actualizarUI = function(imagen,fecha,marca) {
-        $('.date').text('Fecha: ' + fecha + '||' + marca);
+        $('.date').text('Fecha: ' + fecha );
         $('#img').attr('src', imagen);
     }
 })();

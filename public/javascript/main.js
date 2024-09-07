@@ -18,29 +18,7 @@ $(function() {
 
         console.log(separar)
 
-        var html;
-    
-    function add(item) {
-
-
-        html=`
-        
-            <tr>
-                <td>
-                    <div class="image-name">
-                        <div class="image-placeholder"  > <img width="40px" height="40px" src="${item.producto_imagen}" alt=""></div>
-                        ${item.producto_nombre}
-                    </div>
-                </td>
-                <td> $${item.producto_precio}</td>
-                <td>${item.cantidad}</td>
-                <td class="total-row">${item.subtotal_producto}</td>
-            </tr>
-          `
-
-          $('#table tbody').append(html)
-        
-    }
+     
 
        
 

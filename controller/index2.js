@@ -164,8 +164,8 @@ module.exports={
         var fecha=req.query.fecha
         try {
             var result = await model.detalles(con,marca,fecha)
-            console.log(result)
-            //res.send(result)
+            
+            res.send(result)
         } catch (error) {
             console.error('error el consulta')
             

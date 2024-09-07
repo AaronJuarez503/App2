@@ -27,11 +27,15 @@ var Modulo1 = (function($) {
         $('#container').append(html);
     }
 
+    
+   
+
 
     
     
     return {
-        generarpedido: generarpedido 
+        generarpedido: generarpedido ,
+        agregar:add
     };
 
 })(jQuery);
