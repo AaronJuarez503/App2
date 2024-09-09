@@ -62,9 +62,8 @@ $(function() {
                     // Crear filas
                     $.each(productos, function(i, producto) {
                        
-                        var cantidad = 2; // Cantidad fija
-                        var precio = 10.00; // Precio fijo
-                        var subtotal = cantidad * precio;
+                       
+                        var subtotal = producto.cantidad * producto.precio;
                         total += subtotal;
 
                         $('<tr>')
@@ -77,16 +76,12 @@ $(function() {
                             .appendTo($tbody);
                     });
 
-                    // Agregar título y tabla al contenedor
-
-                  
-                  
                     $('<div>')
                     .addClass('logo')
                     .append('<img src="/placeholder.svg" alt="Logo de la empresa" width="100" height="100">').appendTo($containerc)
                    
                     $tabla.appendTo($containerc)
-                    $('<div class="total-cell">').text('Total: $' + productos.total).appendTo($containerc);
+                    $('<div class="total-cell">').text('Total: $' + total).appendTo($containerc);
                 });
             }
 
@@ -95,30 +90,6 @@ $(function() {
             // Llamar a las funciones para crear las tablas y el logo
            // crearLogoEmpresa();
             crearTablas(separar);
-            
-        
-
-
-
-
-
-             /* for (const key in separar) {
-                if (separar.hasOwnProperty(key)) {
-                  const array = separar[key];
-                  console.log(`Elementos con ID ${key}:`);
-                  var rr=Modulo1.saludar('hola')
-                  $('#container').append(rr)
-                  array.forEach(item => {
-                    console.log(`ID: ${item.id}, Nombre: ${item.nombre}`);
-                    var rr2=Modulo1.saludar2('hola')
-                    $('#table').append(rr2)
-                  });
-                  console.log("---------------------"); // Separador entre grupos
-                }
-              }*/
-
-             
-
 
         },
         error: function(error) {
