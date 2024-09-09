@@ -75,6 +75,11 @@ router.get('/nueva',function(req,res){
   res.render('pagina_inicio/ia')
 })
 
+router.get('/estados',function(req,res){
+  res.render('estado')
+})
+
+
 
 
 
