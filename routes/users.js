@@ -14,9 +14,10 @@ router.post('/tienda', controller.Insertartienda);
 
 router.get('/pedirproductos',function (req,res) {
     const productoId = req.query.productoId;
+    const imagen = req.query.imagen;
     console.log(productoId)
 
-    res.render('productos',{mensaje:productoId})
+    res.render('productos',{mensaje:productoId,imagen:imagen})
     
 });
 

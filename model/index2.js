@@ -14,7 +14,21 @@ module.exports={
     },
     
     productos:function(conexion,id){
-        const consulta = `SELECT * FROM productos WHERE marca_id = ${id}`;
+       // const consulta = `SELECT * FROM productos WHERE marca_id = ${id}`;
+       const consulta=`
+       SELECT 
+              m.imagen AS imagen_marca,
+              p.id,
+              p.marca_id,
+              p.nombre,
+              p.imagen,
+              p.precio,
+              p.descripcion
+                FROM marcas m
+                JOIN productos p ON m.id = p.marca_id
+                WHERE p.marca_id = ${id}
+               
+       `
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
