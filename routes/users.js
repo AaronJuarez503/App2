@@ -39,7 +39,7 @@ router.post('/procesar-compra',function (req,res) {
 
 router.get('/confirmacion-compra', (req, res) => {
    
-    res.render('compras');
+    res.render('codigo_pedido');
 });
 
 
