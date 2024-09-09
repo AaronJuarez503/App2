@@ -19,15 +19,16 @@ module.exports={
 
     },
 
-    productos: async function (req,res) {
+    ppppp: async function (req,res) {
 
         try {
             const productoId = req.query.productoId;
-            console.log(productoId)
+            console.log("buscando los productos "+productoId)
             var r= await model.productos(con,productoId)
             res.send(r)
             
         } catch (error) {
+            console.log(error)
             
         }
         

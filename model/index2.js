@@ -20,6 +20,7 @@ module.exports={
                 if (error) {
                     throw (error);
                 } else if (resultado.length >0) {
+                    console.log(resultado)
                     resolve(resultado);
                 }
             });

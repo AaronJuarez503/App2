@@ -71,6 +71,11 @@ router.get('/fecha',function(req,res){
   res.render('pagina_inicio/deltalles')
 })
 
+router.get('/nueva',function(req,res){
+  res.render('pagina_inicio/ia')
+})
+
+
 
 
 module.exports = router;//no borrar 

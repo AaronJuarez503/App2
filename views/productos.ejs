@@ -135,7 +135,7 @@ var $id = "<%= mensaje %>";
 console.log("Mensaje del servidor:",$id);
 
 $.ajax({
-    url: `/users/products?productoId=${$id}`,
+    url: `/users/product?productoId=${$id}`,
     method: 'GET',
     dataType: 'json',
     success: function(data) {
@@ -249,6 +249,7 @@ $.ajax({
         if (productoExistente) {
             productoExistente.cantidad++;
             productoExistente.total = productoExistente.precio * productoExistente.cantidad;
+            
             actualizarCantidadEnUI(productoExistente);
         } else {
             list.push(datos);
@@ -351,6 +352,7 @@ $.ajax({
             let producto = list.find(p => p.id === id);
             if (producto) {
                 producto.cantidad += incremento;
+                producto.total = producto.precio * producto.cantidad;
                 actualizarCantidadEnUI(producto);
                 if (producto.cantidad < 1) {
                  producto.cantidad = 1; // Asegura que la cantidad no baje de 1
