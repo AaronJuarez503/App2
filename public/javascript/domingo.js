@@ -29,12 +29,16 @@ $(function() {
 
               function crearTablas(datos) {
                 var $container = $('#container');
-                //$container.empty(); // Limpia el contenedor
+                $container.empty(); // Limpia el contenedor
                 
 
                 $.each(datos, function(id, productos) {
                     var $containerc = $('<div>').addClass('container')
-                   // $containerc.appendTo($container)
+                    $containerc.appendTo($container)
+                   
+                   //var r = $cacezera.appendTo($tabal);
+
+                   //console.log(r)
 
                    
                     
@@ -64,30 +68,25 @@ $(function() {
                         total += subtotal;
 
                         $('<tr>')
-                            .append('<td><img src="' + producto.imagen + '" alt="' + producto.nombre + '" width="50"></td>')
-                            .append('<td>' + producto.nombre + '</td>')
-                            .append('<td>' + cantidad + '</td>')
-                            .append('<td>$' + precio.toFixed(2) + '</td>')
-                            .append('<td>$' + subtotal.toFixed(2) + '</td>')
-                            .append('<td><span class="trash-icon">🗑️</span></td>')
+                            .append('<td data-label="Imagen"><img src="' + producto.imagen + '" alt="' + producto.nombre + '" width="50"></td>')
+                            .append('<td data-label="Nombre">' + producto.nombre + '</td>')
+                            .append('<td data-label="Cantidad">' + producto.cantidad + '</td>')
+                            .append('<td data-label="Precio">$' + producto.precio + '</td>')
+                            .append('<td data-label="Subtotal">$' + producto.total + '</td>')
+                            .append('<td data-label="Acción"><span class="trash-icon">🗑️</span></td>')
                             .appendTo($tbody);
                     });
 
                     // Agregar título y tabla al contenedor
 
-                    var contenedor=`
-                    <div class="container">
-                        <div class="logo">
-                            <img src="/placeholder.svg?height=100&width=100" alt="Logo de la empresa">
-                    </div>
-                    `
+                  
                   
                     $('<div>')
                     .addClass('logo')
                     .append('<img src="/placeholder.svg" alt="Logo de la empresa" width="100" height="100">').appendTo($containerc)
                    
                     $tabla.appendTo($containerc)
-                    $('<div class="total-cell">').text('Total: $' + total.toFixed(2)).appendTo($containerc);
+                    $('<div class="total-cell">').text('Total: $' + productos.total).appendTo($containerc);
                 });
             }
 
