@@ -11,7 +11,7 @@ $(function(){
             function addItemToContainer(imagen,marca) {
                 const $itemHtml = `
                 <div class="brand">
-                <img src="${imagen}" data-id=${marca} alt="Marca 1">
+                <img src="${imagen}" data-id=${marca} data-imagen=${imagen} alt="Marca 1">
             </div>
                 `;
                 return $itemHtml
@@ -41,6 +41,7 @@ $(function(){
         console.log(e.target)
 
         const r = $(e.target).attr('data-id');
+        const img = $(e.target).attr('data-imagen');
 
 
 
@@ -48,7 +49,7 @@ $(function(){
 
        
         console.log(r);
-        window.location.href=`/users/pedirproductos?productoId=${r}`
+        window.location.href=`/users/pedirproductos?productoId=${r}&imagen=${img}`
 
 
         

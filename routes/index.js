@@ -67,6 +67,14 @@ router.get('/codigoapp',function(req,res){
   res.render('codigove')
 })
 
+router.get('/fecha',function(req,res){
+  res.render('pagina_inicio/deltalles')
+})
+
+router.get('/nueva',function(req,res){
+  res.render('pagina_inicio/ia')
+})
+
 
 
 

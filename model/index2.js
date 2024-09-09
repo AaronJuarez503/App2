@@ -14,12 +14,27 @@ module.exports={
     },
     
     productos:function(conexion,id){
-        const consulta = `SELECT * FROM productos WHERE marca_id = ${id}`;
+       // const consulta = `SELECT * FROM productos WHERE marca_id = ${id}`;
+       const consulta=`
+       SELECT 
+              m.imagen AS imagen_marca,
+              p.id,
+              p.marca_id,
+              p.nombre,
+              p.imagen,
+              p.precio,
+              p.descripcion
+                FROM marcas m
+                JOIN productos p ON m.id = p.marca_id
+                WHERE p.marca_id = ${id}
+               
+       `
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
                     throw (error);
                 } else if (resultado.length >0) {
+                    console.log(resultado)
                     resolve(resultado);
                 }
             });
@@ -120,7 +135,115 @@ module.exports={
 
         })
         
-    }
+    },
+    pmarcas:function(conexion){
+        console.log('entrando')
+        //SUM(dp.subtotal) AS total_pedido
+
+        const query = `
+         SELECT 
+        m.id AS marca_id,
+        m.nombre AS marca_nombre,
+        m.imagen AS marca_imagen,
+        DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:00') AS fecha_hora_pedido,
+        GROUP_CONCAT(DISTINCT pa.estado) AS estados,
+        SUM(dp.subtotal) AS total_pedido,
+        GROUP_CONCAT(DISTINCT pa.id) AS pedidos_ids
+      FROM 
+      marcas m
+      JOIN productos p ON m.id = p.marca_id
+      JOIN detalles_pedido dp ON p.id = dp.producto_id
+      JOIN pedidos_activos pa ON dp.pedido_id = pa.id
+      GROUP BY m.id, DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:00')
+      ORDER BY m.nombre, fecha_hora_pedido DESC
+
+
+    `;
+
+       
+        return new Promise((resolve, reject) => {
+            conexion.query(query, function (error, resultado) {
+                if (error) {
+                    throw (error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+
+        })
+    },
+
+    detalles:function (conexion,marca,fecha) {
+        const query = `
+                
+           SELECT 
+    p.id AS producto_id, 
+    p.imagen AS producto_imagen,
+    p.precio AS producto_precio,
+    p.nombre AS producto_nombre, 
+
+    SUM(dp.cantidad) AS cantidad_total, 
+    dp.precio_unitario, 
+    SUM(dp.subtotal) AS subtotal_total, 
+    pa.id,
+    pa.fecha_pedido AS fecha,
+    pa.estado 
+FROM 
+    productos p
+    JOIN detalles_pedido dp ON p.id = dp.producto_id 
+    JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
+    JOIN marcas m ON p.marca_id = m.id 
+WHERE 
+    m.id = ? 
+    AND pa.fecha_pedido >= ? 
+    
+GROUP BY 
+    p.id, dp.precio_unitario, pa.estado 
+ORDER BY 
+    p.nombre
+           
+
+      
+    `;
+
+
+
+        return new Promise((resolve, reject) => {
+            conexion.query(query,[marca, fecha], function (error, resultado) {
+                if (error) {
+                    throw (error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+            
+        })
+
+        
+    },
+    buscartienda:function(conexion,id){
+        const consulta = `
+                SELECT t.id, t.nombre
+                FROM tiendas t
+                JOIN clientes c ON t.cliente_id = c.id
+                WHERE c.id = ${id}
+                LIMIT 1
+            `;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, resultado) {
+                if (error) {
+                    throw (error);
+                } else if (resultado.length >0) {
+                    resolve(resultado[0]);
+                }else{
+                    reject(new Error('No se encontró la tienda'));
+                }
+            });
+            
+        })
+    },
+
+
 
 
     }

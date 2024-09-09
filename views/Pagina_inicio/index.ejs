@@ -443,20 +443,21 @@
                 // Crea una instancia de Hammer en el área seleccionada
                 var hammer = new Hammer(document.body);
 
-                hammer.on('swipeleft', function(event) {
-                // Código para manejar el deslizamiento hacia la izquierda
-                console.log('Deslizamiento hacia la izquierda detectado');
-            });
+                // Escucha el evento de deslizamiento hacia la derecha
+                hammer.on('swiperight', function(event) {
 
-            // Escucha el evento de deslizamiento hacia la derecha
-            hammer.on('swiperight', function(event) {
-                // Código para manejar el deslizamiento hacia la derecha
-                console.log('Deslizamiento hacia la derecha detectado');
-                window.location.href = '/pedido'
-                
-             
-                
-            });
+                // Muestra un cuadro de confirmación
+                const confirmExit = confirm('¿Quieres volver al inicio?');
+                    
+                    if (confirmExit) {
+                        // Si el usuario hace clic en "Aceptar"
+                        console.log('El usuario ha regresado al inicio.');
+                        window.location.href = '/'; // Cambia la URL a la que necesites
+                    } else {
+                        // Si el usuario hace clic en "Cancelar"
+                        console.log('El usuario ha cancelado la salida.');
+                    }
+                });
                 
                 // Configura para detectar deslizamientos hacia la izquierda
             /* hammer.get('swipe').set({ direction: Hammer.DIRECTION_LEFT });
@@ -479,7 +480,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
+            /*const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
       if (renderedValue !== "") {
         $('#captured-value').text(renderedValue);
         $('#link-1').text('Al parecer ya tienes una tienda quieres verla 🥵');
@@ -487,7 +488,34 @@
         console.log('Valor capturado:', renderedValue);
       } else {
         console.log('No se recibió un valor desde el servidor.');
-      }
+      }*/
+
+      $.ajax({
+            url: '/users/vertienda',
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+               
+                if (data) {
+                    
+                    $('#link-1').text('Al parecer ya tienes una tienda quieres verla 🥵');
+                    $('#link-1').attr('href', '/users/vertiendas');
+                } else {
+                    console.log('no hay nada')
+                    
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error en la petición AJAX:', error);
+                $('#resultado').html('Error al cargar los datos');
+            }
+        })
+
+
+
+
+
+
         });</script>
 </body>
 

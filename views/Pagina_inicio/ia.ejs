@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/hola.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/stylesheets/hola2.css">
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <title>Múltiples Tablas de Productos con Botones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #513131;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #666;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .product-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+        .total-cell {
+            border: 1px solid #ddd;
+            font-weight: bold;
+            text-align: left;
+            padding: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .accept-button {
+            background-color: #4CAF50;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .accept-button:hover {
+            background-color: #45a049;
+        }
+        .cancel-button {
+            background-color: #f44336;
+            color: white;
+        }
+        .cancel-button:hover {
+            background-color: #da190b;
+        }
+        .sparkle {
+            position: absolute;
+            background-color: #00f;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+        }
+        @keyframes sparkle-animation {
+            0% {
+                transform: scale(0) translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                margin-bottom: 15px;
+            }
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+            }
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-label);
+                font-weight: bold;
+            }
+            .product-image {
+                margin: 0 auto;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="container" style="display:block;">
+    <div class="container">
+        <div class="logo">
+            <img src="/placeholder.svg?height=100&width=100" alt="Logo de la empresa">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 1" class="product-image"></td>
+                    <td data-label="Nombre">Producto 1</td>
+                    <td data-label="Cantidad">2</td>
+                    <td data-label="Precio">$10.00</td>
+                    <td data-label="Subtotal">$20.00</td>
+                </tr>
+                <tr>
+                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 2" class="product-image"></td>
+                    <td data-label="Nombre">Producto 2</td>
+                    <td data-label="Cantidad">1</td>
+                    <td data-label="Precio">$15.00</td>
+                    <td data-label="Subtotal">$15.00</td>
+                </tr>
+                <tr>
+                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 3" class="product-image"></td>
+                    <td data-label="Nombre">Producto 3</td>
+                    <td data-label="Cantidad">3</td>
+                    <td data-label="Precio">$5.00</td>
+                    <td data-label="Subtotal">$15.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="total-cell">Total: $50.00</div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <img src="/placeholder.svg?height=100&width=100" alt="Logo de la empresa">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 4" class="product-image"></td>
+                    <td data-label="Nombre">Producto 4</td>
+                    <td data-label="Cantidad">1</td>
+                    <td data-label="Precio">$25.00</td>
+                    <td data-label="Subtotal">$25.00</td>
+                </tr>
+                <tr>
+                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 5" class="product-image"></td>
+                    <td data-label="Nombre">Producto 5</td>
+                    <td data-label="Cantidad">2</td>
+                    <td data-label="Precio">$8.00</td>
+                    <td data-label="Subtotal">$16.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="total-cell">Total: $41.00</div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <img src="/placeholder.svg?height=100&width=100" alt="Logo de la empresa">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 6" class="product-image"></td>
+                    <td data-label="Nombre">Producto 6</td>
+                    <td data-label="Cantidad">3</td>
+                    <td data-label="Precio">$12.00</td>
+                    <td data-label="Subtotal">$36.00</td>
+                </tr>
+                <tr>
+                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 7" class="product-image"></td>
+                    <td data-label="Nombre">Producto 7</td>
+                    <td data-label="Cantidad">1</td>
+                    <td data-label="Precio">$30.00</td>
+                    <td data-label="Subtotal">$30.00</td>
+                </tr>
+                <tr>
+                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 8" class="product-image"></td>
+                    <td data-label="Nombre">Producto 8</td>
+                    <td data-label="Cantidad">2</td>
+                    <td data-label="Precio">$7.50</td>
+                    <td data-label="Subtotal">$15.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="total-cell">Total: $81.00</div>
+    </div>
+
+    <div class="button-container">
+        <button id="acceptButton" class="button accept-button">Aceptar</button>
+        <button class="button cancel-button">Cancelar</button>
+    </div>
+</div>
+
+<div id="box4" class="box4" style="display: none;">
+     
+    <spa class="bg-animate"></spa>
+    <spa class="bg-animate2"></spa>
+
+<form action=" /users/codigo" method="post">
+
+    <div class="form-box register{}"><br>
+        <h2 class="codi">Confirmacion de Compra</h2><br>
+            <p class="holi">Ingrese el codigo de compra brindado</p>
+           <div class="input-box">
+   
+            <input type="text" id="codigo" name="codigo" >
+            <label>Ingrese aqui</label>
+            <i id="camera-icon" class='bx bxs-camera'></i>
+         </div>
+          
+             <button style="display: none;" type="submit" class="btn6" id="boton">Enviar
+             </button>
+            
+    </div>
+      
+    <div>
+     
+<div  id="reader"></div >
+<div id="result"></div>
+      
+</div>
+</form>
+</div>
+
+    <script>
+        var div1 =document.getElementById('container')
+        var div2 =document.getElementById('box4')
+        document.getElementById('acceptButton').addEventListener('click', function(e) {
+            for (let i = 0; i < 30; i++) {
+                createSparkle(e);
+            }
+        });
+
+        function createSparkle(e) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            e.target.appendChild(sparkle);
+
+            const size = Math.random() * 5 + 5;
+            const duration = Math.random() * 1000 + 500;
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 50 + Math.random() * 50;
+
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance;
+
+            sparkle.style.width = `${size}px`;
+            sparkle.style.height = `${size}px`;
+            sparkle.style.left = `${e.offsetX}px`;
+            sparkle.style.top = `${e.offsetY}px`;
+            sparkle.style.setProperty('--tx', `${tx}px`);
+            sparkle.style.setProperty('--ty', `${ty}px`);
+
+            sparkle.style.animation = `sparkle-animation ${duration}ms ease-out forwards`;
+
+            setTimeout(() => sparkle.remove(), duration);
+            div1.style.display='none'
+             div2.style.display='block'
+        }
+    </script>
+   
+     
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script>
+    
+    var $codigo = $('#codigo');
+    var $boton = $('#boton');
+
+    $codigo.on('input', function() {
+        var codigoIntroducido = $(this).val();
+            // Verifica si el código tiene exactamente 5 dígitos
+        if ( /^\d{5}$/.test(codigoIntroducido)) {
+            $boton.prop('disabled', false);
+            $boton.css({
+            'display':'block',
+          
+        });
+
+        } else {
+            $boton.prop('disabled', true);
+            $boton.css({
+            'display':'none',
+          
+        });
+
+        }
+
+       
+    });
+
+</script>
+
+<script>
+
+    function iniciar() {
+        const scanner = new Html5Qrcode("reader");
+    const resultElement = document.getElementById("result");
+    var inputElement = document.getElementById("codigo");
+
+   // const restartButton = document.getElementById("restart-button");
+
+    function onScanSuccess(decodedText, decodedResult) {
+      //  resultElement.innerHTML = `Código QR escaneado: ${decodedText}`;
+        inputElement.value = decodedText;
+        scanner.stop();
+       // restartButton.style.display = 'block';
+    }
+
+    function onScanFailure(error) {
+        // Manejo de errores silencioso
+    }
+
+    function startScanner() {
+        scanner.start(
+            { facingMode: "environment" },
+            { fps: 10, qrbox: 250 },
+            onScanSuccess,
+            onScanFailure
+        ).catch((err) => {
+            console.error("Error al iniciar el escáner:", err);
+            resultElement.innerHTML = "Error al iniciar el escáner. Por favor, asegúrate de que tienes una cámara y has dado los permisos necesarios.";
+            restartButton.style.display = 'block';
+        });
+    }
+
+
+    startScanner();
+    }
+const cameraIcon = document.getElementById('camera-icon');
+
+
+cameraIcon.addEventListener('click', () => {
+    console.log('iniciando camara')
+ 
+  iniciar()
+})
+
+
+    
+</script>
+</body>
+</html>

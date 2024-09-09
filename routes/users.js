@@ -6,7 +6,7 @@ var controller=require('../controller/index2')
 router.get('/',controller.marcas);
 
 
-router.get('/products',controller.productos);
+router.get('/product',controller.ppppp);
 
 
 
@@ -14,9 +14,10 @@ router.post('/tienda', controller.Insertartienda);
 
 router.get('/pedirproductos',function (req,res) {
     const productoId = req.query.productoId;
+    const imagen = req.query.imagen;
     console.log(productoId)
 
-    res.render('productos',{mensaje:productoId})
+    res.render('productos',{mensaje:productoId,imagen:imagen})
     
 });
 
@@ -39,7 +40,7 @@ router.post('/procesar-compra',function (req,res) {
 
 router.get('/confirmacion-compra', (req, res) => {
    
-    res.render('compras');
+    res.render('codigo_pedido');
 });
 
 
@@ -54,7 +55,7 @@ router.get('/pedido', (req, res) => {
 });
 
 
-router.get('/vertienda', (req, res) => {
+router.get('/vertiendas', (req, res) => {
     
     res.send("<center><h1 style='color: red;' >UPS! ocurrio un error estamos trabajando en ello regresa mas tarde</h1></center>")
 });
@@ -64,6 +65,28 @@ router.get('/vertienda', (req, res) => {
 router.post('/insert', controller.insertarpedido);
 
 router.get('/pruebas',controller.pruebas )
+
+router.get('/validarcodigo',controller.vercodigo)
+
+
+router.get('/pedidos',controller.pedidos)
+
+router.get('/pmarcas',controller.pmarcas)
+
+router.get('/detalles',(req,res)=>{
+    var imagen=req.query.imagen
+    var marca=req.query.marca
+    var fecha=req.query.fecha
+    
+
+
+    console.log(`imagen:${imagen} °° fecha ${fecha}°°marca ${marca}`)
+    res.render('pagina_inicio/deltalles',{imagen,fecha,marca})
+})
+
+router.get('/pernisos',controller.productos)
+
+router.get('/vertienda',controller.buscartienda)
 
 
 module.exports = router;

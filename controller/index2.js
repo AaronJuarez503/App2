@@ -19,15 +19,16 @@ module.exports={
 
     },
 
-    productos: async function (req,res) {
+    ppppp: async function (req,res) {
 
         try {
             const productoId = req.query.productoId;
-            console.log(productoId)
+            console.log("buscando los productos "+productoId)
             var r= await model.productos(con,productoId)
             res.send(r)
             
         } catch (error) {
+            console.log(error)
             
         }
         
@@ -100,20 +101,8 @@ module.exports={
         
     },
     pruebas:async function (req,res) {
-        function separarPorMarcaId(datos) {
-            const separados = {};
-          
-            datos.forEach(item => {
-              const marcaId = item.marca_id;
-              if (!separados[marcaId]) {
-                separados[marcaId] = [];
-              }
-              separados[marcaId].push(item);
-            });
-          
-            return separados;
-          }
-          
+
+        
          
           
           
@@ -122,7 +111,7 @@ module.exports={
            //console.log(result)
 
 
-           const resultadoSeparado = separarPorMarcaId(result);
+           
 
            
 
@@ -134,31 +123,10 @@ module.exports={
           
          
 
-          Object.keys(resultadoSeparado).forEach(marcaId => {
-            //console.log(`Datos de la marca con ID ${marcaId}:`) 
-            const unifiedArray = resultadoSeparado[marcaId].reduce((acc, item) => {
-                const existingItem = acc.find(i => i.producto_id === item.producto_id);
-                if (existingItem) {
-                  existingItem.cantidad += item.cantidad;
-                  existingItem.total += item.total;
-                } else {
-                  acc.push({
-                    producto_id: item.producto_id,
-                    imagen: item.producto_imagen,
-                    nombre: item.producto_nombre,
-                    cantidad: item.cantidad,
-                    total: item.total
-                  });
-                }
-                return acc;
-              }, []);
-
-              console.log(`Datos de la marca con ID ${marcaId}:`, unifiedArray);
-        })
-            
+        res.send(result)
 
           //console.log(resultadoSeparado);
-          res.send(resultadoSeparado)
+         
 
         
 
@@ -169,6 +137,56 @@ module.exports={
             console.log('errror')
             
         }
+        
+    },
+    vercodigo: async function (req,res) {
+
+      console.log(req.query.codigo)
+
+      res.send({data:true})
+      
+    },
+    pedidos: async function (req,res) {
+        
+    },
+    pmarcas: async function (req,res) {
+
+
+        var result = await model.pmarcas(con)
+
+        console.log(result)
+
+
+        res.send(result)
+        
+    },
+    productos: async function (req,res) {
+        var marca=req.query.marca
+        var fecha=req.query.fecha
+        try {
+            var result = await model.detalles(con,marca,fecha)
+            
+            res.send(result)
+        } catch (error) {
+            console.error('error el consulta')
+            
+        }
+
+        
+    },
+    buscartienda: async function (req,res) {
+        const token = req.cookies.perfil;
+        console.log(token.id)
+
+       try {
+        var rmarca= await model.buscartienda(con,token.id)
+        console.log(rmarca)
+
+        res.send(rmarca)
+       } catch (error) {
+        
+        
+       }
         
     }
 }
