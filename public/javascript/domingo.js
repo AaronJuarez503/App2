@@ -57,11 +57,12 @@ $(function() {
                         .appendTo($thead);
 
                     var total = 0;
+                    var img;
                    
 
                     // Crear filas
                     $.each(productos, function(i, producto) {
-                       
+                       img=producto.mmarca;
                        
                         var subtotal = producto.cantidad * producto.precio;
                         total += subtotal;
@@ -78,7 +79,7 @@ $(function() {
 
                     $('<div>')
                     .addClass('logo')
-                    .append('<img src="/placeholder.svg" alt="Logo de la empresa" width="100" height="100">').appendTo($containerc)
+                    .append('<img src="'+img+'" alt="Logo de la empresa" width="100" height="100">').appendTo($containerc)
                    
                     $tabla.appendTo($containerc)
                     $('<div class="total-cell">').text('Total: $' + total).appendTo($containerc);

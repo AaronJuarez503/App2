@@ -152,7 +152,7 @@ $.ajax({
                 <p>${producto.descripcion}
                 </p>
                 <div class="add-to-cart">
-                    <button data-id_m=${producto.marca_id} data-id=${producto.id} id="btn">Agregar al carrito</button>
+                    <button data-id_m=${producto.marca_id} data-id=${producto.id} data-mmarca=${producto.imagen_marca} id="btn">Agregar al carrito</button>
                 </div>
             </div>
         </div>
@@ -215,8 +215,9 @@ $.ajax({
 
         var id = $(this).data('id');
         var id_marca = $(this).data('id_m');
+        var imagen = $(this).data('mmarca');
 
-        console.log(id,':',id_marca)
+        console.log(id,':',id_marca,':',imagen)
 
 
         const partes = headingContent.split('$');
@@ -235,6 +236,7 @@ $.ajax({
         var datos = {
             id:id,
             marca:id_marca,
+            mmarca:imagen,
             nombre: nombre,
             imagen: imageUrl,
             precio: precio,
