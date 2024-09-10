@@ -23,7 +23,7 @@ $(function () {
 })
 
 
-$('#container').off('click', '#btn').on('click', '#btn', function() {
+$('#container').off('click', '#deliveryLogo').on('click', '#deliveryLogo', function() {
     var imagen= $(this).data('imagen')
     var marca= $(this).data('marca')    
     var fecha= $(this).data('fecha')

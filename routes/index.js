@@ -42,7 +42,7 @@ router.get('/productos',function(req,res){
   res.render('productos')
 })
 router.get('/pedido',function(req,res){
-  res.render('estado_pedido')
+  res.render('estado')
 })
 router.get('/codigoventa',function(req,res){
   res.render('codigo_pedido')
