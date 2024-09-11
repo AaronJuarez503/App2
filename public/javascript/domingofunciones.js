@@ -1,63 +1,69 @@
-var Modulo1 = (function($) {
-    function saludar(nombre) {
-        var html =`
-        <div class="container">
-        <div class="logo">
-            <img src="/placeholder.svg?height=100&width=100" alt="Logo de la empresa">
-        </div>
-        <table id="table">
-            <thead>
-                <tr>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Subtotal</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 1" class="product-image"></td>
-                    <td data-label="Nombre">Producto 1</td>
-                    <td data-label="Cantidad">2</td>
-                    <td data-label="Precio">$10.00</td>
-                    <td data-label="Subtotal">$20.00</td>
-                    <td data-label="Acción"><span class="trash-icon">🗑️</span></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="total-cell">Total: $50.00</div>
-    </div>
-        `
+$(function() {
 
-        return html;
+    function mandar() {
+        let list = JSON.parse(localStorage.getItem('carrito')) || [];
+    console.log('lista')
+console.log(list)
+
+
+
+const carritoModificado = list.map(({ imagen, nombre, mmarca, ...resto }) => resto);
+     console.log('modificado')
+    console.log(carritoModificado);
+    if (list.length > 0) {
+        $.ajax({
+    url: '/users/insert',
+    method: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({ items: carritoModificado }),
+    success: function(response) {
+        // Redirige a la página de confirmación
+        alert('tu pedido asido enviado por favor te pedimos estar pendiente de tu estado de pedido')
+        // Eliminar la lista del local storage
+        localStorage.removeItem("carrito");
+     },
+    error: function(error) {
+        console.error('Error al procesar la compra:', error);
+        alert('Hubo un error al procesar tu compra. Por favor, inténtalo de nuevo.');
     }
-    function saludar2(nombre) {
-        console.log("hola2")
-        var html =`
-      
-                <tr>
-                    <td data-label="Imagen"><img src="/placeholder.svg?height=50&width=50" alt="Producto 1" class="product-image"></td>
-                    <td data-label="Nombre">Producto 1</td>
-                    <td data-label="Cantidad">2</td>
-                    <td data-label="Precio">$10.00</td>
-                    <td data-label="Subtotal">$20.00</td>
-                    <td data-label="Acción"><span class="trash-icon">🗑️</span></td>
-                </tr>
-            
-       
-        `
-
-        return html;
+});
+        
+    } else {
+        alert("El carrito está vacío.");
     }
+    
+}
 
-   
-      
-    return {
-        saludar: saludar,
-        saludar2: saludar2
+
+
+    $('.btn6').on('click',()=>{
+        var r= $('#codigo').val();
+                console.log('codigo'+r)
+
         
-        
-    };
-})(jQuery);
+        $.ajax({
+            url: `/users/validarcodigo?codigo=${r}`,
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                
+                console.log('Datos recibidos:', data.data);
+
+                if (data.data) {
+                    mandar()
+                } else {
+                    $('.holi').text('al pareser el codigo que has proporcionado no es valido')
+                    
+                }
+
+
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error en la petición AJAX:', error);
+                        $('#resultado').html('Error al cargar los datos');
+                    }
+                });
+    })
+
+})

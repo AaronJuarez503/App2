@@ -29,7 +29,7 @@ $(function() {
 
               function crearTablas(datos) {
                 var $container = $('#container');
-                $container.empty(); // Limpia el contenedor
+               // $container.empty(); // Limpia el contenedor
                 
 
                 $.each(datos, function(id, productos) {
