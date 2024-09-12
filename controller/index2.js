@@ -175,8 +175,14 @@ module.exports={
         
     },
     buscartienda: async function (req,res) {
+        console.log('buscando tienda')
         const token = req.cookies.perfil;
-        console.log(token.id)
+        if (!token) {
+            console.log('alpareser no tienes tienda')
+            res.redirect('principal')
+            
+        }else{
+            console.log(token.id)
 
        try {
         var rmarca= await model.buscartienda(con,token.id)
@@ -187,6 +193,47 @@ module.exports={
         
         
        }
+        }
+        
+        
+    },
+    vertienda:async (req,res) => {
+        try {
+            
+        } catch (error) {
+            
+        }
+    },
+    vercompras:async (req,res) => {
+        try {
+        const token = req.cookies.perfil;
+        console.log('id del ciente :'+token.id)
+        var r= await model.vercompras(con,token.id)
+        res.send(r)
+            
+        } catch (error) {
+            
+        } 
+    },
+    verificarcodigo:async (req,res) => {
+        var codigo = req.query.codigo
+        try {
+            const token = req.cookies.perfil;
+
+            var respuesta=await model.verificarcodigo(con,toekn.id)
+            if (respuesta.codigo===codigo) {
+                res.send('codivo valido')
+            } else if (respuesta.codigo===null) {
+                //funcion para insertar
+                
+            } else{
+                res.send('codigo no valido ')
+                
+            }
+            
+        } catch (error) {
+            
+        }
         
     }
 }

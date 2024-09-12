@@ -4,9 +4,8 @@ var controlador = require('../controller/index')
 var validator=require('../controller/validaciones')
 
 /* GET home page. */
-router.get('/',function(req, res) {
-  res.render('inicio');
-});
+router.get('/',controlador.iniciarsesion);
+
 router.post('/',validator.Piniciar,controlador.IniciarSesion)
 
 router.get('/registrar',function(req, res) {

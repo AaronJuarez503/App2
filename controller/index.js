@@ -2,10 +2,61 @@ var conexion = require('../config/index')
 var consulta = require('../model/index')
 var email= require('../controller/enviargmail')
 var aux=require('../controller/auxiliar')
+var Gtoken = require('./Gtoken')
 
 var gcodigo;
 
 module.exports={
+    iniciarsesion: async function (req,res) {
+        const token = req.cookies.authToken;
+        async function verificartoken() {
+            try {
+              var vtoken = await Gtoken.validarToken2(token);
+              console.log("El token es válido:", vtoken);
+              var rol = vtoken.rol;
+              const touken = req.cookies.perfil;
+              
+            
+              console.log("al macenado con exito")
+             res.render('inicio')
+            } catch (error) {
+              console.error("Error de validación del token:", error.message);
+              if (error.message === "Token has expired.") {
+                const refreshToken = req.cookies.refreshToken;
+                try {
+                  const decoded = await Gtoken.validarToken2(refreshToken);
+                  const { rol, email } = decoded;
+                  console.log("El token es válido:", decoded);
+                  const tokennew = Gtoken.generarToken({ rol, email });
+                  res.cookie('authToken', tokennew, { httpOnly: true, secure: true });
+                  console.log("token refrescado exitosamente");
+                  res.render('inicio')
+                } catch (error) {
+                  console.error("Error de validación del token de actualización:", error.message);
+                  if (error.message === "Token has expired." || error.message === "Token does not exist.") {
+                    return res.render('inicio')
+                  }
+                  if (error.message === "Token is altered." || error.message === "Token verification failed.") {
+                    return res.status(401).json({ message: "Token ha sido alterado", expired: true });
+                  }
+                }
+              }
+              if (error.message === "Token has expired." || error.message === "Token does not exist.") {
+                return res.render('inicio')
+              }
+              if (error.message === "Token is altered." || error.message === "Token verification failed.") {
+                return res.status(401).json({ message: "Token ha sido alterado", expired: true });
+              }
+            }
+          }
+
+
+          if (!token) {
+            res.render('inicio')
+        } else {
+            verificartoken();
+         }
+    },
 
     RegistrarCliente:function(req,res){
        // console.log("datos"+req.body)
@@ -41,7 +92,7 @@ module.exports={
             await consulta.Cliente(conexion,id,nom,apell)
 
 
-            res.redirect('/marca')
+            res.redirect('/principal')
             
         } catch (error) {
             console.error('error al insertar', error)
@@ -68,16 +119,47 @@ module.exports={
                 console.log( respuestabd)
                 var rmarca= await consulta.buscarmarcas(conexion,respuestabd.id)
                 console.log(rmarca)
+
                 var play={
                     id:respuestabd.id,
-                    tienda_id:rmarca.id,
-                    tienda_nom:rmarca.nombre
+                  
+
                    
                   }
-                
 
-                 
+                  if (rmarca!==false) {
+                    play.tienda_id=rmarca.id,
+                    play.tienda_nom=rmarca.nombre
+                   
+                  } 
+                  console.log('no tienes tienda registrada todavia ')
+                
+                  var payload
+                  var payload2
+      
+                  payload = {
+                      id: respuestabd.id,
+                      rol: respuestabd.rol,
+                      nombre: respuestabd.usuario,
+                      email: respuestabd.email
+                  }
+      
+                  payload2 = {
+                      id: respuestabd.id,
+                      rol: respuestabd.rol,
+                      nombre: respuestabd.usuario,
+                      email: respuestabd.email
+                  }
+                  console.log(payload)
+      
+                  const token = Gtoken.generarToken(payload)
+                  res.cookie('authToken', token, { httpOnly: true,secure: true })
+      
+                  const refreshToken = Gtoken.refreshToken(payload2)
+                  res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true })
+
                   res.cookie('perfil',play,{ httpOnly: true,secure: true });
+
                   
                 res.render('Pagina_inicio/index');
 
@@ -242,6 +324,7 @@ module.exports={
             console.error('usuario no encontrado');
         }
     },
+
     
 
 }//fin de modules exports no idont delet

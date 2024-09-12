@@ -89,4 +89,7 @@ router.get('/pernisos',controller.productos)
 router.get('/vertienda',controller.buscartienda)
 
 
+router.get('/vercompras',controller.vercompras)
+
+
 module.exports = router;
