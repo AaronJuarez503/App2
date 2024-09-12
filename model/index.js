@@ -35,7 +35,7 @@ module.exports={
                 } else if (resultado.length >0) {
                     resolve(resultado[0]);
                 }else{
-                    reject(new Error('No se encontró la tienda'));
+                    resolve(false)
                 }
             });
             

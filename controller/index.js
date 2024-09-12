@@ -119,12 +119,19 @@ module.exports={
                 console.log( respuestabd)
                 var rmarca= await consulta.buscarmarcas(conexion,respuestabd.id)
                 console.log(rmarca)
-                var play={
-                    id:respuestabd.id,
-                    tienda_id:rmarca.id,
-                    tienda_nom:rmarca.nombre
-                   
-                  }
+
+                  if (rmarca!==false) {
+                    var play={
+                        id:respuestabd.id,
+                        tienda_id:rmarca.id,
+                        tienda_nom:rmarca.nombre
+                       
+                      }
+                      res.cookie('perfil',play,{ httpOnly: true,secure: true });
+                     
+                    
+                  } 
+                  console.log('no tienes tienda registrada todavia ')
                 
                   var payload
                   var payload2
@@ -151,7 +158,7 @@ module.exports={
                   res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true })
 
                  
-                  res.cookie('perfil',play,{ httpOnly: true,secure: true });
+
                   
                 res.render('Pagina_inicio/index');
 
