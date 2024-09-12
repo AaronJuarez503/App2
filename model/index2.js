@@ -242,6 +242,22 @@ ORDER BY
             
         })
     },
+    vertienda:async (conexion,id) => {
+        const consulta =`SELECT * FROM tiendas WHERE cliente_id = ?`
+        return new Promise ((resolve ,reject)=>{
+            conexion.query(consulta,(error, resultado)=>{
+                if (error) {
+                    throw (error)
+                } else if (resultado.length > 0){
+                    resolve(resultado[0])
+                } else {
+                    resolve(false)
+                }
+
+            })
+        })
+        
+    }
 
 
 
