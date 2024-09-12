@@ -36,7 +36,7 @@ const carritoModificado = list.map(({ imagen, nombre, mmarca, ...resto }) => res
 
 
 
-    $('.btn6').on('click',()=>{
+   /* $('.btn6').on('click',()=>{
         var r= $('#codigo').val();
                 console.log('codigo'+r)
 
@@ -64,6 +64,6 @@ const carritoModificado = list.map(({ imagen, nombre, mmarca, ...resto }) => res
                         $('#resultado').html('Error al cargar los datos');
                     }
                 });
-    })
+    })*/
 
 })

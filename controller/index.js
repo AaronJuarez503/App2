@@ -18,7 +18,7 @@ module.exports={
               
             
               console.log("al macenado con exito")
-             res.render('Pagina_inicio/index')
+             res.render('inicio')
             } catch (error) {
               console.error("Error de validación del token:", error.message);
               if (error.message === "Token has expired.") {
@@ -30,11 +30,11 @@ module.exports={
                   const tokennew = Gtoken.generarToken({ rol, email });
                   res.cookie('authToken', tokennew, { httpOnly: true, secure: true });
                   console.log("token refrescado exitosamente");
-                  return aux.mostrarVentanas2(res, rol);
+                  res.render('inicio')
                 } catch (error) {
                   console.error("Error de validación del token de actualización:", error.message);
                   if (error.message === "Token has expired." || error.message === "Token does not exist.") {
-                    return res.render('login/inicio');
+                    return res.render('inicio')
                   }
                   if (error.message === "Token is altered." || error.message === "Token verification failed.") {
                     return res.status(401).json({ message: "Token ha sido alterado", expired: true });
@@ -42,7 +42,7 @@ module.exports={
                 }
               }
               if (error.message === "Token has expired." || error.message === "Token does not exist.") {
-                return res.render('login/inicio');
+                return res.render('inicio')
               }
               if (error.message === "Token is altered." || error.message === "Token verification failed.") {
                 return res.status(401).json({ message: "Token ha sido alterado", expired: true });
@@ -52,7 +52,7 @@ module.exports={
 
 
           if (!token) {
-            res.render('inicio');
+            res.render('inicio')
         } else {
             verificartoken();
          }

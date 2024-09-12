@@ -203,5 +203,37 @@ module.exports={
         } catch (error) {
             
         }
+    },
+    vercompras:async (req,res) => {
+        try {
+        const token = req.cookies.perfil;
+        console.log('id del ciente :'+token.id)
+        var r= await model.vercompras(con,token.id)
+        res.send(r)
+            
+        } catch (error) {
+            
+        } 
+    },
+    verificarcodigo:async (req,res) => {
+        var codigo = req.query.codigo
+        try {
+            const token = req.cookies.perfil;
+
+            var respuesta=await model.verificarcodigo(con,toekn.id)
+            if (respuesta.codigo===codigo) {
+                res.send('codivo valido')
+            } else if (respuesta.codigo===null) {
+                //funcion para insertar
+                
+            } else{
+                res.send('codigo no valido ')
+                
+            }
+            
+        } catch (error) {
+            
+        }
+        
     }
 }

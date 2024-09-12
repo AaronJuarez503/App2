@@ -257,6 +257,53 @@ ORDER BY
             })
         })
         
+    },
+    vercompras: async (conexion,id) => {
+        const consulta = `
+        SELECT *,
+        c.codigo 
+        FROM pedidos_activos t
+        JOIN clientes c ON t.cliente_id = c.id
+        WHERE c.id = ${id}
+        LIMIT 1
+    `;
+
+        return new Promise ((resolve ,reject)=>{
+            conexion.query(consulta,(error, resultado)=>{
+                if (error) {
+                    throw (error)
+                } else if (resultado.length > 0){
+                    console.log(resultado)
+                    resolve(true)
+                    //resolve(resultado[0])
+                } else {
+                    console.log('alpareser no has realizado ninguna compra')
+                    resolve(false)
+                }
+
+            })
+        })
+        
+    },
+    verificarcodigo: async (conexion,id)=> {
+        const consulta =`SELECT codigo FORM clientes WHERE id=${id}`
+``
+        return new Promise ((resolve ,reject)=>{
+            conexion.query(consulta,(error, resultado)=>{
+                if (error) {
+                    throw (error)
+                } else if (resultado.length > 0){
+                    console.log(resultado)
+                    resolve(resultado[0])
+                    //resolve(resultado[0])
+                } else {
+                    console.log('alpareser no has realizado ninguna compra')
+                    reject(new Error('codigo no valido'));
+                }
+
+            })
+        })
+        
     }
 
 
