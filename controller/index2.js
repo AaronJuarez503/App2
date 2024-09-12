@@ -175,8 +175,14 @@ module.exports={
         
     },
     buscartienda: async function (req,res) {
+        console.log('buscando tienda')
         const token = req.cookies.perfil;
-        console.log(token.id)
+        if (!token) {
+            console.log('alpareser no tienes tienda')
+            res.redirect('principal')
+            
+        }else{
+            console.log(token.id)
 
        try {
         var rmarca= await model.buscartienda(con,token.id)
@@ -187,6 +193,8 @@ module.exports={
         
         
        }
+        }
+        
         
     },
     vertienda:async (req,res) => {

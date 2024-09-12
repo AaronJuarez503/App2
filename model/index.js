@@ -70,7 +70,7 @@ module.exports={
     },
 
     IniciarSesion:function(conexion, { user, pass }) {
-        const consulta = `SELECT * FROM usuarios WHERE usuario = '${user}' AND contraseña = '${pass}'`;
+        const consulta = `SELECT * FROM usuarios WHERE usuario = '${user}' AND contrasena = '${pass}'`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
