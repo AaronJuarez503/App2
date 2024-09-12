@@ -92,7 +92,7 @@ module.exports={
             await consulta.Cliente(conexion,id,nom,apell)
 
 
-            res.redirect('/marca')
+            res.redirect('/principal')
             
         } catch (error) {
             console.error('error al insertar', error)
