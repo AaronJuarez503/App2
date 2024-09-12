@@ -19,9 +19,9 @@ module.exports={
 
         if (!token) {
             console.log("renviando")
-            res.render('login/inicio'); // Si no hay token, devuelve un error 401
+            res.render('login/inicio');
         } else {
-            yy();
+            ay();
          }
 
 
