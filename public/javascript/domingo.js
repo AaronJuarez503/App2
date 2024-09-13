@@ -67,13 +67,13 @@ $(function() {
                         var subtotal = producto.cantidad * producto.precio;
                         total += subtotal;
 
-                        $('<tr>')
+                        $('<tr id="'+producto.id+'">')
                             .append('<td data-label="Imagen"><img src="' + producto.imagen + '" alt="' + producto.nombre + '" width="50"></td>')
                             .append('<td data-label="Nombre">' + producto.nombre + '</td>')
                             .append('<td data-label="Cantidad">' + producto.cantidad + '</td>')
                             .append('<td data-label="Precio">$' + producto.precio + '</td>')
                             .append('<td data-label="Subtotal">$' + producto.total + '</td>')
-                            .append('<td data-label="Acción"><span class="trash-icon">🗑️</span></td>')
+                            .append('<td id="btn" data-label="Acción"><span class="trash-icon">🗑️</span></td>')
                             .appendTo($tbody);
                     });
 
@@ -99,6 +99,16 @@ $(function() {
         }
     
 })
+$('#container').off('click', '#btn').on('click', '#btn', function() {
+    var id=  $('tr').data('id')
+    console.log(id)
+    
+   
+
+   // console.log(imagen,fecha,marca)
+})
+
+
 
 
 })
