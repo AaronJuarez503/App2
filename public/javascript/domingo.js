@@ -103,11 +103,16 @@ $(function() {
     
 }) //fin
 
+
 let list = JSON.parse(localStorage.getItem('carrito')) || [];
 
 console.log(list)
 function guardarCarritoEnLocalStorage(listr) {
     localStorage.setItem('carrito', JSON.stringify(listr));
+}
+function actualizarTotalCarrito(listw) {
+    let totalCarrito = listw.reduce((sum, item) => sum + item.total, 0);
+    $('.total-cell').text(`Total: $${totalCarrito}`);
 }
 
 
@@ -117,10 +122,13 @@ function borrarRegistro(id) {
       list.splice(index, 1);
       console.log(`Registro con id ${id} eliminado.`);
       console.log(list)
-      guardarCarritoEnLocalStorage(list)
+      
     } else {
       console.log(`No se encontró ningún registro con id ${id}.`);
     }
+
+    guardarCarritoEnLocalStorage(list)
+      actualizarTotalCarrito(list)
   }
 
 
