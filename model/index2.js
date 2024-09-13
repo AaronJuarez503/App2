@@ -285,25 +285,48 @@ ORDER BY
         })
         
     },
-    verificarcodigo: async (conexion,id)=> {
-        const consulta =`SELECT codigo FORM clientes WHERE id=${id}`
-``
-        return new Promise ((resolve ,reject)=>{
-            conexion.query(consulta,(error, resultado)=>{
-                if (error) {
-                    throw (error)
-                } else if (resultado.length > 0){
-                    console.log(resultado)
-                    resolve(resultado[0])
-                    //resolve(resultado[0])
-                } else {
-                    console.log('alpareser no has realizado ninguna compra')
-                    reject(new Error('codigo no valido'));
-                }
+    verificacodigo:function (conexion,id) {
 
-            })
-        })
+        const consulta =`SELECT codigo FROM clientes WHERE id = ${id}`
+
+          return new Promise ((resolve ,reject)=>{
+    conexion.query(consulta,(error, resultado)=>{
+        if (error) {
+            throw (error)
+        } else if (resultado.length > 0){
+            
+            resolve(resultado[0])
+            //resolve(resultado[0])
+        } else {
+            console.log('alpareser no has realizado ninguna compra')
+            resolve(false)
+        }
+
+    })
+})
         
+    },
+
+    insertarcodigo: (conexion,codigo,id)=>{
+        
+        const consulta =`
+        UPDATE clientes
+            SET codigo = ${codigo}
+            WHERE id=${id};
+        `
+
+        return new Promise ((resolve ,reject)=>{
+         conexion.query(consulta,(error, resultado)=>{
+        if (error) {
+            throw (error)
+         } else {
+            console.log('codigo insertado correctamente')
+            resolve(true)
+        }
+
+    })
+})
+
     }
 
 

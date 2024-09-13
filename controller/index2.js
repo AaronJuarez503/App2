@@ -217,21 +217,26 @@ module.exports={
     },
     verificarcodigo:async (req,res) => {
         var codigo = req.query.codigo
+        console.log(codigo)
         try {
             const token = req.cookies.perfil;
+            console.log(token.id)
 
-            var respuesta=await model.verificarcodigo(con,toekn.id)
+            var respuesta=await model.verificacodigo(con,token.id)
+            console.log(respuesta.codigo)
             if (respuesta.codigo===codigo) {
-                res.send('codivo valido')
-            } else if (respuesta.codigo===null) {
-                //funcion para insertar
-                
+                res.send(true)
+            } else if (respuesta.codigo==='') {
+            var result =await model.insertarcodigo(con,codigo,token.id)
+            console.log(result)
+            res.send(true)     
             } else{
-                res.send('codigo no valido ')
+                res.send(false)
                 
             }
             
         } catch (error) {
+            console.error(error)
             
         }
         

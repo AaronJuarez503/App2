@@ -1,4 +1,4 @@
-$(function() {
+var Modulo2=(function($) {
 
     function mandar() {
         let list = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -36,7 +36,15 @@ const carritoModificado = list.map(({ imagen, nombre, mmarca, ...resto }) => res
 
 
 
-   /* $('.btn6').on('click',()=>{
+
+return {
+    mandar:mandar
+    
+    
+};
+})(jQuery);
+
+/* $('.btn6').on('click',()=>{
         var r= $('#codigo').val();
                 console.log('codigo'+r)
 
@@ -65,5 +73,3 @@ const carritoModificado = list.map(({ imagen, nombre, mmarca, ...resto }) => res
                     }
                 });
     })*/
-
-})

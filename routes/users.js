@@ -91,5 +91,7 @@ router.get('/vertienda',controller.buscartienda)
 
 router.get('/vercompras',controller.vercompras)
 
+router.get('/verificarcodigo',controller.verificarcodigo)
+
 
 module.exports = router;
