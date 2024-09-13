@@ -1,5 +1,7 @@
 $(function() {
 
+ 
+
     $.ajax({
         url: '/users/compra',
         method: 'get',
@@ -7,6 +9,7 @@ $(function() {
         success: function(response) {
             // Redirige a la página de confirmación
             console.log(response)
+            
 
             function separarPorMarcaId(datos) {
                 const separados = {};
@@ -73,7 +76,7 @@ $(function() {
                             .append('<td data-label="Cantidad">' + producto.cantidad + '</td>')
                             .append('<td data-label="Precio">$' + producto.precio + '</td>')
                             .append('<td data-label="Subtotal">$' + producto.total + '</td>')
-                            .append('<td id="btn" data-label="Acción"><span class="trash-icon">🗑️</span></td>')
+                            .append(`<td id="btn"data-id="${producto.id}" data-label="Acción"><span class="trash-icon">🗑️</span></td>`)
                             .appendTo($tbody);
                     });
 
@@ -98,10 +101,35 @@ $(function() {
             alert('Hubo un error al procesar tu compra. Por favor, inténtalo de nuevo.');
         }
     
-})
+}) //fin
+
+let list = JSON.parse(localStorage.getItem('carrito')) || [];
+
+console.log(list)
+function guardarCarritoEnLocalStorage(listr) {
+    localStorage.setItem('carrito', JSON.stringify(listr));
+}
+
+
+function borrarRegistro(id) {
+    const index = list.findIndex(registro => registro.id === id);
+    if (index !== -1) {
+      list.splice(index, 1);
+      console.log(`Registro con id ${id} eliminado.`);
+      console.log(list)
+      guardarCarritoEnLocalStorage(list)
+    } else {
+      console.log(`No se encontró ningún registro con id ${id}.`);
+    }
+  }
+
+
 $('#container').off('click', '#btn').on('click', '#btn', function() {
-    var id=  $('tr').data('id')
+    var id=  $(this).data('id')
     console.log(id)
+
+    $(`#${id}`).closest('tr').remove();
+    borrarRegistro(id)
     
    
 
