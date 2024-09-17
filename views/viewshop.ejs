@@ -112,12 +112,7 @@
     <div class="container">
         <img id="tiendaImagen" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Imagen de la tienda">
         <div id="infoTienda">
-            <h1 id="nombreTienda">Mi Tienda Fantástica</h1>
-            <p>
-                <strong>Dirección:</strong> <span id="direccionTienda">Calle Principal 123, Ciudad Ejemplo, País</span><br>
-                <strong>Teléfono:</strong> <span id="telefonoTienda">+1 234 567 890</span>
-            </p>
-            <button id="editarBtn">Editar Información</button>
+
         </div>
         <form id="editForm">
             <input type="text" id="nombreInput" placeholder="Nombre de la Tienda">
@@ -148,13 +143,13 @@
         const direccionInput = document.getElementById('direccionInput');
         const telefonoInput = document.getElementById('telefonoInput');
 
-        editarBtn.addEventListener('click', () => {
+            /*editarBtn.addEventListener('click', () => {
             infoTienda.style.display = 'none';
             editForm.style.display = 'block';
             nombreInput.value = nombreTienda.textContent;
             direccionInput.value = direccionTienda.textContent;
             telefonoInput.value = telefonoTienda.textContent;
-        });
+        });*/
 
         cancelarBtn.addEventListener('click', () => {
             infoTienda.style.display = 'block';
@@ -181,5 +176,7 @@
             editForm.style.display = 'none';
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/javascript/viewshop.js"></script>
 </body>
 </html>

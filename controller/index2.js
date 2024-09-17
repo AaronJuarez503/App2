@@ -197,6 +197,29 @@ module.exports={
         
         
     },
+    buscartienda2: async function (req,res) {
+        console.log('buscando tienda')
+        const token = req.cookies.perfil;
+        if (!token) {
+            console.log('alpareser no tienes tienda')
+          //  res.redirect('principal')
+            
+        }else{
+            console.log(token.id)
+
+       try {
+        var datos= await model.buscartienda2(con,token.id)
+        console.log(datos)
+
+         res.send(datos)
+       } catch (error) {
+        
+        
+       }
+        }
+        
+        
+    },
     vertienda:async (req,res) => {
         try {
             
