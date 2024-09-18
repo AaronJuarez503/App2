@@ -58,6 +58,8 @@ router.get('/pedido', (req, res) => {
 router.get('/vertiendas',controller.buscartienda2)
 
 
+router.post('/actualizartienda', controller.actualizarTienda);
+
 
 router.post('/insert', controller.insertarpedido);
 

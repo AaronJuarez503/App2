@@ -350,7 +350,27 @@ ORDER BY
     })
 })
 
-    }
+    },
+
+    actualizarTienda: function(conexion, id, nombre, direccion, telefono) {
+        const consulta = `
+            UPDATE tiendas
+            SET nombre = ?, dirreccion = ?, telefono = ?
+            WHERE cliente_id = ?
+        `;
+        
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, [nombre, direccion, telefono, id], (error, resultado) => {
+                if (error) {
+                    console.error("Error al actualizar la tienda:", error);
+                    reject(error);
+                } else {
+                    console.log("Tienda actualizada correctamente");
+                    resolve(true);
+                }
+            });
+        });
+    },
 
 
 

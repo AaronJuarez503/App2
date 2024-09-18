@@ -35,13 +35,35 @@ $(function() {
     $(document).ready(function() {
         $('#editForm').submit(function(e) {
             e.preventDefault();
-    
-            $('#nombreTienda').text($('#nombreInput').val());
-            $('#direccionTienda').text($('#direccionInput').val());
-            $('#telefonoTienda').text($('#telefonoInput').val());
-    
-            $('#infoTienda').css('display', 'block');
-            $('#editForm').css('display', 'none');
+            
+            var nuevosDatos = {
+                nombre: $('#nombreInput').val(),
+                direccion: $('#direccionInput').val(),
+                telefono: $('#telefonoInput').val()
+            };
+            
+            $.ajax({
+                url: '/users/actualizartienda', // Asegúrate de que esta ruta exista en tu servidor
+                method: 'POST',
+                data: nuevosDatos,
+                success: function(response) {
+                    if(response.success) {
+                        $('#nombreTienda').text(nuevosDatos.nombre);
+                        $('#direccionTienda').text(nuevosDatos.direccion);
+                        $('#telefonoTienda').text(nuevosDatos.telefono);
+                        
+                        $('#infoTienda').css('display', 'block');
+                        $('#editForm').css('display', 'none');
+                        
+                        alert('Información de la tienda actualizada con éxito');
+                    } else {
+                        alert('Error al actualizar la información de la tienda');
+                    }
+                },
+                error: function() {
+                    alert('Error de conexión al actualizar la información de la tienda');
+                }
+            });
         });
     });
     

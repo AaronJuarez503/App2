@@ -262,6 +262,25 @@ module.exports={
             console.error(error)
             
         }
+
+    },
+    
+    actualizarTienda: async function(req, res) {
+        try {
+            const token = req.cookies.perfil;
+            const { nombre, direccion, telefono } = req.body;
+            
+            const resultado = await model.actualizarTienda(con, token.id, nombre, direccion, telefono);
+            
+            if (resultado) {
+                res.json({ success: true, mensaje: "Información de la tienda actualizada con éxito" });
+            } else {
+                res.status(400).json({ success: false, mensaje: "Error al actualizar la información de la tienda" });
+            }
+        } catch (error) {
+            console.error("Error al actualizar la tienda:", error);
+            res.status(500).json({ success: false, mensaje: "Error interno del servidor" });
+        }
         
     }
 }
