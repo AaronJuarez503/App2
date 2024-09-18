@@ -148,3 +148,5 @@ $('#container').off('click', '#btn').on('click', '#btn', function() {
 
 
 })
+
+//res.render('pagina',{datos:rmarca})
