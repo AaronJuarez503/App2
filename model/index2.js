@@ -245,7 +245,7 @@ ORDER BY
     
     buscartienda2: function(conexion, id) {
         const consulta = `
-          SELECT t.id, t.nombre, t.dirreccion, t.telefono
+          SELECT t.id,t.imagen, t.nombre, t.dirreccion, t.telefono
           FROM tiendas t
           JOIN clientes c ON t.cliente_id = c.id
           WHERE c.id = ${id}
@@ -352,15 +352,17 @@ ORDER BY
 
     },
 
-    actualizarTienda: function(conexion, id, nombre, direccion, telefono) {
+    actualizarTienda: function(conexion, id,id_imagen,imagen,datos) {
+        console.log('datos para insertar en el modelo')
+        console.log(datos)
         const consulta = `
             UPDATE tiendas
-            SET nombre = ?, dirreccion = ?, telefono = ?
+            SET id_imagen = ?, imagen = ?, nombre = ?, dirreccion = ?, telefono = ?
             WHERE cliente_id = ?
         `;
         
         return new Promise((resolve, reject) => {
-            conexion.query(consulta, [nombre, direccion, telefono, id], (error, resultado) => {
+            conexion.query(consulta, [id_imagen, imagen, datos.nombre, datos.direccion, datos.telefono, id], (error, resultado) => {
                 if (error) {
                     console.error("Error al actualizar la tienda:", error);
                     reject(error);

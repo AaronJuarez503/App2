@@ -1,5 +1,6 @@
 const con=require('../config/index')
 const model=require('../model/index2')
+const cloudinary = require('./cloudinary')
 
 
 
@@ -266,21 +267,24 @@ module.exports={
     },
     
     actualizarTienda: async function(req, res) {
+        console.log(req.body)
+        
+        const dataUri = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+
         try {
             const token = req.cookies.perfil;
-            const { nombre, direccion, telefono } = req.body;
             
-            const resultado = await model.actualizarTienda(con, token.id, nombre, direccion, telefono);
-            
-            if (resultado) {
-                res.json({ success: true, mensaje: "Información de la tienda actualizada con éxito" });
-            } else {
-                res.status(400).json({ success: false, mensaje: "Error al actualizar la información de la tienda" });
-            }
+           // const resultado = await model.actualizarTienda(con, token.id, nombre, direccion, telefono);
+
+            const result = await cloudinary.subir(dataUri)
+            console.log("Procesando imagen y actualizando tienda...");
+
+            const resulta = await model.actualizarTienda(con,token.id,result.public_id,result.secure_url,req.body)
+            res.send('Con Exitoo..')            
         } catch (error) {
             console.error("Error al actualizar la tienda:", error);
             res.status(500).json({ success: false, mensaje: "Error interno del servidor" });
         }
         
-    }
+    },
 }
