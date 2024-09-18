@@ -242,6 +242,29 @@ ORDER BY
             
         })
     },
+    
+    buscartienda2: function(conexion, id) {
+        const consulta = `
+          SELECT t.id, t.nombre, t.dirreccion, t.telefono
+          FROM tiendas t
+          JOIN clientes c ON t.cliente_id = c.id
+          WHERE c.id = ${id}
+          LIMIT 1
+        `;
+      
+        return new Promise((resolve, reject) => {
+          conexion.query(consulta, function(error, resultado) {
+            if (error) {
+              throw error;
+            } else if (resultado.length > 0) {
+              resolve(resultado[0]);
+            } else {
+              reject(new Error('No se encontró la tienda'));
+            }
+          });
+        });
+      },
+
     vertienda:async (conexion,id) => {
         const consulta =`SELECT * FROM tiendas WHERE cliente_id = ?`
         return new Promise ((resolve ,reject)=>{
@@ -327,7 +350,27 @@ ORDER BY
     })
 })
 
-    }
+    },
+
+    actualizarTienda: function(conexion, id, nombre, direccion, telefono) {
+        const consulta = `
+            UPDATE tiendas
+            SET nombre = ?, dirreccion = ?, telefono = ?
+            WHERE cliente_id = ?
+        `;
+        
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, [nombre, direccion, telefono, id], (error, resultado) => {
+                if (error) {
+                    console.error("Error al actualizar la tienda:", error);
+                    reject(error);
+                } else {
+                    console.log("Tienda actualizada correctamente");
+                    resolve(true);
+                }
+            });
+        });
+    },
 
 
 

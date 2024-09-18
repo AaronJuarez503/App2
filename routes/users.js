@@ -55,11 +55,10 @@ router.get('/pedido', (req, res) => {
 });
 
 
-router.get('/vertiendas', (req, res) => {
-    
-    res.render('viewshop')
-});
+router.get('/vertiendas',controller.buscartienda2)
 
+
+router.post('/actualizartienda', controller.actualizarTienda);
 
 
 router.post('/insert', controller.insertarpedido);
@@ -93,5 +92,8 @@ router.get('/vercompras',controller.vercompras)
 
 router.get('/verificarcodigo',controller.verificarcodigo)
 
+router.get('/viewtwo',(req,res)=>{
+    res.render('viewshop')
 
+})
 module.exports = router;
