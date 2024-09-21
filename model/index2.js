@@ -177,30 +177,30 @@ module.exports={
         const query = `
                 
            SELECT 
-    p.id AS producto_id, 
-    p.imagen AS producto_imagen,
-    p.precio AS producto_precio,
-    p.nombre AS producto_nombre, 
+            p.id AS producto_id, 
+            p.imagen AS producto_imagen,
+            p.precio AS producto_precio,
+            p.nombre AS producto_nombre, 
 
-    SUM(dp.cantidad) AS cantidad_total, 
-    dp.precio_unitario, 
-    SUM(dp.subtotal) AS subtotal_total, 
-    pa.id,
-    pa.fecha_pedido AS fecha,
-    pa.estado 
-FROM 
-    productos p
-    JOIN detalles_pedido dp ON p.id = dp.producto_id 
-    JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
-    JOIN marcas m ON p.marca_id = m.id 
-WHERE 
-    m.id = ? 
-    AND pa.fecha_pedido >= ? 
-    
-GROUP BY 
-    p.id, dp.precio_unitario, pa.estado 
-ORDER BY 
-    p.nombre
+            SUM(dp.cantidad) AS cantidad_total, 
+            dp.precio_unitario, 
+            SUM(dp.subtotal) AS subtotal_total, 
+            pa.id,
+            pa.fecha_pedido AS fecha,
+            pa.estado 
+        FROM 
+            productos p
+            JOIN detalles_pedido dp ON p.id = dp.producto_id 
+            JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
+            JOIN marcas m ON p.marca_id = m.id 
+        WHERE 
+            m.id = ? 
+            AND pa.fecha_pedido >= ? 
+            
+        GROUP BY 
+            p.id, dp.precio_unitario, pa.estado 
+        ORDER BY 
+            p.nombre
            
 
       
