@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var controller=require('../controller/index2')
+var upload = require('../controller/multer')
 
 /* GET users listing. */
 router.get('/',controller.marcas);
@@ -58,7 +59,7 @@ router.get('/pedido', (req, res) => {
 router.get('/vertiendas',controller.buscartienda2)
 
 
-router.post('/actualizartienda', controller.actualizarTienda);
+router.post('/actualizar',upload.single('imagen'),controller.actualizarTienda);
 
 
 router.post('/insert', controller.insertarpedido);
