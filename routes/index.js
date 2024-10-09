@@ -78,7 +78,9 @@ router.get('/estados',function(req,res){
   res.render('estado')
 })
 
-
+router.get('/marcas1',function(req,res){
+  res.render('marca1')
+})
 
 
 
