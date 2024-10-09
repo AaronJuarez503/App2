@@ -84,6 +84,49 @@ h2 {
 
 /*/ media query/*/
 
+/*/ media query/*/
+@media screen and (min-width: 350px) and (max-width: 800px) {
+    .notes-container {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        padding: 10px;
+    }
 
+    .note {
+        width: calc(50% - 10px);
+        min-height: 180px;
+        padding: 10px;
+    }
+
+    .logo-circle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .note-header {
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        margin: 3px;
+    }
+
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
 
 
