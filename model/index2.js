@@ -373,8 +373,16 @@ module.exports={
             });
         });
     },
-
-
-
-
+    dias:function (conexion) {
+        return new Promise((resolve, reject) => {
+            conexion.query(`SELECT * FROM dias`, function (error, resultado) {
+                if (error) {
+                    throw (error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+            
+        })
     }
+}

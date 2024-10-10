@@ -48,7 +48,6 @@ router.get('/codigoventa',function(req,res){
 })
 router.post('/yyyyyy',validator.codigoventa,()=>{
   console.log('no habido errores')
-
 })
 
 router.get('/compras',function(req,res){

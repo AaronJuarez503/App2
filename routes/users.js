@@ -78,8 +78,6 @@ router.get('/detalles',(req,res)=>{
     var marca=req.query.marca
     var fecha=req.query.fecha
     
-
-
     console.log(`imagen:${imagen} °° fecha ${fecha}°°marca ${marca}`)
     res.render('pagina_inicio/deltalles',{imagen,fecha,marca})
 })
@@ -97,4 +95,11 @@ router.get('/viewtwo',(req,res)=>{
     res.render('viewshop')
 
 })
+
+
+router.get('/dias',controller.dias)
+
+
+
+
 module.exports = router;

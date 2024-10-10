@@ -287,4 +287,11 @@ module.exports={
         }
         
     },
+    dias: async function(req, res) {
+        try {
+                                 
+        } catch (error) {
+            
+        }
+    }
 }
