@@ -48,7 +48,6 @@ router.get('/codigoventa',function(req,res){
 })
 router.post('/yyyyyy',validator.codigoventa,()=>{
   console.log('no habido errores')
-
 })
 
 router.get('/compras',function(req,res){
@@ -80,6 +79,10 @@ router.get('/estados',function(req,res){
 
 router.get('/marcas1',function(req,res){
   res.render('marca1')
+})
+
+router.get('/notificacion',function(req,res){
+  res.render('notificacion')
 })
 
 

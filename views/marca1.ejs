@@ -10,7 +10,7 @@
     <h1 class="title">Anuncios <h1></h1> </h1>
 <div class="container">
    
-    <table style="width: 100%; border-collapse: collapse;">
+    <table id="table" style="width: 100%; border-collapse: collapse;">
         <tr>
             <td style="width: 50%; padding: 10px;">
                 <div class="notes-container">
@@ -18,11 +18,14 @@
                         <div class="logo-circle">
                             <img src="/stylesheets/image-removebg-preview-_1_.ico" alt="50, 50" class="logo">
                         </div>
+      
+
                         <div class="note-header">Coca-cola Company</div>
                         <p>Se le comunica a nuestros clientes que los pedidos estaran abiertos
                             los dias:
                         </p>
                         <p>L M M J V S D</p>
+
                         <div>
                            <a href="marca"> <button class="btn btn-accept">Ir a Comprar</button></a>
                         </div>
@@ -118,5 +121,31 @@
         </tr>
     </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="/javascript/dias.js"></script>
+<script type="importmap">
+    {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+
+    // Fetch your API_KEY
+    const API_KEY = "AIzaSyD8gfAM2ehwMh8E1t2myHN1yY2h7RLvpw4";
+
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const prompt = "hola";
+
+    const result = await model.generateContent(prompt);
+    console.log(result.response.text());
+</script>
+
 </body>
 </html>

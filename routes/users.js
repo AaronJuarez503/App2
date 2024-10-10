@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var controller=require('../controller/index2')
 var upload = require('../controller/multer')
+var ia=require('../controller/Sexto_integrante/ia')
+
+
 
 /* GET users listing. */
 router.get('/',controller.marcas);
@@ -78,8 +81,6 @@ router.get('/detalles',(req,res)=>{
     var marca=req.query.marca
     var fecha=req.query.fecha
     
-
-
     console.log(`imagen:${imagen} °° fecha ${fecha}°°marca ${marca}`)
     res.render('pagina_inicio/deltalles',{imagen,fecha,marca})
 })
@@ -97,4 +98,17 @@ router.get('/viewtwo',(req,res)=>{
     res.render('viewshop')
 
 })
+
+
+router.get('/dias',controller.dias)
+
+router.get('/asistente',(req,res)=>{res.render('Sexto_integrante')})
+
+router.post('/chat',ia.question)
+
+
+
+
+
+
 module.exports = router;

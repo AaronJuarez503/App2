@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsistenteIA Pro</title>
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .app-container {
+            display: flex;
+            height: 95vh;
+        }
+        .chat-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom right, #e6ffe6, #fffde6);
+        }
+        .chat-header {
+            background: linear-gradient(to right, #4CAF50, #FFEB3B);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        .user-message {
+            align-self: flex-end;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 20px 20px 0 20px;
+            padding: 10px 15px;
+        }
+        .ai-message {
+            align-self: flex-start;
+            background-color: white;
+            color: #333;
+            border-radius: 20px 20px 20px 0;
+            padding: 10px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .chat-input {
+            display: flex;
+            padding: 20px;
+            background-color: white;
+            border-top: 1px solid #e0e0e0;
+        }
+        .chat-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .chat-input button {
+            background: linear-gradient(to right, #4CAF50, #FFEB3B);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .chat-input button:hover {
+            background: linear-gradient(to right, #45a049, #FFD700);
+        }
+        @media (min-width: 789px) {
+            .chat-container {
+                width: 100%;
+            }
+            .chat-header {
+                font-size: 20px;
+                padding: 15px;
+            }
+            .chat-messages {
+                padding: 10px;
+            }
+            .message {
+                max-width: 90%;
+            }
+            .chat-input {
+                padding: 10px;
+            }
+            .chat-input input {
+                padding: 8px;
+            }
+            .chat-input button {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="chat-container">
+            <div class="chat-header">ARLAN - AsistenteIA</div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">¡Hola! Soy tu asistente ARLAN. ¿En qué puedo ayudarte hoy?</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí...">
+                <button id="enviar">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentChatId = 'chat-1';
+        let chats = {
+            'chat-1': [
+                {role: 'ai', content: '¡Hola! Soy tu asistente de IA. ¿En qué puedo ayudarte hoy?'}
+            ]
+        };
+        function loadChat(chatId) {
+            currentChatId = chatId;
+            clearChatMessages();
+            chats[chatId].forEach(message => {
+                addMessage(message.content, message.role === 'user' ? 'user-message' : 'ai-message');
+            });
+        }
+
+        function clearChatMessages() {
+            document.getElementById('chatMessages').innerHTML = '';
+        }
+
+        function addMessage(content, className) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${className}`;
+            messageDiv.textContent = content;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addAIMessage(content) {
+            addMessage(content, 'ai-message');
+            chats[currentChatId].push({role: 'ai', content: content});
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const message = userInput.value.trim();
+            
+            if (message !== '') {
+                addMessage(message, 'user-message');
+                chats[currentChatId].push({role: 'user', content: message});
+                userInput.value = '';
+
+                // Simular respuesta de la IA
+                setTimeout(() => {
+                    const aiResponse = "Gracias por tu mensaje. Como IA, estoy aquí para ayudarte con cualquier pregunta o tarea que tengas. Puedo proporcionar información sobre una amplia variedad de temas, ayudarte con análisis de datos, resolver problemas matemáticos, o incluso ayudarte a generar ideas creativas. No dudes en hacer preguntas específicas o pedir aclaraciones si lo necesitas.";
+                    addAIMessage(aiResponse);
+                }, 1000);
+            }
+        }
+       
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+
+    
+function enviar(mensaje) {
+ $.ajax({
+     url: "/users/chat",
+     type: 'POST',
+      // URL del script que procesará la petición
+     data: {
+       mensaje: mensaje,
+       
+     },
+ success: function(data) {
+   // Maneja la respuesta del servidor aquí
+   console.log(data)
+   mostrarMensajeia('ia', data); 
+ },
+ error: function(error) {
+   // Maneja el error aquí
+   console.error("Error:", error);
+ }
+});
+ 
+}
+function mostrarMensajeia(tipo, texto) {
+
+
+  var html =`
+  
+              <div class="message ai-message">${texto}</div>
+  
+  `
+  $('.chat-messages').append(html)
+
+}
+
+function mostrarMensaje(texto) {
+  var html2=`
+  <div class="message user-message"> ${texto}</div>
+  `
+  $('.chat-messages').append(html2)
+
+
+  
+}
+
+$('#enviar').on('click', () => {
+const mensaje = $('#userInput').val();
+console.log(mensaje)
+if (mensaje.trim() !== '') {
+    mostrarMensaje(mensaje);
+    enviar(mensaje);
+    $('#userInput').val('');
+}
+
+})
+
+document.getElementById('userInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    const mensaje = $('#userInput').val();
+    $('#userInput').val('');
+    
+    mostrarMensaje( mensaje);
+    enviar(mensaje);
+      
+  }
+});
+
+})
+    </script>
+</body>
+</html>
