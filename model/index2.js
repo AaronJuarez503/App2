@@ -374,8 +374,18 @@ module.exports={
         });
     },
     dias:function (conexion) {
+        console.log('entrando')
+        var consulta= `
+        SELECT *,
+        m.id,
+        m.nombre
+        
+        FROM configuracion_dias_pedido cd
+        LEFT JOIN marcas m ON m.id = cd.marca_id
+        WHERE m.id = 4
+        `
         return new Promise((resolve, reject) => {
-            conexion.query(`SELECT * FROM dias`, function (error, resultado) {
+            conexion.query(consulta, function (error, resultado) {
                 if (error) {
                     throw (error);
                 } else {

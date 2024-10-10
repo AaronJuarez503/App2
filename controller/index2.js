@@ -289,6 +289,9 @@ module.exports={
     },
     dias: async function(req, res) {
         try {
+
+            var ress = await model.dias(con)
+            res.send(ress)
                                  
         } catch (error) {
             
