@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var controller=require('../controller/index2')
 var upload = require('../controller/multer')
+var ia=require('../controller/Sexto_integrante/ia')
+
+
 
 /* GET users listing. */
 router.get('/',controller.marcas);
@@ -100,6 +103,8 @@ router.get('/viewtwo',(req,res)=>{
 router.get('/dias',controller.dias)
 
 router.get('/asistente',(req,res)=>{res.render('Sexto_integrante')})
+
+router.post('/chat',ia.question)
 
 
 
