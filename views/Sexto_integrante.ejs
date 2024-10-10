@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat con IA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+        }
+        .main-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+        .history-container {
+            width: 20%;
+            background-color: #b2dfdb;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        .chat-container {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background-color: #00796b;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #e0f4f1;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background-color: #b2dfdb;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #00796b;
+            border-radius: 4px;
+            outline: none;
+            font-size: 1em;
+        }
+        .chat-input button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            background-color: #00796b;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .chat-input button:hover {
+            background-color: #00695c;
+        }
+        .message {
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .message.user {
+            text-align: right;
+        }
+        .message.ia {
+            text-align: left;
+        }
+        .message span {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 20px;
+            max-width: 80%;
+        }
+        .message.user span {
+            background-color: #4dd0e1;
+            color: #000;
+        }
+        .message.ia span {
+            background-color: #80deea;
+            color: #000;
+        }
+        .history-item {
+            background-color: #e0f4f1;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .history-item:hover {
+            background-color: #b2ebf2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="history-container" id="historyContainer">
+        <div class="history-header"><strong>Historial de Chats</strong></div>
+        <!-- Historial de chats se añadirá aquí -->
+    </div>
+    <div class="chat-container">
+        <div class="chat-header">
+            Chat con IA
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ia"><span>Hola, ¿en qué puedo ayudarte hoy?</span></div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí...">
+            <button onclick="sendMessage()">Enviar</button>
+            <button onclick="newChat()">Nuevo Chat</button>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="/javascripts/chat.js"></script>
+
+<script>
+    let currentChat = [];
+    let allChats = [];
+
+    function sendMessage() {
+        const input = document.getElementById('userInput');
+        const chatMessages = document.getElementById('chatMessages');
+        const userMessage = input.value.trim();
+
+        if (userMessage !== '') {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'user');
+            messageElement.innerHTML = `<span>${userMessage}</span>`;
+            chatMessages.appendChild(messageElement);
+
+            currentChat.push({ type: 'user', text: userMessage });
+
+            // Realizar petición AJAX con fetch
+            
+
+
+                /*const aiMessage = data.response || 'Respuesta del servidor no disponible.';
+                const aiMessageElement = document.createElement('div');
+                aiMessageElement.classList.add('message', 'ia');
+                aiMessageElement.innerHTML = `<span>${aiMessage}</span>`;
+                chatMessages.appendChild(aiMessageElement);
+
+                currentChat.push({ type: 'ia', text: aiMessage });
+                chatMessages.scrollTop = chatMessages.scrollHeight;*/
+           
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }
+
+    function newChat() {
+        if (currentChat.length > 0) {
+            const historyContainer = document.getElementById('historyContainer');
+            const historyItem = document.createElement('div');
+            historyItem.classList.add('history-item');
+            historyItem.innerHTML = `Chat ${allChats.length + 1}`;
+            historyContainer.appendChild(historyItem);
+
+            allChats.push([...currentChat]);
+
+            historyItem.onclick = () => {
+                loadChat(allChats.indexOf(currentChat));
+            };
+        }
+
+        document.getElementById('chatMessages').innerHTML = '<div class="message ia"><span>Hola, ¿en qué puedo ayudarte hoy?</span></div>';
+        currentChat = [];
+    }
+
+    function loadChat(index) {
+        if (allChats[index]) {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '';
+
+            allChats[index].forEach(msg => {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', msg.type);
+                messageElement.innerHTML = `<span>${msg.text}</span>`;
+                chatMessages.appendChild(messageElement);
+            });
+
+            currentChat = [...allChats[index]];
+        }
+    }
+</script>
+
+</body>
+</html>
