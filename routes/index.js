@@ -81,6 +81,10 @@ router.get('/marcas1',function(req,res){
   res.render('marca1')
 })
 
+router.get('/notificacion',function(req,res){
+  res.render('notificacion')
+})
+
 
 
 module.exports = router;//no borrar 

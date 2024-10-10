@@ -3,8 +3,10 @@
     flex-wrap: wrap;
     gap: 5px;
     justify-content: center;
+    margin-left: 900px;
     padding: 20px;
-    background-color: #616161;
+    background-color: none;
+    border-color:  #e03a3ad4;
     border-radius: 20px;
     width: 400px;
     margin-left: 13%;
@@ -13,7 +15,7 @@
 .note {
     width: 200px;
     min-height: 200px;
-    background-color: #fefcbf;
+    background-color: #f4f4f4;
     padding: 15px;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
     transform: rotate(var(--rotate));
@@ -25,12 +27,12 @@
 .note-header {
     font-weight: 600;
     margin-bottom: 10px;
-    border-bottom: 2px solid #d69e2e;
+    border-bottom: 2px solid  #DB241B;
     padding-bottom: 5px;
 }
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #686969;
+    background-color:#080202;
     margin: 0;
     padding: 20px;
     color: #2d3748;
@@ -41,7 +43,7 @@ body {
     padding: 20px;
 }
 h2 {
-    color: #4a5568;
+    color: #f4f4f4;
     text-align: center;
     margin-bottom: 30px;
     font-weight: 600;
@@ -57,7 +59,7 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.btn-accept { background-color: #48bb78; color: white; }
+.btn-accept { background-color: #DB241B; color: white; }
 .btn-reject { background-color: #f56565; color: white; }
 .btn-assign { background-color: #4299e1; color: white; }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
@@ -87,11 +89,16 @@ h2 {
 /*/ media query/*/
 @media screen and (min-width: 350px) and (max-width: 800px) {
     .notes-container {
-        width: 95%;
+        width: 200%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 5%;
+<<<<<<< HEAD
         padding: 8px;
+=======
+        padding: 10px;
+        
+>>>>>>> 7715ce3080b2726442592a01f00d34e82257426a
     }
 
     .note {
@@ -112,8 +119,14 @@ h2 {
     h2 {
         font-size: 1.4rem;
         margin-bottom: 20px;
+        
     }
-
+   
+    h1{
+        color: #f4f4f4;
+        text-transform: uppercase;
+        font-size: 70px;
+    }
     .btn {
         padding: 8px 12px;
         font-size: 0.8rem;
@@ -122,6 +135,7 @@ h2 {
 
     body {
         padding: 10px;
+     
     }
 
     .container {
