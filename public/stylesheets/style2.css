@@ -53,6 +53,7 @@
  }
  .menu-1{
     margin-right: 180px;
+
  }
  .menu-2{
     margin-left: 180px;
@@ -61,6 +62,7 @@
  }
 .logo-1{
     width: 0;
+    margin-top: -5%;
 }  
 .logo-2{
     width: 150px;
@@ -367,7 +369,7 @@
         top: 100%;
         left: 0;
         right: 0;
-        background-color: #181818;
+        background-color: #6b6b6b50;
         display: none;
     }
     .menu .navbar ul li {
@@ -479,3 +481,7 @@
     }
 
 }
+
+
+
+
