@@ -99,7 +99,7 @@ router.get('/viewtwo',(req,res)=>{
 
 router.get('/dias',controller.dias)
 
-router.get('/asistente',()=>{res.render('Sexto_integrante')})
+router.get('/asistente',(req,res)=>{res.render('Sexto_integrante')})
 
 
 
