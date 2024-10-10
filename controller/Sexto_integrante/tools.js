@@ -18,6 +18,8 @@
         required: ["num1", "num2"],
       },
   };
+
+  
   
   const buscarMarcaDeclaracion = {
     name: "buscar_marca",

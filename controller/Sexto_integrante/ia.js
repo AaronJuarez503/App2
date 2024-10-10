@@ -13,6 +13,8 @@ async function chatMath(prompt) {
         tools: {functionDeclarations: [tools.buscar_marca, tools.sumar]},
         generationConfig: { temperature: 0.1 }
       });
+      
+
         const chat = model.startChat();
         const result = await chat.sendMessage(prompt);
         const response = await result.response;
