@@ -376,13 +376,22 @@ module.exports={
     dias:function (conexion) {
         console.log('entrando')
         var consulta= `
-        SELECT *,
+        SELECT 
         m.id,
-        m.nombre
+        m.nombre,
+        m.imagen,
+        cd.lunes,
+        cd.martes,
+        cd.miercoles,
+        cd.jueves,
+        cd.viernes,
+        cd.sabado,
+        cd.domingo
+
         
         FROM configuracion_dias_pedido cd
         LEFT JOIN marcas m ON m.id = cd.marca_id
-        WHERE m.id = 4
+       
         `
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
