@@ -133,133 +133,118 @@
     <script>
         $(function() {
 
-var $id = "<%= mensaje %>";
-var $img = "<%= imagen %>";
+        var $id = "<%= mensaje %>";
+        var $img = "<%= imagen %>";
 
-localStorage.setItem('id',$id)
-
-
-const fechaActual = new Date();
+        localStorage.setItem('id',$id)
 
 
-const indiceDia = fechaActual.getDay();
-
-const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-
-const diaSemana = diasSemana[indiceDia];
-
-console.log(diaSemana)
+        const fechaActual = new Date();
 
 
+        const indiceDia = fechaActual.getDay();
+
+        const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+        const diaSemana = diasSemana[indiceDia];
+
+        console.log(diaSemana)
 
 
 
+        $.ajax({
+            url: `/users/product?productoId=${$id}`,
+            method: 'GET',
+            dataType: 'json',
+            success: function(darta) {
+                console.log('Datos recibidos:', darta);
 
 
-//
-
-
-$.ajax({
-    url: `/users/product?productoId=${$id}`,
-    method: 'GET',
-    dataType: 'json',
-    success: function(darta) {
-        console.log('Datos recibidos:', darta);
-
-
-        function agregarNuevoProducto(producto) {
-        var html = `
-        <div class="card">
-            <div class="imgBx" style="background-image: url(${producto.imagen});"></div>
-            <div class="content">
-                <h3 id="nombre">${producto.nombre}<br><span id="precio" >$${producto.precio}</span></h3>
-                <p>${producto.descripcion}
-                </p>
-                <div class="add-to-cart">
-                    <button data-id_m=${producto.marca_id} data-id=${producto.id} data-mmarca=${producto.imagen_marca} id="btn">  Agregar al carrito</button>
+                function agregarNuevoProducto(producto) {
+                var html = `
+                <div class="card">
+                    <div class="imgBx" style="background-image: url(${producto.imagen});"></div>
+                    <div class="content">
+                        <h3 id="nombre">${producto.nombre}<br><span id="precio" >$${producto.precio}</span></h3>
+                        <p>${producto.descripcion}
+                        </p>
+                        <div class="add-to-cart">
+                            <button data-id_m=${producto.marca_id} data-id=${producto.id} data-mmarca=${producto.imagen_marca} id="btn">  Agregar al carrito</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        `;
-        $('#mio').append(html);
+                `;
+                $('#mio').append(html);
 
-       // $('#cart-items').append(html);
-    }
-        
+            // $('#cart-items').append(html);
+            }
+                
 
 
 
 
 
 
-        darta.forEach(function(item) {
-            agregarNuevoProducto(item);
-           
+                darta.forEach(function(item) {
+                    agregarNuevoProducto(item);
+                
+                    
+                })
+
+                // Elimina la tarjeta original si no deseas mantenerla
             
+            }
+        });
+
+        $.ajax({
+            url: `/users/habilitado?marca=${$id}&dia=${'jueves'}`,
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log('dato resibido:'+ data)
+
+                if( data === false){
+                    console.log('dia bloqueado')
+                $('#mio button').each(function(index) {
+                    const currentId = $(this).attr('id');
+                $(this).attr('id', 'btns');
+                $(this).text('🔒')
+                
+                let lista = JSON.parse(localStorage.getItem('carrito')) || [];
+                
+
+                    // Eliminar elementos donde marca es 4
+                    for (let i = lista.length - 1; i >= 0; i--) {
+                    if (lista[i].marca === parseInt(localStorage.getItem('id'),10)) {
+                    lista.splice(i, 1);
+                    }
+                    }
+                    localStorage.setItem('carrito', JSON.stringify(lista));
+
+                
+
+
+                    // Cambia el id a "btns0", "btns1", etc.
+            });
+            
+
+                }
+
+            },
+            error: function(xhr, status, error) {
+                console.error('Error en la petición AJAX:', error);
+                $('#resultado').html('Error al cargar los datos');
+            }
         })
 
-        // Elimina la tarjeta original si no deseas mantenerla
-       
-    }
-});
-
-$.ajax({
-    url: `/users/habilitado?marca=${$id}&dia=${'viernes'}`,
-    method: 'GET',
-    dataType: 'json',
-    success: function(data) {
-        console.log('dato resibido:'+ data)
-
-        if( data === false){
-            console.log('dia bloqueado')
-           $('#mio button').each(function(index) {
-            const currentId = $(this).attr('id');
-           $(this).attr('id', 'btns');
-           $(this).text('🔒')
-           
-           let lista = JSON.parse(localStorage.getItem('carrito')) || [];
-          
-
-            // Eliminar elementos donde marca es 4
-            for (let i = lista.length - 1; i >= 0; i--) {
-            if (lista[i].marca === parseInt(localStorage.getItem('id'),10)) {
-            lista.splice(i, 1);
-            }
-            }
-            localStorage.setItem('carrito', JSON.stringify(lista));
-
-          
 
 
-            // Cambia el id a "btns0", "btns1", etc.
-    });
-    
-
-        }
-
-    },
-    error: function(xhr, status, error) {
-        console.error('Error en la petición AJAX:', error);
-        $('#resultado').html('Error al cargar los datos');
-    }
-})
-
-
-
-});
+        });
     </script>
     
 
     <script>
       $(document).ready(function() {
-      
-    //let list = [];
-
-    //let list = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    // function guardarCarritoEnLocalStorage() {
-    //     localStorage.setItem('carrito', JSON.stringify(list));
-    // }
 
     // Mostrar/ocultar carrito
     $('#carrito-icono').click(function() {
@@ -273,114 +258,7 @@ $.ajax({
 
    
 
-    // //Agregar producto al carrito
-    // $('#mio').off('click', '#btn').on('click', '#btn', function() {
-    //     var container = $(this).closest(".card");
-    //     var headingContent = container.find("h3").text();
-
-    //     var id = $(this).data('id');
-    //     var id_marca = $(this).data('id_m');
-    //     var imagen = $(this).data('mmarca');
-
-    //     console.log(id,':',id_marca,':',imagen)
-
-
-    //     const partes = headingContent.split('$');
-    //     const nombre = partes[0].trim(); // Eliminar espacios al final
-    //     const numeros = partes[1];
-    //     console.log(nombre,':',numeros)
-        
-          
-
-    //     var imageUrl = container.find('.imgBx').css("background-image").replace(/url\("?|"?\)$/g, '');
-       
-      
-        
-    //     var precio = parseFloat(numeros);
-
-    //     var datos = {
-    //         id:id,
-    //         marca:id_marca,
-    //         mmarca:imagen,
-    //         nombre: nombre,
-    //         imagen: imageUrl,
-    //         precio: precio,
-    //         cantidad: 1,
-    //         total: precio
-           
-    //     };
-
-    //     localStorage.setItem('carrito', JSON.stringify(datos));
-
-    //     let productoExistente = list.find(item => item.id === datos.id);
-
-    //     if (productoExistente) {
-    //         productoExistente.cantidad++;
-    //         productoExistente.total = productoExistente.precio * productoExistente.cantidad;
-            
-    //         actualizarCantidadEnUI(productoExistente);
-    //     } else {
-    //         list.push(datos);
-    //         agregarNuevoProductoAUI(datos);
-    //     }
-    //     guardarCarritoEnLocalStorage();
-
-    //     actualizarContadorCarrito();
-    //     actualizarTotalCarrito();
-    //     $('#contador-carrito').css('color', 'red');
-    // });
-
-    // function actualizarCantidadEnUI(producto) {
-    //     var $item = $(`.cart-item[data-nombre="${producto.nombre}"]`);
-    //    // $item.find('.item-quantity').text(`Cantidad: ${producto.cantidad}`);
-    //     $item.find('.item-price').text(`$${producto.total.toFixed(2)}`);
-    //     var $item = $(`.counter[data-nombre="${producto.nombre}"]`);
-    //     $item.find('#number').val(`${producto.cantidad}`);
-    // }
-
-    function agregarNuevoProductoAUI(producto) {
-        var html = `
-            <div class="cart-item" data-nombre="${producto.nombre}">
-                <div class="item-image" style="background-image: url('${producto.imagen}')"></div>
-                <div class="item-info">
-                    <div class="item-name">${producto.nombre}</div>
-                    <div class="item-price">$${producto.total.toFixed(2)}</div>
-
-                </div>
-                 <div class="counter" data-nombre="${producto.nombre}" >
-                    <button id="men" data-id="${producto.id}" >&#8722;</button>
-                    <input type="text" id="number" value="${producto.cantidad}" readonly>
-                    <button id="man" data-id="${producto.id}" >&#43;</button>
-                </div>
-                <span class="remove-item">×</span>
-            </div>
-        `;
-        $('#cart-items').append(html);
-        
-    }
-
-    // Eliminar producto del carrito
-    $(document).on('click', '.remove-item', function() {
-        var nombreProducto = $(this).closest('.cart-item').data('nombre');
-        list = list.filter(item => item.nombre !== nombreProducto);
-        $(this).closest('.cart-item').remove();
-        guardarCarritoEnLocalStorage();
-        actualizarContadorCarrito();
-        actualizarTotalCarrito();
-    });
-
-    function actualizarContadorCarrito() {
-        let totalItems = list.reduce((sum, item) => sum + item.cantidad, 0);
-        $('#contador-carrito').text(totalItems);
-        if (totalItems === 0) {
-            $('#carrito-icono').css('color', 'black');
-        }
-    }
-
-    function actualizarTotalCarrito() {
-        let totalCarrito = list.reduce((sum, item) => sum + item.total, 0);
-        $('#total-carrito').text(`Total: $${totalCarrito.toFixed(2)}`);
-    }
+  
     $('#realizar-compra').click(function(e) {
            
             if (list.length > 0) {
@@ -403,56 +281,9 @@ $.ajax({
                 alert("El carrito está vacío.");
             }
         });
-
-        function cargarCarritoDesdeLocalStorage() {
-        list.forEach(producto => {
-                agregarNuevoProductoAUI(producto);
-            });
-            actualizarContadorCarrito();
-            actualizarTotalCarrito();
-        }
-
-       // cargarCarritoDesdeLocalStorage();
-
         //menos mas
 
-        function actualizarCantidad(id, incremento) {
-            let producto = list.find(p => p.id === id);
-            if (producto) {
-                producto.cantidad += incremento;
-                producto.total = producto.precio * producto.cantidad;
-                actualizarCantidadEnUI(producto);
-                if (producto.cantidad < 1) {
-                 producto.cantidad = 1; // Asegura que la cantidad no baje de 1
-                 producto.total = producto.precio * producto.cantidad;
-                 actualizarCantidadEnUI(producto);
-                 actualizarTotalCarrito();
-                }
-                producto.total = producto.cantidad * producto.precio;
-                actualizarCantidadEnUI(producto);
-                guardarCarritoEnLocalStorage();
-                actualizarTotalCarrito();
-            }
-            }
-
-            // Incrementar cantidad del producto con id 2
-            
-
-            // Decrementar cantidad del producto con id 3
-            
-
-        $('#cart-items').off('click', '#men').on('click', '#men', function() {
-            var id = $(this).data('id');
-            console.log(id)
-            actualizarCantidad(id, -1);
-           
-        })
-        $('#cart-items').off('click', '#man').on('click', '#man', function() {
-            var id = $(this).data('id');
-            console.log(id)
-            actualizarCantidad(id, 1);
-            
-})
+    
 });
   
     </script>

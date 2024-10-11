@@ -1,4 +1,11 @@
 var Carrito = (function ($) {
+     function actualizarContadorCarrito() {
+        let totalItems = list.reduce((sum, item) => sum + item.cantidad, 0);
+        $('#contador-carrito').text(totalItems);
+        if (totalItems === 0) {
+            $('#carrito-icono').css('color', 'black');
+        }
+    }
     function agregarNuevoProductoAUI(producto) {
         var html = `
             <div class="cart-item" data-nombre="${producto.nombre}">
@@ -19,8 +26,10 @@ var Carrito = (function ($) {
         $('#cart-items').append(html);
         
     }
-    
-
+    function actualizarTotalCarrito() {
+        let totalCarrito = list.reduce((sum, item) => sum + item.total, 0);
+        $('#total-carrito').text(`Total: $${totalCarrito.toFixed(2)}`);
+    }
     function actualizarCantidadEnUI(producto) {
         var $item = $(`.cart-item[data-nombre="${producto.nombre}"]`);
        // $item.find('.item-quantity').text(`Cantidad: ${producto.cantidad}`);
@@ -28,16 +37,12 @@ var Carrito = (function ($) {
         var $item = $(`.counter[data-nombre="${producto.nombre}"]`);
         $item.find('#number').val(`${producto.cantidad}`);
     }
-
-
-
+    
     let list = JSON.parse(localStorage.getItem('carrito')) || [];
 
     function guardarCarritoEnLocalStorage() {
         localStorage.setItem('carrito', JSON.stringify(list));
     }
-
-
     function agregar(datos){
         let productoExistente = list.find(item => item.id === datos.id);
         
@@ -48,24 +53,51 @@ var Carrito = (function ($) {
             
         } else {
             list.push(datos);
-            guardarCarritoEnLocalStorage()
             agregarNuevoProductoAUI(datos);
             
         }
-        guardarCarritoEnLocalStorage()
+        $('#contador-carrito').css('color', 'red');
 
-
-  }
-
-    
-
-    
+    }
+    function remover(nombreProducto){
+       
+        list = list.filter(item => item.nombre !== nombreProducto);
+    }
+    function cargarCarritoDesdeLocalStorage() {
+        list.forEach(producto => {
+                agregarNuevoProductoAUI(producto);
+            });
+            actualizarContadorCarrito();
+            actualizarTotalCarrito();
+    }
+    function actualizarCantidad(id, incremento) {
+        let producto = list.find(p => p.id === id);
+        if (producto) {
+            producto.cantidad += incremento;
+            producto.total = producto.precio * producto.cantidad;
+            actualizarCantidadEnUI(producto);
+            if (producto.cantidad < 1) {
+             producto.cantidad = 1; // Asegura que la cantidad no baje de 1
+             producto.total = producto.precio * producto.cantidad;
+             actualizarCantidadEnUI(producto);
+             actualizarTotalCarrito();
+            }
+            producto.total = producto.cantidad * producto.precio;
+            actualizarCantidadEnUI(producto);
+            guardarCarritoEnLocalStorage();
+            actualizarTotalCarrito();
+        }
+    }
 
 
     return{
-        add:agregar
-
-        
+        add:agregar,
+        save:guardarCarritoEnLocalStorage,
+        updateCount:actualizarContadorCarrito,
+        updateTotal:actualizarTotalCarrito,
+        load:cargarCarritoDesdeLocalStorage,
+        updateCantidad:actualizarCantidad,
+        remove: remover 
     }
 
 
