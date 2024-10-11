@@ -135,6 +135,8 @@
 var $id = "<%= mensaje %>";
 var $img = "<%= imagen %>";
 console.log("Mensaje del servidor:",$id+$img);
+localStorage.setItem('id',$id)
+
 
 const fechaActual = new Date();
 
@@ -218,7 +220,7 @@ $.ajax({
 
             // Eliminar elementos donde marca es 4
             for (let i = lista.length - 1; i >= 0; i--) {
-            if (lista[i].marca === 4) {
+            if (lista[i].marca === parseInt(localStorage.getItem('id'),10)) {
             lista.splice(i, 1);
             }
             }
