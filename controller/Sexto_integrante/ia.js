@@ -17,11 +17,11 @@ async function chatMath(prompt) {
             history: [
                 {
                   role: "user",
-                  parts: [{ text: "Hello" }],
+                  parts: [{ text: "hola" }],
                 },
                 {
                   role: "model",
-                  parts: [{ text: "Great to meet you. What would you like to know?" }],
+                  parts: [{ text: "hola q tal ?" }],
                 },
               ],
             tools: {functionDeclarations: [tools.buscar_marca, tools.sumar]},
