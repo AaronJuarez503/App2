@@ -10,7 +10,7 @@ async function chatMath(prompt) {
     const model = genAI.getGenerativeModel({
          model: "gemini-1.5-flash",
         systemInstruction:inst ,
-        tools: {functionDeclarations: [tools.buscar_marca, tools.sumar]},
+        tools: {functionDeclarations: [tools.buscar_marca, tools.sumar, tools.buscar_Empresa]},
         generationConfig: { temperature: 0.1 }
       });
       

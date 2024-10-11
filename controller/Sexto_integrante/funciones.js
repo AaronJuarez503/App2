@@ -21,6 +21,24 @@ function consult (promt){
 }
 
 
+async function buscarEmpresa(nombreMarca) {
+    // Aquí iría la lógica real de búsqueda en tu base de datos
+    // Este es solo un ejemplo simulado
+
+    try {
+        var resultado = await consult(nombreMarca);
+        console.log(resultado);
+        
+    } catch (error) {
+        
+    }
+
+    return resultado
+
+ 
+    
+}
+
 async function buscarMarca(nombreMarca) {
     // Aquí iría la lógica real de búsqueda en tu base de datos
     // Este es solo un ejemplo simulado
@@ -44,8 +62,11 @@ const functions = {
     sumar: ({ num1, num2 }) => {
       return sumarValores(num1, num2);
     },
-    buscar_marca: async ({ nombreMarca }) => {
-        return await buscarMarca(nombreMarca);
+    buscar_empresa: async ({ nombreEmpresa }) => {
+        return await buscarEmpresa(nombreEmpresa);
+    },
+    buscar_Marca: async ({ nombreEmpresa }) => {
+        return await buscarMarca(nombreEmpresa);
     }
 };
 

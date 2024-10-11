@@ -21,15 +21,27 @@
 
   
   
-  const buscarMarcaDeclaracion = {
-    name: "buscar_marca",
+  const buscarEmpresaDeclaracion = {
+    name: "buscar_empresa",
     parameters: {
         type: "OBJECT",
-        description: "Busca una marca por nombre y obtiene su información de contacto.",
+        description: `Busca  la empresa por nombre y obtiene su información del contacto, por ejemplo: 
+        si te preguntan el numero de una empresa  les brindaras el numero amablemnte .`,
         properties: {
-            nombreMarca: {type: "STRING",description: "Nombre de la marca a buscar."}},
-            required: ["nombreMarca"]
+            nombreEmpresa: {type: "STRING",description: "Nombre de la empresa a buscar."}},
+            required: ["nombreEmpresa"]
     }
+};
+const buscarMarcaDeclaracion = {
+  name: "buscar_Marca",
+  parameters: {
+      type: "OBJECT",
+      description: `Busca  la marca por nombre y obtiene su información del contacto, por ejemplo: 
+      si te preguntan el numero de una marca  les brindaras el numero amablemnte .`,
+      properties: {
+          nombreMarca: {type: "STRING",description: "Nombre de la marca a buscar."}},
+          required: ["nombreMarca"]
+  }
 };
 
   
@@ -37,6 +49,7 @@
 
   module.exports={
     sumar:sumaFunctionDeclaration,
-    buscar_marca:buscarMarcaDeclaracion
+    buscar_marca:buscarMarcaDeclaracion,
+    buscar_Empresa:buscarEmpresaDeclaracion
 
   }
