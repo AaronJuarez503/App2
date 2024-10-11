@@ -299,8 +299,9 @@ module.exports={
     },
     habilitado: async function (req,res) {
         try {
-            res.send(await model.habilitado(conexion,dia,marca))
-            
+            var ress = await model.habilitado(con,req.query.dia,req.query.marca);
+           
+            res.send(ress[req.query.dia])
         } catch (error) {
             
         }

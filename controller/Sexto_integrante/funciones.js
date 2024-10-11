@@ -65,8 +65,8 @@ const functions = {
     buscar_empresa: async ({ nombreEmpresa }) => {
         return await buscarEmpresa(nombreEmpresa);
     },
-    buscar_Marca: async ({ nombreEmpresa }) => {
-        return await buscarMarca(nombreEmpresa);
+    buscar_Marca: async ({ nombreMarca }) => {
+        return await buscarMarca(nombreMarca);
     }
 };
 

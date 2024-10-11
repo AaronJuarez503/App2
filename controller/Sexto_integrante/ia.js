@@ -11,7 +11,7 @@ async function chatMath(prompt) {
          model: "gemini-1.5-flash",
         systemInstruction:inst ,
         tools: {functionDeclarations: [tools.buscar_marca, tools.sumar, tools.buscar_Empresa]},
-        generationConfig: { temperature: 0.1 }
+        generationConfig: { temperature: 0.7 }
       });
       
 

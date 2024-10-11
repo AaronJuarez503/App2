@@ -1,14 +1,15 @@
 $(function () {
 
-    const fechaActual = new Date();
+    $('#mio').off('click', '#btns').on('click', '#btns', function() {
+        const toast = document.getElementById("toastNotificacion");
+     
+      toast.className = "toast mostrar";
+      
+      // Después de 3 segundos, quitar la clase "mostrar"
+      setTimeout(function(){
+        toast.className = toast.className.replace("mostrar", "");
+      }, 3000);
 
-
-    const indiceDia = fechaActual.getDay();
-
-    const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-
-    const diaSemana = diasSemana[indiceDia];
-
-console.log(`Hoy es ${diaSemana}`);
+    })
     
 })
