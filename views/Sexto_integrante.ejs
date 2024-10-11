@@ -6,6 +6,7 @@
     <title>AsistenteIA Pro</title>
     <style>
         body, html {
+            background-color: #080202;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -20,15 +21,16 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(to bottom right, #e6ffe6, #fffde6);
+            background:  #0d0d0d;
         }
         .chat-header {
-            background: linear-gradient(to right, #4CAF50, #FFEB3B);
-            color: white;
+            background:  #080202;
+            color: #f4f4f4;
             padding: 20px;
             text-align: center;
             font-size: 24px;
             font-weight: bold;
+            text-transform: uppercase;
         }
         .chat-messages {
             flex-grow: 1;
@@ -45,7 +47,7 @@
         }
         .user-message {
             align-self: flex-end;
-            background-color: #4CAF50;
+            background-color: red;
             color: white;
             border-radius: 20px 20px 0 20px;
             padding: 10px 15px;
@@ -61,18 +63,18 @@
         .chat-input {
             display: flex;
             padding: 20px;
-            background-color: white;
+            background-color:#f4f4f4;
             border-top: 1px solid #e0e0e0;
         }
         .chat-input input {
             flex-grow: 1;
             padding: 10px;
-            border: 1px solid #4CAF50;
+            border: 1px solid red;
             border-radius: 4px;
             margin-right: 10px;
         }
         .chat-input button {
-            background: linear-gradient(to right, #4CAF50, #FFEB3B);
+            background: red;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -112,9 +114,9 @@
 <body>
     <div class="app-container">
         <div class="chat-container">
-            <div class="chat-header">ARLAN - AsistenteIA</div>
+            <div class="chat-header">Asistente Order-Asistent</div>
             <div class="chat-messages" id="chatMessages">
-                <div class="message ai-message">¡Hola! Soy tu asistente ARLAN. ¿En qué puedo ayudarte hoy?</div>
+                <div class="message ai-message">¡Hola! Soy tu asistente Order-Asistent. ¿En qué puedo ayudarte hoy?</div>
             </div>
             <div class="chat-input">
                 <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí...">
