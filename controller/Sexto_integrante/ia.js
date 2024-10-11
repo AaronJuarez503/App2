@@ -51,11 +51,7 @@ async function chatMath(prompt) {
         return `Lo siento, ha ocurrido un error al procesar tu solicitud: ${error.message}`;
     }
 }
-
-
-
-
-
+ 
 
 
 
