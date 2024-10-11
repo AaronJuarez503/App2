@@ -129,6 +129,7 @@
     <!-- Ejemplo de productos -->
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
     <script>
         $(function() {
 
@@ -201,7 +202,7 @@ $.ajax({
 });
 
 $.ajax({
-    url: `/users/habilitado?marca=${$id}&dia=${diaSemana}`,
+    url: `/users/habilitado?marca=${$id}&dia=${'jueves'}`,
     method: 'GET',
     dataType: 'json',
     success: function(data) {
@@ -215,7 +216,6 @@ $.ajax({
            $(this).text('🔒')
            
            let lista = JSON.parse(localStorage.getItem('carrito')) || [];
-           console.log(lista)
           
 
             // Eliminar elementos donde marca es 4
@@ -226,7 +226,6 @@ $.ajax({
             }
             localStorage.setItem('carrito', JSON.stringify(lista));
 
-            console.log('Datos actualizados:', lista);
           
 
 
@@ -254,11 +253,11 @@ $.ajax({
       
     //let list = [];
 
-    let list = JSON.parse(localStorage.getItem('carrito')) || [];
+    //let list = JSON.parse(localStorage.getItem('carrito')) || [];
 
-    function guardarCarritoEnLocalStorage() {
-        localStorage.setItem('carrito', JSON.stringify(list));
-    }
+    // function guardarCarritoEnLocalStorage() {
+    //     localStorage.setItem('carrito', JSON.stringify(list));
+    // }
 
     // Mostrar/ocultar carrito
     $('#carrito-icono').click(function() {
@@ -272,70 +271,70 @@ $.ajax({
 
    
 
-    // Agregar producto al carrito
-    $('#mio').off('click', '#btn').on('click', '#btn', function() {
-        var container = $(this).closest(".card");
-        var headingContent = container.find("h3").text();
+    // //Agregar producto al carrito
+    // $('#mio').off('click', '#btn').on('click', '#btn', function() {
+    //     var container = $(this).closest(".card");
+    //     var headingContent = container.find("h3").text();
 
-        var id = $(this).data('id');
-        var id_marca = $(this).data('id_m');
-        var imagen = $(this).data('mmarca');
+    //     var id = $(this).data('id');
+    //     var id_marca = $(this).data('id_m');
+    //     var imagen = $(this).data('mmarca');
 
-        console.log(id,':',id_marca,':',imagen)
+    //     console.log(id,':',id_marca,':',imagen)
 
 
-        const partes = headingContent.split('$');
-        const nombre = partes[0].trim(); // Eliminar espacios al final
-        const numeros = partes[1];
-        console.log(nombre,':',numeros)
+    //     const partes = headingContent.split('$');
+    //     const nombre = partes[0].trim(); // Eliminar espacios al final
+    //     const numeros = partes[1];
+    //     console.log(nombre,':',numeros)
         
           
 
-        var imageUrl = container.find('.imgBx').css("background-image").replace(/url\("?|"?\)$/g, '');
+    //     var imageUrl = container.find('.imgBx').css("background-image").replace(/url\("?|"?\)$/g, '');
        
       
         
-        var precio = parseFloat(numeros);
+    //     var precio = parseFloat(numeros);
 
-        var datos = {
-            id:id,
-            marca:id_marca,
-            mmarca:imagen,
-            nombre: nombre,
-            imagen: imageUrl,
-            precio: precio,
-            cantidad: 1,
-            total: precio
+    //     var datos = {
+    //         id:id,
+    //         marca:id_marca,
+    //         mmarca:imagen,
+    //         nombre: nombre,
+    //         imagen: imageUrl,
+    //         precio: precio,
+    //         cantidad: 1,
+    //         total: precio
            
-        };
+    //     };
 
-        localStorage.setItem('carrito', JSON.stringify(datos));
+    //     localStorage.setItem('carrito', JSON.stringify(datos));
 
-        let productoExistente = list.find(item => item.id === datos.id);
+    //     let productoExistente = list.find(item => item.id === datos.id);
 
-        if (productoExistente) {
-            productoExistente.cantidad++;
-            productoExistente.total = productoExistente.precio * productoExistente.cantidad;
+    //     if (productoExistente) {
+    //         productoExistente.cantidad++;
+    //         productoExistente.total = productoExistente.precio * productoExistente.cantidad;
             
-            actualizarCantidadEnUI(productoExistente);
-        } else {
-            list.push(datos);
-            agregarNuevoProductoAUI(datos);
-        }
-        guardarCarritoEnLocalStorage();
+    //         actualizarCantidadEnUI(productoExistente);
+    //     } else {
+    //         list.push(datos);
+    //         agregarNuevoProductoAUI(datos);
+    //     }
+    //     guardarCarritoEnLocalStorage();
 
-        actualizarContadorCarrito();
-        actualizarTotalCarrito();
-        $('#contador-carrito').css('color', 'red');
-    });
+    //     actualizarContadorCarrito();
+    //     actualizarTotalCarrito();
+    //     $('#contador-carrito').css('color', 'red');
+    // });
 
-    function actualizarCantidadEnUI(producto) {
-        var $item = $(`.cart-item[data-nombre="${producto.nombre}"]`);
-       // $item.find('.item-quantity').text(`Cantidad: ${producto.cantidad}`);
-        $item.find('.item-price').text(`$${producto.total.toFixed(2)}`);
-        var $item = $(`.counter[data-nombre="${producto.nombre}"]`);
-        $item.find('#number').val(`${producto.cantidad}`);
-    }
+    // function actualizarCantidadEnUI(producto) {
+    //     var $item = $(`.cart-item[data-nombre="${producto.nombre}"]`);
+    //    // $item.find('.item-quantity').text(`Cantidad: ${producto.cantidad}`);
+    //     $item.find('.item-price').text(`$${producto.total.toFixed(2)}`);
+    //     var $item = $(`.counter[data-nombre="${producto.nombre}"]`);
+    //     $item.find('#number').val(`${producto.cantidad}`);
+    // }
 
     function agregarNuevoProductoAUI(producto) {
         var html = `
@@ -475,6 +474,8 @@ var swipeArea = document.getElementById('swipeArea');
 });
 </script>
 <script src="/javascript/bloquear.js""></script>
+<script src="/javascript/Carrito.js" ></script>
+    <script src="/javascript/productos.js"></script>
     
   
 <style>
