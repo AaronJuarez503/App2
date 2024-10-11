@@ -1,6 +1,7 @@
 $(function ($) {
  console.log('pagina cargada...')
 
+
  $.ajax({
     url: '/users/dias',
     method: 'GET',
@@ -26,7 +27,7 @@ $(function ($) {
                             <p> <strong > ${item.lunes ==='true' ? 'L' : ''} </strong> <strong > ${item.martes ==='true' ? 'M' : ''} </strong> <strong > ${item.miercoles ==='true' ? 'X' : ''} </strong> <strong > ${item.jueves ==='true' ? 'J' : ''} </strong> <strong > ${item.viernes ==='true' ? 'V' : ''} </strong> <strong > ${item.sabado ==='true' ? 'S' : ''} </strong> </p>
     
                             <div>
-                               <a href="marca"> <button class="btn btn-accept">Ir a Comprar</button></a>
+                               <a > <button data-id=${item.id}  class="btn btn-accept">Ir a Comprar</button></a>
                             </div>
                         </div>
                     </div>
@@ -42,7 +43,7 @@ $(function ($) {
                                 los dias:</p>
                             <p>L M M J V S D</p>
                             <div>
-                                <button class="btn btn-accept">Ir a Comprar</button>
+                                <button data-id=${item.id} class="btn btn-accept">Ir a Comprar</button>
                             </div>
                         </div>
                     </div>
@@ -64,6 +65,19 @@ $(function ($) {
     
 }
 )
+
+$('#table').off('click', '.btn').on('click', '.btn', function() {
+    console.log('Boton presionado')
+    var id = $(this).data('id')
+    console.log(id)
+    // Aquí puedes hacer las acciones deseadas cuando se presione el botón
+    // Por ejemplo, redireccionar a otra página con el id del producto
+      if (id) {
+        window.location.href=`/users/pedirproductos?productoId=${id}`
+      }else{
+        alert('en mantenimiento... 😅')
+      }
+})
     
 })
 

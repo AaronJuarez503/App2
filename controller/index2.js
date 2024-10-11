@@ -296,5 +296,13 @@ module.exports={
         } catch (error) {
             
         }
+    },
+    habilitado: async function (req,res) {
+        try {
+            res.send(await model.habilitado(conexion,dia,marca))
+            
+        } catch (error) {
+            
+        }
     }
 }

@@ -106,6 +106,8 @@ router.get('/asistente',(req,res)=>{res.render('Sexto_integrante')})
 
 router.post('/chat',ia.question)
 
+router.get('/habilitado',controller.habilitado)
+
 
 
 
