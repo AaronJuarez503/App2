@@ -9,13 +9,24 @@ const metodos =require('../Sexto_integrante/funciones')
 async function chatMath(prompt) {
     const model = genAI.getGenerativeModel({
          model: "gemini-1.5-flash",
-        systemInstruction:inst ,
-        tools: {functionDeclarations: [tools.buscar_marca, tools.sumar]},
-        generationConfig: { temperature: 0.1 }
+        systemInstruction:inst 
       });
       
 
-        const chat = model.startChat();
+        const chat = model.startChat({
+            history: [
+                {
+                  role: "user",
+                  parts: [{ text: "Hello" }],
+                },
+                {
+                  role: "model",
+                  parts: [{ text: "Great to meet you. What would you like to know?" }],
+                },
+              ],
+            tools: {functionDeclarations: [tools.buscar_marca, tools.sumar]},
+            generationConfig: { temperature: 0.7 }
+        });
         const result = await chat.sendMessage(prompt);
         const response = await result.response;
         
