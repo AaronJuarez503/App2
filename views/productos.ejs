@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="toastNotificacion" class="toast">No es dia para realizar peidodos regresa otro dia </div>
    
       <!--empesas aca-->
     <h1 class="product">Productos</h1>
@@ -135,6 +136,24 @@ var $id = "<%= mensaje %>";
 var $img = "<%= imagen %>";
 console.log("Mensaje del servidor:",$id+$img);
 
+const fechaActual = new Date();
+
+
+const indiceDia = fechaActual.getDay();
+
+const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+const diaSemana = diasSemana[indiceDia];
+
+
+
+
+
+
+
+//
+
+
 $.ajax({
     url: `/users/product?productoId=${$id}`,
     method: 'GET',
@@ -152,7 +171,7 @@ $.ajax({
                 <p>${producto.descripcion}
                 </p>
                 <div class="add-to-cart">
-                    <button data-id_m=${producto.marca_id} data-id=${producto.id} data-mmarca=${producto.imagen_marca} id="btn">Agregar al carrito</button>
+                    <button data-id_m=${producto.marca_id} data-id=${producto.id} data-mmarca=${producto.imagen_marca} id="btn">  Agregar al carrito</button>
                 </div>
             </div>
         </div>
@@ -178,6 +197,49 @@ $.ajax({
        
     }
 });
+
+$.ajax({
+    url: `/users/habilitado?marca=${$id}&dia=${diaSemana}`,
+    method: 'GET',
+    dataType: 'json',
+    success: function(data) {
+        console.log('dato resibido:'+ data)
+
+        if( data ===false){
+            console.log('dia bloqueado')
+           $('#mio button').each(function(index) {
+            const currentId = $(this).attr('id');
+           $(this).attr('id', 'btns');
+           $(this).text('🔒')
+           
+           let lista = JSON.parse(localStorage.getItem('carrito')) || [];
+           console.log(lista)
+          
+
+            // Eliminar elementos donde marca es 4
+            for (let i = lista.length - 1; i >= 0; i--) {
+            if (lista[i].marca === 4) {
+            lista.splice(i, 1);
+            }
+            }
+            localStorage.setItem('carrito', JSON.stringify(lista));
+
+            console.log('Datos actualizados:', lista);
+          
+
+
+            // Cambia el id a "btns0", "btns1", etc.
+    });
+    
+
+        }
+
+    },
+    error: function(xhr, status, error) {
+        console.error('Error en la petición AJAX:', error);
+        $('#resultado').html('Error al cargar los datos');
+    }
+})
 
 
 
@@ -413,6 +475,57 @@ var swipeArea = document.getElementById('swipeArea');
 <script src="/javascript/bloquear.js""></script>
     
   
+<style>
+    #btns {
+        font-size: 34PX;
+        background-color: #1c2124;
+    }
+
+</style>
+<style>
+    .toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 2px;
+      padding: 16px;
+      position: fixed;
+      z-index: 1;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .toast.mostrar {
+      visibility: visible;
+      animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        top: 0;
+        opacity: 0;
+      }
+      to {
+        top: 30px;
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        top: 30px;
+        opacity: 1;
+      }
+      to {
+        top: 0;
+        opacity: 0;
+      }
+    }
+  </style>
+
 
     
 </body>

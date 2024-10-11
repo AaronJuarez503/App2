@@ -411,7 +411,7 @@ module.exports={
                 if (error) {
                     throw (error);
                 } else {
-                    resolve(resultado);
+                    resolve(resultado[0]);
                 }
             });
             
