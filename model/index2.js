@@ -403,5 +403,19 @@ module.exports={
             });
             
         })
+    },
+    habilitado:function (conexion,dia,marca){
+        var consulta=`SELECT ${dia} FROM configuracion_dias_pedido WHERE marca_id = ${marca}`
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, resultado) {
+                if (error) {
+                    throw (error);
+                } else {
+                    resolve(resultado);
+                }
+            });
+            
+        })
+
     }
 }
