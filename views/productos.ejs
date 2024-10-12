@@ -178,13 +178,6 @@
 
             // $('#cart-items').append(html);
             }
-                
-
-
-
-
-
-
                 darta.forEach(function(item) {
                     agregarNuevoProducto(item);
                 
@@ -243,50 +236,6 @@
     </script>
     
 
-    <script>
-      $(document).ready(function() {
-
-    // Mostrar/ocultar carrito
-    $('#carrito-icono').click(function() {
-        $('.float-div').toggle();
-    });
-
-    // Cerrar el carrito
-    $('.close-btn').click(function() {
-        $('.float-div').hide();
-    });
-
-   
-
-  
-    $('#realizar-compra').click(function(e) {
-           
-            if (list.length > 0) {
-                $.ajax({
-            url: '/users/procesar-compra',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ items: list }),
-            success: function(response) {
-                // Redirige a la página de confirmación
-                window.location.href = '/users/confirmacion-compra';
-            },
-            error: function(error) {
-                console.error('Error al procesar la compra:', error);
-                alert('Hubo un error al procesar tu compra. Por favor, inténtalo de nuevo.');
-            }
-        });
-                
-            } else {
-                alert("El carrito está vacío.");
-            }
-        });
-        //menos mas
-
-    
-});
-  
-    </script>
 
 <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 <script>

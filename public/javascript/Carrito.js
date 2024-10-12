@@ -37,7 +37,7 @@ var Carrito = (function ($) {
         var $item = $(`.counter[data-nombre="${producto.nombre}"]`);
         $item.find('#number').val(`${producto.cantidad}`);
     }
-    
+
     let list = JSON.parse(localStorage.getItem('carrito')) || [];
 
     function guardarCarritoEnLocalStorage() {
@@ -88,8 +88,27 @@ var Carrito = (function ($) {
             actualizarTotalCarrito();
         }
     }
-
-
+    function comprar(){
+        if (list.length > 0) {
+            $.ajax({
+        url: '/users/procesar-compra',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ items: list }),
+        success: function(response) {
+            // Redirige a la página de confirmación
+            window.location.href = '/users/confirmacion-compra';
+        },
+        error: function(error) {
+            console.error('Error al procesar la compra:', error);
+            alert('Hubo un error al procesar tu compra. Por favor, inténtalo de nuevo.');
+        }
+    });
+            
+        } else {
+            alert("El carrito está vacío.");
+        }
+    }
     return{
         add:agregar,
         save:guardarCarritoEnLocalStorage,
@@ -97,7 +116,8 @@ var Carrito = (function ($) {
         updateTotal:actualizarTotalCarrito,
         load:cargarCarritoDesdeLocalStorage,
         updateCantidad:actualizarCantidad,
-        remove: remover 
+        remove: remover,
+        buy:comprar
     }
 
 

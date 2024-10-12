@@ -57,7 +57,7 @@ $(function () {
             
         })
 
-       $(document).on('click', '.remove-item', function() {
+        $(document).on('click', '.remove-item', function() {
         var nombreProducto = $(this).closest('.cart-item').data('nombre');
         Carrito.remove(nombreProducto);
         $(this).closest('.cart-item').remove();
@@ -66,7 +66,23 @@ $(function () {
         Carrito.updateTotal();
         
         });
-    });
+
+            // Mostrar/ocultar carrito
+        $('#carrito-icono').click(function() {
+            $('.float-div').toggle();
+        });
+
+        // Cerrar el carrito
+        $('.close-btn').click(function() {
+            $('.float-div').hide();
+        });
+
+        $('#realizar-compra').click(function(e) {
+           Carrito.buy()
+        });
+        
+
+});
 
 
     
