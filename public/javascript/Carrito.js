@@ -130,8 +130,6 @@ var Carrito = (function ($) {
         
     }
 
-
-
     function borrar(id,div){
         const index = list.findIndex(registro => registro.id === id);
         if (index !== -1) {
@@ -147,6 +145,21 @@ var Carrito = (function ($) {
     
 
     }
+
+    //eliminar articulos si esta bloquedado el dia
+
+    function borrarArticulo(id){
+         for (let i = list.length - 1; i >= 0; i--) {
+                  if (list[i].marca === id) {
+                  list.splice(i, 1);
+                  }
+                  }
+                  guardarCarritoEnLocalStorage(list)
+                  
+                 
+
+
+    }
     return{
         add:agregar,
         save:guardarCarritoEnLocalStorage,
@@ -156,7 +169,8 @@ var Carrito = (function ($) {
         updateCantidad:actualizarCantidad,
         remove: remover,
         buy:comprar,
-        delete:borrar
+        delete:borrar,
+        deleteArticle:borrarArticulo
     }
 
 
