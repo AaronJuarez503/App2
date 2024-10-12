@@ -1,7 +1,7 @@
 module.exports={
 
-    buscarusuario:function (conexion,username,password) {
-        const consulta = `SELECT * FROM usuarios WHERE usuario = '${username}' AND contrasena ='${password}' AND rol ='cliente'`;
+    buscarusuario:function (conexion,username) {
+        const consulta = `SELECT * FROM usuarios WHERE usuario = '${username}'AND rol ='cliente'`;
         //id_rol,usuario,correo, contraseña
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
@@ -99,7 +99,7 @@ module.exports={
 
             if (typeof correo !== 'undefined') {
                 
-            const consulta = `UPDATE cliente SET contraseña = '${pass}' WHERE correo = '${correo}'`;
+            const consulta = `UPDATE usuarios SET contrasena = '${pass}' WHERE email = '${correo}'`;
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
                     console.log("actualizasion de contraseña fallida ...")

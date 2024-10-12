@@ -4,6 +4,8 @@ var email= require('../controller/enviargmail')
 var aux=require('../controller/auxiliar')
 var Gtoken = require('./Gtoken')
 
+const bcrypt = require('bcrypt');
+
 var gcodigo;
 
 module.exports={
@@ -71,19 +73,25 @@ module.exports={
 
     insertregistrer:async function (req,res) {
 
+          // Generar un salt
+
+
+        try {
+          const salt = await bcrypt.genSalt(10);
+    
+    // Encriptar la contraseña
+         const contraseñaEncriptada = await bcrypt.hash(req.session.datos.pass, salt);
+
+         
         console.log('datos para ingresar'+req.session.datos.nom)
         var rol=req.session.datos.rol;
         var nom=req.session.datos.nom;
         var apell=req.session.datos.apell;
         var correo=req.session.datos.correo;
-        var pass=req.session.datos.pass;
+        var pass=contraseñaEncriptada;
         var username = req.body.usuario
         console.log(req.session.datos)
 
-
-
-
-        try {
             var datos = await consulta.RegistrarCliente(conexion,{username,correo,pass,rol})
             console.log('datos insertados')
             console.log(datos)
@@ -112,12 +120,17 @@ module.exports={
         async  function para() {
             var username=req.body.username; 
             var password=req.body.password;
+            console.log(password)
             // buscando usuario en la bd
             try {
-                var  respuestabd = await consulta.buscarusuario(conexion,username,password)
+                var  respuestabd = await consulta.buscarusuario(conexion,username)
                 console.log("tu respuesta de la bd es  ; " )
                 console.log( respuestabd)
-                var rmarca= await consulta.buscarmarcas(conexion,respuestabd.id)
+
+                const esCorrecta = await bcrypt.compare(password, respuestabd.contrasena);
+                
+                if (esCorrecta) {
+                  var rmarca= await consulta.buscarmarcas(conexion,respuestabd.id)
                 console.log(rmarca)
 
                 var play={
@@ -165,6 +178,12 @@ module.exports={
 
          
 
+                 
+                } else {
+                  return res.render('inicio',{err:"usuario o contraseña incorrecto"});
+                  
+                }
+                
                 
 
                 

@@ -1,3 +1,5 @@
+
+
 function sino(res,ruta) {
     if(ruta==="3" ||ruta===3){
         res.render('cliente');
