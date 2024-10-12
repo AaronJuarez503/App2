@@ -2,8 +2,24 @@ var Modulo1 = (function($) {
     function saludar(nombre) {
         return 'Hola, ' + nombre + '!';
     }
-
+    var clas;
     function generarpedido(item) {
+
+         
+
+        switch (item.estados) {
+            case 'En_espera':
+                clas='eos-icons--hourglass '
+                break;
+                case 'activado':
+                clas='line-md--clipboard-twotone-to-clipboard-check-twotone-transition'
+                break;
+                case 'en_proceso':
+                clas='eos-icons--bubble-loading'
+                break;
+            default:
+                break;
+        }
         
 
 
@@ -13,7 +29,8 @@ var Modulo1 = (function($) {
        
 
         <div class="status" id="status"> ${item.estados}  </div>
-        <img style=" height:180px;  width :40%" src="${item.estados ==='En_espera'?'/images/reloj.gif':'/stylesheets/Delivery Animation.gif'}"  id="truck">
+                        <span class="${clas}"></span>
+                
         <div class="total" id="total" </>Total: $${item.total_pedido}</div>
     </div>
 
