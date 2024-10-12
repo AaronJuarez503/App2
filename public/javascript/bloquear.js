@@ -22,7 +22,7 @@ $(function () {
 
         console.log(diaSemana)
         $.ajax({
-          url: `/users/habilitado?marca=${parseInt(localStorage.getItem('id'),10)}&dia=${'viernes'}`,
+          url: `/users/habilitado?marca=${parseInt(localStorage.getItem('id'),10)}&dia=${'jueves'}`,
           method: 'GET',
           dataType: 'json',
           success: function(data) {

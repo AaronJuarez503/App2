@@ -128,10 +128,10 @@ module.exports={
                 console.log( respuestabd)
 
                 const esCorrecta = await bcrypt.compare(password, respuestabd.contrasena);
-                
+                 console.log(esCorrecta)
                 if (esCorrecta) {
                   var rmarca= await consulta.buscarmarcas(conexion,respuestabd.id)
-                console.log(rmarca)
+                   console.log(rmarca)
 
                 var play={
                     id:respuestabd.id,
