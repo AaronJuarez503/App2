@@ -48,6 +48,9 @@ h2 {
     margin-bottom: 30px;
     font-weight: 600;
 }
+.title{
+    text-align: center;
+}
 .btn {
     border: none;
     padding: 10px 15px;
