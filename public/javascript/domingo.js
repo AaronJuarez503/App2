@@ -1,7 +1,4 @@
 $(function() {
-
- 
-
     $.ajax({
         url: '/users/compra',
         method: 'get',
@@ -61,22 +58,23 @@ $(function() {
 
                     var total = 0;
                     var img;
-                   
-
+                    var id;
+                
                     // Crear filas
                     $.each(productos, function(i, producto) {
                        img=producto.mmarca;
+                       id=producto.marca;
                        
                         var subtotal = producto.cantidad * producto.precio;
                         total += subtotal;
 
-                        $('<tr id="'+producto.id+'">')
+                        $('<tr  id="'+producto.id+'">')
                             .append('<td data-label="Imagen"><img src="' + producto.imagen + '" alt="' + producto.nombre + '" width="50"></td>')
                             .append('<td data-label="Nombre">' + producto.nombre + '</td>')
                             .append('<td data-label="Cantidad">' + producto.cantidad + '</td>')
                             .append('<td data-label="Precio">$' + producto.precio + '</td>')
                             .append('<td data-label="Subtotal">$' + producto.total + '</td>')
-                            .append(`<td id="btn"data-id="${producto.id}" data-label="Acción"><span class="trash-icon">🗑️</span></td>`)
+                            .append(`<td id="btn" data-cell=${producto.marca} data-id="${producto.id}" data-label="Acción"><span class="trash-icon">🗑️</span></td>`)
                             .appendTo($tbody);
                     });
 
@@ -85,7 +83,7 @@ $(function() {
                     .append('<img src="'+img+'" alt="Logo de la empresa" width="100" height="100">').appendTo($containerc)
                    
                     $tabla.appendTo($containerc)
-                    $('<div class="total-cell">').text('Total: $' + total).appendTo($containerc);
+                    $(`<div id="${id}" class="total-cell">`).text('Total: $' + total).appendTo($containerc);
                 });
             }
 
@@ -104,49 +102,25 @@ $(function() {
 }) //fin
 
 
-let list = JSON.parse(localStorage.getItem('carrito')) || [];
-
-console.log(list)
-function guardarCarritoEnLocalStorage(listr) {
-    localStorage.setItem('carrito', JSON.stringify(listr));
-}
-function actualizarTotalCarrito(listw) {
-    let totalCarrito = listw.reduce((sum, item) => sum + item.total, 0);
-    $('.total-cell').text(`Total: $${totalCarrito}`);
-}
-
-
-function borrarRegistro(id) {
-    const index = list.findIndex(registro => registro.id === id);
-    if (index !== -1) {
-      list.splice(index, 1);
-      console.log(`Registro con id ${id} eliminado.`);
-      console.log(list)
-      
-    } else {
-      console.log(`No se encontró ningún registro con id ${id}.`);
-    }
-
-    guardarCarritoEnLocalStorage(list)
-      actualizarTotalCarrito(list)
-  }
 
 
 $('#container').off('click', '#btn').on('click', '#btn', function() {
     var id=  $(this).data('id')
     console.log(id)
 
+    var div = $(this).data("cell");
+
+
+      console.log('el id del div es ',div)
+
     $(`#${id}`).closest('tr').remove();
-    borrarRegistro(id)
+    Carrito.delete(id,div);
     
-   
-
-   // console.log(imagen,fecha,marca)
-})
-
-
-
 
 })
 
-//res.render('pagina',{datos:rmarca})
+
+
+
+})
+

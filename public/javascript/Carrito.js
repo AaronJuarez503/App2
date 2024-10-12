@@ -37,11 +37,16 @@ var Carrito = (function ($) {
         var $item = $(`.counter[data-nombre="${producto.nombre}"]`);
         $item.find('#number').val(`${producto.cantidad}`);
     }
-
     let list = JSON.parse(localStorage.getItem('carrito')) || [];
 
-    function guardarCarritoEnLocalStorage() {
-        localStorage.setItem('carrito', JSON.stringify(list));
+    function guardarCarritoEnLocalStorage(lista) {
+
+        if (lista) {
+            localStorage.setItem('carrito', JSON.stringify(lista));
+        } else {
+            localStorage.setItem('carrito', JSON.stringify(list));
+        }
+       
     }
     function agregar(datos){
         let productoExistente = list.find(item => item.id === datos.id);
@@ -109,6 +114,39 @@ var Carrito = (function ($) {
             alert("El carrito está vacío.");
         }
     }
+
+   //pagina de realizar compras
+    function actualizarCarrito(listw,div) {
+        let totalCarrito = listw.reduce((sum, item) => sum + item.total, 0);
+        console.log('ide del total'+ totalCarrito)
+
+        if (totalCarrito<=0) {
+            $('total-cell').text(`Total: $00`);
+            alert('el total esta asero')
+            
+        } else {
+            $('total-cell').text(`Total: $${totalCarrito}`);
+        }
+        
+    }
+
+
+
+    function borrar(id,div){
+        const index = list.findIndex(registro => registro.id === id);
+        if (index !== -1) {
+          list.splice(index, 1);
+          console.log(`Registro con id ${id} eliminado.`);
+          console.log(list)
+          
+        } else {
+          console.log(`No se encontró ningún registro con id ${id}.`);
+        }
+        guardarCarritoEnLocalStorage(list)
+        actualizarCarrito(list,div)
+    
+
+    }
     return{
         add:agregar,
         save:guardarCarritoEnLocalStorage,
@@ -117,7 +155,8 @@ var Carrito = (function ($) {
         load:cargarCarritoDesdeLocalStorage,
         updateCantidad:actualizarCantidad,
         remove: remover,
-        buy:comprar
+        buy:comprar,
+        delete:borrar
     }
 
 
