@@ -12,9 +12,9 @@ var Modulo1 = (function($) {
         <img src="${item.marca_imagen}" id="deliveryLogo" data-imagen="${item.marca_imagen}"" data-marca="${item.marca_id}" data-fecha ="${item.fecha_hora_pedido}" class="logo" id="deliveryLogo">
        
 
-        <div class="status" id="status"> ${item.estados} </div>
+        <div class="status" id="status"> ${item.estados}  </div>
         <img style=" height:180px;  width :40%" src="${item.estados ==='En_espera'?'/images/reloj.gif':'/stylesheets/Delivery Animation.gif'}"  id="truck">
-        <div class="total" id="total" </>Total: $0.00</div>
+        <div class="total" id="total" </>Total: $${item.total_pedido}</div>
     </div>
 
         `
