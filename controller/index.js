@@ -16,9 +16,9 @@ module.exports={
               var rol = vtoken.rol;
               const touken = req.cookies.perfil;
               
-            
-              console.log("al macenado con exito")
-             res.render('inicio')
+              
+            console.log("al macenado con exito")
+             res.render('Pagina_inicio/index')
             } catch (error) {
               console.error("Error de validación del token:", error.message);
               if (error.message === "Token has expired.") {
@@ -30,7 +30,7 @@ module.exports={
                   const tokennew = Gtoken.generarToken({ rol, email });
                   res.cookie('authToken', tokennew, { httpOnly: true, secure: true });
                   console.log("token refrescado exitosamente");
-                  res.render('inicio')
+                  res.render('Pagina_inicio/index')
                 } catch (error) {
                   console.error("Error de validación del token de actualización:", error.message);
                   if (error.message === "Token has expired." || error.message === "Token does not exist.") {
