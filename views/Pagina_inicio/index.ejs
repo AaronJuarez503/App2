@@ -24,7 +24,7 @@
                 <div class="menu-1">
                     <ul>
                         <li><a href="/tienda" id="link-1" >Ingresar Tienda</a></li>
-                        <li><a href="/marca">Marcas</a></li>
+                        <li><a href="/marca" id="link-2">Marcas</a></li>
                         <li><a href="/pedido">Estado del pedido</a></li>
                         <li><a href="/marcas1">Notificaciones</a></li>
                         <li><a href="#">Asitencia y ayuda</a></li>
@@ -480,7 +480,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            /*const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
+        const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
       if (renderedValue !== "") {
         $('#captured-value').text(renderedValue);
         $('#link-1').text('Al parecer ya tienes una tienda quieres verla 🥵');
@@ -488,7 +488,9 @@
         console.log('Valor capturado:', renderedValue);
       } else {
         console.log('No se recibió un valor desde el servidor.');
-      }*/
+        $('#link-2').text('Nesecitas registar');
+        $('#link-2').attr('href', '/tienda');
+      }
 
       $.ajax({
             url: '/users/vertienda',
