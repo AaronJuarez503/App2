@@ -16,7 +16,7 @@ $(function () {
 
         const indiceDia = fechaActual.getDay();
 
-        const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+        const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sabado'];
 
         const diaSemana = diasSemana[indiceDia];
 

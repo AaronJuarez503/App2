@@ -307,25 +307,30 @@ module.exports={
         
         
     },
-    Nuevacontra:function(req, res){
+    Nuevacontra:async function(req, res){
         const pass = req.body.password;
         console.log("tu correo que pedi es ;" + req.session.correo)
 
-        const correo = req.session.correo;
+        try {
+          const correo = req.session.correo;
+          const contraseñaEncriptada = await bcrypt.hash(pass,10);
+          var datos = await consulta.Nuevacontra(conexion,contraseñaEncriptada,correo)
+         
+              console.log('contraseña actualizada', datos)
+              res.json({ valid:true});
+  
+       
         
-        delete req.session.correo
+          delete req.session.correo
 
-        consulta.Nuevacontra(conexion,pass,correo)
-        .then(datos => {
-            console.log('contraseña actualizada', datos)
-            res.json({ valid:true});
+          
+        } catch (error) {
+          console.error('error al actualizar la contraseña', error)
+              res.json({ valid:false});
+        }
 
-           //  res.redirect('/')
-        })
-        .catch(error => {
-            console.error('error al actualizar la contraseña', error)
-            res.json({ valid:false});
-        })
+ 
+       
 
     },
     findByEmail: async function (email) {
