@@ -89,16 +89,11 @@ h2 {
 /*/ media query/*/
 @media screen and (min-width: 350px) and (max-width: 800px) {
     .notes-container {
-        width: 200%;
+        width: 95%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 5%;
-<<<<<<< HEAD
         padding: 8px;
-=======
-        padding: 10px;
-        
->>>>>>> 7715ce3080b2726442592a01f00d34e82257426a
     }
 
     .note {
