@@ -483,12 +483,12 @@
         const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
       if (renderedValue !== "") {
         $('#captured-value').text(renderedValue);
-        $('#link-1').text('Al parecer ya tienes una tienda quieres verla 🥵');
+        $('#link-1').text('Ver tienda');
         $('#link-1').attr('href', '/users/vertienda');
         console.log('Valor capturado:', renderedValue);
       } else {
         console.log('No se recibió un valor desde el servidor.');
-        $('#link-2').text('Nesecitas registar');
+        $('#link-2').text('marca');
         $('#link-2').attr('href', '/tienda');
       }
 
