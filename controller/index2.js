@@ -178,20 +178,19 @@ module.exports={
     buscartienda: async function (req,res) {
         console.log('buscando tienda')
         const token = req.cookies.perfil;
+
         if (!token) {
             console.log('alpareser no tienes tienda')
-            res.redirect('principal')
-            
+            return res.redirect('principal')
         }else{
             console.log(token.id)
-
        try {
         var rmarca= await model.buscartienda(con,token.id)
+        console.log('la tienda es')
         console.log(rmarca)
-
         res.send(rmarca)
        } catch (error) {
-        
+        res.send(error)
         
        }
         }
