@@ -75,7 +75,7 @@
     margin: 0 10px;
     height: 40px;
     width: 40px;
-    border: 1px solid #DB241B;
+    border: none;
     border-radius: 50%;
 }
 .social:hover{
