@@ -216,10 +216,11 @@ module.exports={
             console.log(token.id)
        try {
         var rmarca= await model.buscartienda(con,token.id)
-        console.log('la tienda es')
+        console.log('la tienda es la sisguiente')
         console.log(rmarca)
         res.send(rmarca)
        } catch (error) {
+        console.error(error)
         res.send(error)
         
        }
@@ -228,12 +229,11 @@ module.exports={
         
     },
     buscartienda2: async function (req,res) {
-        console.log('buscando tienda')
+        console.log('buscando tienda ')
         const token = req.cookies.perfil;
         if (!token) {
             console.log('alpareser no tienes tienda')
-          //  res.redirect('principal')
-            
+            res.send(false)
         }else{
             console.log(token.id)
 

@@ -432,7 +432,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function() {
-            console.log('buscando marca...')
+            console.log('buscando tienda...')
     //     const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
     //   if (renderedValue !== "") {
     //     $('#captured-value').text(renderedValue);
@@ -450,10 +450,20 @@
             dataType: 'json',
             success: function(data) {
                 console.log(data)
+
+                if (data.length > 0 ){
+                    console.log('ya tienes tienda')
+
+                    
+                } else {
+
+                    console.log('no tienes registrada la tienda')
+                    
+                }
               
                     
                     $('#link-1').text('Mi tienda');
-                    $('#link-1').attr('href', '/users/viewtwo');
+                    $('#link-1').attr('href', 'tienda');
                 
             },
             error: function(xhr, status, error) {

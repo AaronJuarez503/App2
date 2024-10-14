@@ -232,11 +232,11 @@ module.exports={
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
-                    reject(error);
+                   return  reject(error);
                 } else if (resultado.length >0) {
                     resolve(resultado[0]);
                 }else{
-                    reject(new Error('No se encontró la tienda'));
+                    return reject(false);
                 }
             });
             
