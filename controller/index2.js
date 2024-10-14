@@ -1,6 +1,7 @@
 const con=require('../config/index')
 const model=require('../model/index2')
 const cloudinary = require('./cloudinary')
+var Gtoken= require('../controller/Gtoken')
 
 
 
@@ -38,13 +39,42 @@ module.exports={
     Insertartienda: async function (req,res) {
 
         const token = req.cookies.perfil;
+       
         console.log(token)
         try {
-            console.log(req.body)
-           await model.Insertartienda(con,token.id,req.body.nombre,req.body.direccion)
+            
+        console.log(req.body)
+
+           var result = await model.Insertartienda(con,token.id,req.body.nombre,req.body.direccion)
+           var tienda= result.insertId
+           console.log('tienda id:'+ tienda)
+        //    var id = datos.insertId
+             
+       
+       
+
+        var payload ={
+           
+            tienda_id: tienda,
+        }
+
+
+
+        
+        // await consulta.Cliente(conexion,id,nom,apell)
+        // const token = Gtoken.generarToken(payload)
+        // res.cookie('authToken', token, { httpOnly: true,secure: true })
+        // const refreshToken = Gtoken.refreshToken(payload)
+        // res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true })
+
+        res.cookie('perfil',{id:token.id,tienda_id:tienda},{ httpOnly: true,secure: true });
+
+
+
             res.render('Pagina_inicio/index',{value:'hola'})
 
         } catch (error) {
+            console.error(error)
 
         }
 
