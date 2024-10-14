@@ -72,17 +72,10 @@ module.exports={
 
 
     insertregistrer:async function (req,res) {
-
-          // Generar un salt
-
-
         try {
           const salt = await bcrypt.genSalt(10);
-    
     // Encriptar la contraseña
          const contraseñaEncriptada = await bcrypt.hash(req.session.datos.pass, salt);
-
-         
         console.log('datos para ingresar'+req.session.datos.nom)
         var rol=req.session.datos.rol;
         var nom=req.session.datos.nom;
@@ -91,13 +84,31 @@ module.exports={
         var pass=contraseñaEncriptada;
         var username = req.body.usuario
         console.log(req.session.datos)
-
             var datos = await consulta.RegistrarCliente(conexion,{username,correo,pass,rol})
             console.log('datos insertados')
             console.log(datos)
             var id = datos.insertId
 
+            payload = {
+              id: id,
+              nombre: nom,
+              email: apell
+          }
+
+          payload2 = {
+              id: id,
+              nombre: nom,
+              email: apell
+          }
+
+
             await consulta.Cliente(conexion,id,nom,apell)
+            const token = Gtoken.generarToken(payload)
+            res.cookie('authToken', token, { httpOnly: true,secure: true })
+            const refreshToken = Gtoken.refreshToken(payload2)
+              res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true })
+
+            res.cookie('perfil',{id:id},{ httpOnly: true,secure: true });
 
 
             res.redirect('/principal')
@@ -135,9 +146,7 @@ module.exports={
 
                 var play={
                     id:respuestabd.id,
-                  
-
-                   
+                
                   }
 
                   if (rmarca!==false) {
