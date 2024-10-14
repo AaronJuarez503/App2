@@ -232,7 +232,7 @@ module.exports={
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, resultado) {
                 if (error) {
-                    throw (error);
+                    reject(error);
                 } else if (resultado.length >0) {
                     resolve(resultado[0]);
                 }else{

@@ -426,50 +426,42 @@
 
 
 
-
+<!-- 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script src="../javascript/script.js"></script>
+    <script src="../javascript/script.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-        const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
-      if (renderedValue !== "") {
-        $('#captured-value').text(renderedValue);
-        $('#link-1').text('Al parecer ya tienes una tienda quieres verla 🥵');
-        $('#link-1').attr('href', '/users/vertienda');
-        console.log('Valor capturado:', renderedValue);
-      } else {
-        console.log('No se recibió un valor desde el servidor.');
-        $('#link-2').text('Nesecitas registar');
-        $('#link-2').attr('href', '/tienda');
-      }
+        $(function() {
+            console.log('buscando marca...')
+    //     const renderedValue = '<%= typeof value !== "undefined" ? value : "" %>';
+    //   if (renderedValue !== "") {
+    //     $('#captured-value').text(renderedValue);
+        
+    //     console.log('Valor capturado:', renderedValue);
+    //   } else {
+    //     console.log('No se recibió un valor desde el servidor.');
+    //     $('#link-2').text('marca');
+    //     $('#link-2').attr('href', '/tienda');
+    //   }
 
       $.ajax({
             url: '/users/vertienda',
             method: 'GET',
             dataType: 'json',
             success: function(data) {
-               
-                if (data) {
+                console.log(data)
+              
                     
                     $('#link-1').text('Mi tienda');
                     $('#link-1').attr('href', '/users/viewtwo');
-                } else {
-                    console.log('no hay nada')
-                    
-                }
+                
             },
             error: function(xhr, status, error) {
                 console.error('Error en la petición AJAX:', error);
-                $('#resultado').html('Error al cargar los datos');
+                $('#link-2').text('marca');
+                $('#link-2').attr('href', '/tienda');
             }
         })
-
-
-
-
-
-
         });</script>
 </body>
 
