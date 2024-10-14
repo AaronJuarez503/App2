@@ -24,6 +24,7 @@
                 <div class="menu-1">
                     <ul>
                         <li><a href="/tienda" id="link-1" >Ingresar Tienda</a></li>
+
                         <li><a href="/marca" id="link-2">Marcas</a></li>
                         <li><a href="/pedido">Estado del pedido</a></li>
                         <li><a href="/marcas1">Notificaciones</a></li>
@@ -447,24 +448,34 @@
       $.ajax({
             url: '/users/vertienda',
             method: 'GET',
-            dataType: 'json',
             success: function(data) {
                 console.log(data)
 
-                if (data.length > 0 ){
-                    console.log('ya tienes tienda')
+                if (data===false){
+                    console.log('no tienes registrada la tienda')
+                    
+                    $('#link-1').text('Ingresar tienda');
+                    $('#link-1').attr('href', '/tienda');
+
+                  
+
+                    $('#link-2').text('Marcas');
+                    $('#link-2').attr('href', '/tienda');
 
                     
                 } else {
+                    console.log('ya tienes tienda')
+                    $('#link-1').text('Ver tienda');
+                    $('#link-1').attr('href', '/users/viewtwo');;
 
-                    console.log('no tienes registrada la tienda')
+                   
+                
+
                     
                 }
               
                     
-                    $('#link-1').text('Mi tienda');
-                    $('#link-1').attr('href', 'tienda');
-                
+                  
             },
             error: function(xhr, status, error) {
                 console.error('Error en la petición AJAX:', error);

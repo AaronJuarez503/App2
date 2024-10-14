@@ -220,6 +220,7 @@ module.exports={
         console.log(rmarca)
         res.send(rmarca)
        } catch (error) {
+        console.log('el error es que es falso :',error)
         console.error(error)
         res.send(error)
         
