@@ -18,6 +18,7 @@ async function chatMath(prompt) {
         const chat = model.startChat();
         const result = await chat.sendMessage(prompt);
         const response = await result.response;
+        console.log(response)
         
     try {
         if (response.candidates[0].content.parts[0].functionCall) {
